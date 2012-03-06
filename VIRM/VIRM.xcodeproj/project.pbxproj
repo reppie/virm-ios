@@ -1,0 +1,345 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D73A126415063C48000D3610 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A126315063C48000D3610 /* UIKit.framework */; };
+		D73A126615063C48000D3610 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A126515063C48000D3610 /* Foundation.framework */; };
+		D73A126815063C48000D3610 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A126715063C48000D3610 /* CoreGraphics.framework */; };
+		D73A126E15063C48000D3610 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D73A126C15063C48000D3610 /* InfoPlist.strings */; };
+		D73A127015063C48000D3610 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A126F15063C48000D3610 /* main.m */; };
+		D73A127415063C48000D3610 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A127315063C48000D3610 /* AppDelegate.m */; };
+		D73A127715063C48000D3610 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D73A127515063C48000D3610 /* MainStoryboard.storyboard */; };
+		D73A127A15063C48000D3610 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A127915063C48000D3610 /* ViewController.m */; };
+		D73A128715063C9D000D3610 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128615063C9D000D3610 /* AVFoundation.framework */; };
+		D73A128915063CA5000D3610 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128815063CA5000D3610 /* CoreMedia.framework */; };
+		D73A128B15063CAC000D3610 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128A15063CAC000D3610 /* CoreVideo.framework */; };
+		D73A128D15063CB2000D3610 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128C15063CB2000D3610 /* QuartzCore.framework */; };
+		D73A128F15063CCC000D3610 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128E15063CCC000D3610 /* libstdc++.dylib */; };
+		D73A129115063CD5000D3610 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A129015063CD5000D3610 /* libiconv.dylib */; };
+		D73A129815063D9E000D3610 /* iqedata in Resources */ = {isa = PBXBuildFile; fileRef = D73A129715063D9E000D3610 /* iqedata */; };
+		D73A12B615064F24000D3610 /* libiqe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A12B415064F24000D3610 /* libiqe.a */; };
+		D73A12B715064F24000D3610 /* UI in Resources */ = {isa = PBXBuildFile; fileRef = D73A12B515064F24000D3610 /* UI */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D73A125F15063C48000D3610 /* VIRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D73A126315063C48000D3610 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D73A126515063C48000D3610 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D73A126715063C48000D3610 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D73A126B15063C48000D3610 /* VIRM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VIRM-Info.plist"; sourceTree = "<group>"; };
+		D73A126D15063C48000D3610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D73A126F15063C48000D3610 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D73A127115063C48000D3610 /* VIRM-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VIRM-Prefix.pch"; sourceTree = "<group>"; };
+		D73A127215063C48000D3610 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D73A127315063C48000D3610 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D73A127615063C48000D3610 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		D73A127815063C48000D3610 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D73A127915063C48000D3610 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D73A128615063C9D000D3610 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D73A128815063CA5000D3610 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		D73A128A15063CAC000D3610 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D73A128C15063CB2000D3610 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D73A128E15063CCC000D3610 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		D73A129015063CD5000D3610 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		D73A129715063D9E000D3610 /* iqedata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iqedata; sourceTree = "<group>"; };
+		D73A12B315064F24000D3610 /* IQE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQE.h; sourceTree = "<group>"; };
+		D73A12B415064F24000D3610 /* libiqe.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiqe.a; sourceTree = "<group>"; };
+		D73A12B515064F24000D3610 /* UI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UI; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D73A125C15063C48000D3610 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D73A129115063CD5000D3610 /* libiconv.dylib in Frameworks */,
+				D73A128F15063CCC000D3610 /* libstdc++.dylib in Frameworks */,
+				D73A128D15063CB2000D3610 /* QuartzCore.framework in Frameworks */,
+				D73A128B15063CAC000D3610 /* CoreVideo.framework in Frameworks */,
+				D73A128915063CA5000D3610 /* CoreMedia.framework in Frameworks */,
+				D73A128715063C9D000D3610 /* AVFoundation.framework in Frameworks */,
+				D73A126415063C48000D3610 /* UIKit.framework in Frameworks */,
+				D73A126615063C48000D3610 /* Foundation.framework in Frameworks */,
+				D73A126815063C48000D3610 /* CoreGraphics.framework in Frameworks */,
+				D73A12B615064F24000D3610 /* libiqe.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D73A125415063C48000D3610 = {
+			isa = PBXGroup;
+			children = (
+				D73A126915063C48000D3610 /* VIRM */,
+				D73A126215063C48000D3610 /* Frameworks */,
+				D73A126015063C48000D3610 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D73A126015063C48000D3610 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D73A125F15063C48000D3610 /* VIRM.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D73A126215063C48000D3610 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D73A129015063CD5000D3610 /* libiconv.dylib */,
+				D73A128E15063CCC000D3610 /* libstdc++.dylib */,
+				D73A128C15063CB2000D3610 /* QuartzCore.framework */,
+				D73A128A15063CAC000D3610 /* CoreVideo.framework */,
+				D73A128815063CA5000D3610 /* CoreMedia.framework */,
+				D73A128615063C9D000D3610 /* AVFoundation.framework */,
+				D73A126315063C48000D3610 /* UIKit.framework */,
+				D73A126515063C48000D3610 /* Foundation.framework */,
+				D73A126715063C48000D3610 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D73A126915063C48000D3610 /* VIRM */ = {
+			isa = PBXGroup;
+			children = (
+				D73A12B215064EFB000D3610 /* IQEngines */,
+				D73A129615063D7D000D3610 /* Resources */,
+				D73A127215063C48000D3610 /* AppDelegate.h */,
+				D73A127315063C48000D3610 /* AppDelegate.m */,
+				D73A127515063C48000D3610 /* MainStoryboard.storyboard */,
+				D73A127815063C48000D3610 /* ViewController.h */,
+				D73A127915063C48000D3610 /* ViewController.m */,
+				D73A126A15063C48000D3610 /* Supporting Files */,
+			);
+			path = VIRM;
+			sourceTree = "<group>";
+		};
+		D73A126A15063C48000D3610 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D73A126B15063C48000D3610 /* VIRM-Info.plist */,
+				D73A126C15063C48000D3610 /* InfoPlist.strings */,
+				D73A126F15063C48000D3610 /* main.m */,
+				D73A127115063C48000D3610 /* VIRM-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D73A129615063D7D000D3610 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D73A129715063D9E000D3610 /* iqedata */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D73A12B215064EFB000D3610 /* IQEngines */ = {
+			isa = PBXGroup;
+			children = (
+				D73A12B315064F24000D3610 /* IQE.h */,
+				D73A12B415064F24000D3610 /* libiqe.a */,
+				D73A12B515064F24000D3610 /* UI */,
+			);
+			name = IQEngines;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D73A125E15063C48000D3610 /* VIRM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D73A127D15063C48000D3610 /* Build configuration list for PBXNativeTarget "VIRM" */;
+			buildPhases = (
+				D73A125B15063C48000D3610 /* Sources */,
+				D73A125C15063C48000D3610 /* Frameworks */,
+				D73A125D15063C48000D3610 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VIRM;
+			productName = VIRM;
+			productReference = D73A125F15063C48000D3610 /* VIRM.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D73A125615063C48000D3610 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = D73A125915063C48000D3610 /* Build configuration list for PBXProject "VIRM" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D73A125415063C48000D3610;
+			productRefGroup = D73A126015063C48000D3610 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D73A125E15063C48000D3610 /* VIRM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D73A125D15063C48000D3610 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D73A126E15063C48000D3610 /* InfoPlist.strings in Resources */,
+				D73A127715063C48000D3610 /* MainStoryboard.storyboard in Resources */,
+				D73A129815063D9E000D3610 /* iqedata in Resources */,
+				D73A12B715064F24000D3610 /* UI in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D73A125B15063C48000D3610 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D73A127015063C48000D3610 /* main.m in Sources */,
+				D73A127415063C48000D3610 /* AppDelegate.m in Sources */,
+				D73A127A15063C48000D3610 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D73A126C15063C48000D3610 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D73A126D15063C48000D3610 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D73A127515063C48000D3610 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D73A127615063C48000D3610 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D73A127B15063C48000D3610 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D73A127C15063C48000D3610 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D73A127E15063C48000D3610 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VIRM/VIRM-Prefix.pch";
+				INFOPLIST_FILE = "VIRM/VIRM-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../IQEngines/ios-sdk/IQEnginesSDK\"",
+					"\"$(SRCROOT)/VIRM\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D73A127F15063C48000D3610 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VIRM/VIRM-Prefix.pch";
+				INFOPLIST_FILE = "VIRM/VIRM-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../IQEngines/ios-sdk/IQEnginesSDK\"",
+					"\"$(SRCROOT)/VIRM\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D73A125915063C48000D3610 /* Build configuration list for PBXProject "VIRM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D73A127B15063C48000D3610 /* Debug */,
+				D73A127C15063C48000D3610 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D73A127D15063C48000D3610 /* Build configuration list for PBXNativeTarget "VIRM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D73A127E15063C48000D3610 /* Debug */,
+				D73A127F15063C48000D3610 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D73A125615063C48000D3610 /* Project object */;
+}
