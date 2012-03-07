@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @implementation ViewController
+
+@synthesize imagePicker = _imagePicker;
 
 - (void)didReceiveMemoryWarning
 {
@@ -20,18 +23,30 @@
 
 - (void)viewDidLoad
 {
-    iqengines = [[IQE alloc] initWithSearchType:IQESearchTypeRemoteSearch apiKey:@"5de79cc588d5435d8ad3c6a13bf711d5" apiSecret:@"de9d9ac4582d412a96624b1d03b87a84"];
-    
-    iqengines.delegate = self;
-
+//    iqengines = [[IQE alloc] initWithSearchType:IQESearchTypeRemoteSearch apiKey:@"5de79cc588d5435d8ad3c6a13bf711d5" apiSecret:@"de9d9ac4582d412a96624b1d03b87a84"];
+//    
+//    iqengines.delegate = self;
+//
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+//	// Do any additional setup after loading the view, typically from a nib.
+//    
+//    CGRect rect = self.view.layer.bounds;
+//    iqengines.previewLayer.bounds = rect;
+//    iqengines.previewLayer.position = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+//    
+//    [self.view.layer insertSublayer:iqengines.previewLayer atIndex:0];
     
-    CGRect rect = self.view.layer.bounds;
-    iqengines.previewLayer.bounds = rect;
-    iqengines.previewLayer.position = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+    _imagePicker = [[UIImagePickerController alloc] init];
     
-    [self.view.layer insertSublayer:iqengines.previewLayer atIndex:0];
+    // Set up the image view and add it to the view but make it hidden
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	imageView = [[UIImageView alloc] initWithFrame:[appDelegate.window bounds]];
+	imageView.hidden = YES;
+	[appDelegate.window addSubview:imageView];
+    
+    [appDelegate.window makeKeyAndVisible];
+    
+    _imagePicker.delegate = (id)self;
 }
 
 - (void)viewDidUnload
@@ -45,7 +60,7 @@
 {
     [super viewWillAppear:animated];
     
-    [iqengines startCamera];
+//    [iqengines startCamera];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -61,7 +76,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-    [iqengines stopCamera];
+//    [iqengines stopCamera];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -74,8 +89,17 @@
     iqengines.delegate = nil;
     [iqengines stopCamera];
 }
-- (IBAction)cameraClicked:(id)sender {
-    [iqengines captureStillFrame];
+- (IBAction)cameraClicked:(id)sender {    
+    // Set source to the camera
+	_imagePicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
+    
+    // Show image picker
+	[self presentModalViewController:_imagePicker animated:YES];	
+}
+
+- (IBAction)libraryClicked:(id)sender {
+    _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentModalViewController:_imagePicker animated:YES];	
 }
 
 -(void)iqEngines:(IQE *)iqe didCaptureStillFrame:(UIImage *)image {
@@ -98,5 +122,15 @@
 
 - (void)iqEngines:(IQE *)iqe failedWithError:(NSError *)error {
     printf("failedWithError called! :(");
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)img editingInfo:(NSDictionary *)editInfo {
+	// Dismiss the image selection, hide the picker and show the image view with the picked image
+	[picker dismissModalViewControllerAnimated:YES];
+	_imagePicker.view.hidden = YES;
+	imageView.image = img;
+	imageView.hidden = NO;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	[appDelegate.window bringSubviewToFront:imageView];
 }
 @end

@@ -22,6 +22,12 @@
                                             <action selector="cameraClicked:" destination="2" id="nio-1t-mrL"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cJI-Ou-J2w"/>
+                                    <barButtonItem systemItem="organize" id="ghx-38-fby">
+                                        <connections>
+                                            <action selector="libraryClicked:" destination="2" id="M49-ln-Tlk"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -32,14 +38,6 @@
             </objects>
         </scene>
     </scenes>
-    <classes>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cameraClicked:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
