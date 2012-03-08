@@ -23,18 +23,7 @@
 
 - (void)viewDidLoad
 {
-//    iqengines = [[IQE alloc] initWithSearchType:IQESearchTypeRemoteSearch apiKey:@"5de79cc588d5435d8ad3c6a13bf711d5" apiSecret:@"de9d9ac4582d412a96624b1d03b87a84"];
-//    
-//    iqengines.delegate = self;
-//
     [super viewDidLoad];
-//	// Do any additional setup after loading the view, typically from a nib.
-//    
-//    CGRect rect = self.view.layer.bounds;
-//    iqengines.previewLayer.bounds = rect;
-//    iqengines.previewLayer.position = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-//    
-//    [self.view.layer insertSublayer:iqengines.previewLayer atIndex:0];
     
     _imagePicker = [[UIImagePickerController alloc] init];
     
@@ -59,8 +48,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-//    [iqengines startCamera];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -76,7 +63,6 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-//    [iqengines stopCamera];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -86,8 +72,6 @@
 }
 
 - (void) dealloc {
-    iqengines.delegate = nil;
-    [iqengines stopCamera];
 }
 - (IBAction)cameraClicked:(id)sender {    
     // Set source to the camera
@@ -98,30 +82,10 @@
 }
 
 - (IBAction)libraryClicked:(id)sender {
+    printf("Library clicked!\n");
     _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    _imagePicker.view.hidden = NO;
     [self presentModalViewController:_imagePicker animated:YES];	
-}
-
--(void)iqEngines:(IQE *)iqe didCaptureStillFrame:(UIImage *)image {
-    printf("Frame captured!\n");
-    NSString* qid = [iqengines searchWithImage:image];
-    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
- 
-    printf("QID: %s\n", [qid UTF8String]);
-    
-    [iqengines updateResults:dict forQID:qid];
-    printf("Updated results!");
-    
-    //[iqengines searchWithQID:qid];
-}
-
-- (void)updateCompleteWithResults:(NSArray*)results
-{
-    printf("updateCompleteWithResults called! :)");
-}
-
-- (void)iqEngines:(IQE *)iqe failedWithError:(NSError *)error {
-    printf("failedWithError called! :(");
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)img editingInfo:(NSDictionary *)editInfo {
@@ -132,5 +96,13 @@
 	imageView.hidden = NO;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	[appDelegate.window bringSubviewToFront:imageView];
+}
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    printf("Touched\n");
+    if (imageView.hidden == NO) {
+        printf("Touched in imageView\n");
+        imageView.hidden = YES;
+    }
 }
 @end

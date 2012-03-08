@@ -338,6 +338,7 @@
 				D73A127F15063C48000D3610 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
