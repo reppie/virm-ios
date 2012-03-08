@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class MultiViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : NSObject <UIApplicationDelegate> {
+    UIWindow *window;
+    MultiViewController *viewController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, retain) IBOutlet MultiViewController *viewController;
+
+-(void) displayView:(int)intNewView;
 
 @end
