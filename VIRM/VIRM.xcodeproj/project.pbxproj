@@ -7,164 +7,124 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D72331AD1508CB4C002AEC6B /* MiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72331AC1508CB4C002AEC6B /* MiscViewController.m */; };
-		D73A126415063C48000D3610 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A126315063C48000D3610 /* UIKit.framework */; };
-		D73A126615063C48000D3610 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A126515063C48000D3610 /* Foundation.framework */; };
-		D73A126815063C48000D3610 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A126715063C48000D3610 /* CoreGraphics.framework */; };
-		D73A126E15063C48000D3610 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D73A126C15063C48000D3610 /* InfoPlist.strings */; };
-		D73A127015063C48000D3610 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A126F15063C48000D3610 /* main.m */; };
-		D73A127415063C48000D3610 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A127315063C48000D3610 /* AppDelegate.m */; };
-		D73A127715063C48000D3610 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D73A127515063C48000D3610 /* MainStoryboard.storyboard */; };
-		D73A127A15063C48000D3610 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A127915063C48000D3610 /* CameraViewController.m */; };
-		D73A128715063C9D000D3610 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128615063C9D000D3610 /* AVFoundation.framework */; };
-		D73A128915063CA5000D3610 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128815063CA5000D3610 /* CoreMedia.framework */; };
-		D73A128B15063CAC000D3610 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128A15063CAC000D3610 /* CoreVideo.framework */; };
-		D73A128D15063CB2000D3610 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128C15063CB2000D3610 /* QuartzCore.framework */; };
-		D73A128F15063CCC000D3610 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128E15063CCC000D3610 /* libstdc++.dylib */; };
-		D73A129115063CD5000D3610 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A129015063CD5000D3610 /* libiconv.dylib */; };
-		D73A129815063D9E000D3610 /* iqedata in Resources */ = {isa = PBXBuildFile; fileRef = D73A129715063D9E000D3610 /* iqedata */; };
-		D73A12B615064F24000D3610 /* libiqe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A12B415064F24000D3610 /* libiqe.a */; };
-		D73A12B715064F24000D3610 /* UI in Resources */ = {isa = PBXBuildFile; fileRef = D73A12B515064F24000D3610 /* UI */; };
+		D789C36D150DFC4700369838 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D789C36C150DFC4700369838 /* UIKit.framework */; };
+		D789C36F150DFC4700369838 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D789C36E150DFC4700369838 /* Foundation.framework */; };
+		D789C371150DFC4700369838 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D789C370150DFC4700369838 /* CoreGraphics.framework */; };
+		D789C377150DFC4700369838 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D789C375150DFC4700369838 /* InfoPlist.strings */; };
+		D789C379150DFC4700369838 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D789C378150DFC4700369838 /* main.m */; };
+		D789C37D150DFC4700369838 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D789C37C150DFC4700369838 /* AppDelegate.m */; };
+		D789C380150DFC4700369838 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D789C37E150DFC4700369838 /* MainStoryboard.storyboard */; };
+		D789C383150DFC4700369838 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D789C382150DFC4700369838 /* CameraViewController.m */; };
+		D789C385150DFC4700369838 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C384150DFC4700369838 /* first.png */; };
+		D789C387150DFC4700369838 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C386150DFC4700369838 /* first@2x.png */; };
+		D789C38A150DFC4700369838 /* MiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D789C389150DFC4700369838 /* MiscViewController.m */; };
+		D789C38C150DFC4700369838 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C38B150DFC4700369838 /* second.png */; };
+		D789C38E150DFC4700369838 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C38D150DFC4700369838 /* second@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D72331AB1508CB4C002AEC6B /* MiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiscViewController.h; sourceTree = "<group>"; };
-		D72331AC1508CB4C002AEC6B /* MiscViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiscViewController.m; sourceTree = "<group>"; };
-		D73A125F15063C48000D3610 /* VIRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D73A126315063C48000D3610 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D73A126515063C48000D3610 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D73A126715063C48000D3610 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D73A126B15063C48000D3610 /* VIRM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VIRM-Info.plist"; sourceTree = "<group>"; };
-		D73A126D15063C48000D3610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D73A126F15063C48000D3610 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D73A127115063C48000D3610 /* VIRM-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VIRM-Prefix.pch"; sourceTree = "<group>"; };
-		D73A127215063C48000D3610 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D73A127315063C48000D3610 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D73A127615063C48000D3610 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		D73A127815063C48000D3610 /* CameraViewController.h */ = {isa = PBXFileReference; path = CameraViewController.h; sourceTree = "<group>"; };
-		D73A127915063C48000D3610 /* CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
-		D73A128615063C9D000D3610 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		D73A128815063CA5000D3610 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		D73A128A15063CAC000D3610 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		D73A128C15063CB2000D3610 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D73A128E15063CCC000D3610 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		D73A129015063CD5000D3610 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
-		D73A129715063D9E000D3610 /* iqedata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iqedata; sourceTree = "<group>"; };
-		D73A12B315064F24000D3610 /* IQE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQE.h; sourceTree = "<group>"; };
-		D73A12B415064F24000D3610 /* libiqe.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiqe.a; sourceTree = "<group>"; };
-		D73A12B515064F24000D3610 /* UI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UI; sourceTree = "<group>"; };
+		D789C368150DFC4700369838 /* VIRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D789C36C150DFC4700369838 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D789C36E150DFC4700369838 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D789C370150DFC4700369838 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D789C374150DFC4700369838 /* VIRM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VIRM-Info.plist"; sourceTree = "<group>"; };
+		D789C376150DFC4700369838 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D789C378150DFC4700369838 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D789C37A150DFC4700369838 /* VIRM-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VIRM-Prefix.pch"; sourceTree = "<group>"; };
+		D789C37B150DFC4700369838 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D789C37C150DFC4700369838 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D789C37F150DFC4700369838 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		D789C381150DFC4700369838 /* CameraViewController.h */ = {isa = PBXFileReference; path = CameraViewController.h; sourceTree = "<group>"; };
+		D789C382150DFC4700369838 /* CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		D789C384150DFC4700369838 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		D789C386150DFC4700369838 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		D789C388150DFC4700369838 /* MiscViewController.h */ = {isa = PBXFileReference; path = MiscViewController.h; sourceTree = "<group>"; };
+		D789C389150DFC4700369838 /* MiscViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiscViewController.m; sourceTree = "<group>"; };
+		D789C38B150DFC4700369838 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		D789C38D150DFC4700369838 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D73A125C15063C48000D3610 /* Frameworks */ = {
+		D789C365150DFC4700369838 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D73A129115063CD5000D3610 /* libiconv.dylib in Frameworks */,
-				D73A128F15063CCC000D3610 /* libstdc++.dylib in Frameworks */,
-				D73A128D15063CB2000D3610 /* QuartzCore.framework in Frameworks */,
-				D73A128B15063CAC000D3610 /* CoreVideo.framework in Frameworks */,
-				D73A128915063CA5000D3610 /* CoreMedia.framework in Frameworks */,
-				D73A128715063C9D000D3610 /* AVFoundation.framework in Frameworks */,
-				D73A126415063C48000D3610 /* UIKit.framework in Frameworks */,
-				D73A126615063C48000D3610 /* Foundation.framework in Frameworks */,
-				D73A126815063C48000D3610 /* CoreGraphics.framework in Frameworks */,
-				D73A12B615064F24000D3610 /* libiqe.a in Frameworks */,
+				D789C36D150DFC4700369838 /* UIKit.framework in Frameworks */,
+				D789C36F150DFC4700369838 /* Foundation.framework in Frameworks */,
+				D789C371150DFC4700369838 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D73A125415063C48000D3610 = {
+		D789C35D150DFC4700369838 = {
 			isa = PBXGroup;
 			children = (
-				D73A126915063C48000D3610 /* VIRM */,
-				D73A126215063C48000D3610 /* Frameworks */,
-				D73A126015063C48000D3610 /* Products */,
+				D789C372150DFC4700369838 /* VIRM */,
+				D789C36B150DFC4700369838 /* Frameworks */,
+				D789C369150DFC4700369838 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D73A126015063C48000D3610 /* Products */ = {
+		D789C369150DFC4700369838 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D73A125F15063C48000D3610 /* VIRM.app */,
+				D789C368150DFC4700369838 /* VIRM.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D73A126215063C48000D3610 /* Frameworks */ = {
+		D789C36B150DFC4700369838 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D73A129015063CD5000D3610 /* libiconv.dylib */,
-				D73A128E15063CCC000D3610 /* libstdc++.dylib */,
-				D73A128C15063CB2000D3610 /* QuartzCore.framework */,
-				D73A128A15063CAC000D3610 /* CoreVideo.framework */,
-				D73A128815063CA5000D3610 /* CoreMedia.framework */,
-				D73A128615063C9D000D3610 /* AVFoundation.framework */,
-				D73A126315063C48000D3610 /* UIKit.framework */,
-				D73A126515063C48000D3610 /* Foundation.framework */,
-				D73A126715063C48000D3610 /* CoreGraphics.framework */,
+				D789C36C150DFC4700369838 /* UIKit.framework */,
+				D789C36E150DFC4700369838 /* Foundation.framework */,
+				D789C370150DFC4700369838 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D73A126915063C48000D3610 /* VIRM */ = {
+		D789C372150DFC4700369838 /* VIRM */ = {
 			isa = PBXGroup;
 			children = (
-				D73A12B215064EFB000D3610 /* IQEngines */,
-				D73A129615063D7D000D3610 /* Resources */,
-				D73A127215063C48000D3610 /* AppDelegate.h */,
-				D73A127315063C48000D3610 /* AppDelegate.m */,
-				D73A127515063C48000D3610 /* MainStoryboard.storyboard */,
-				D73A127815063C48000D3610 /* CameraViewController.h */,
-				D73A127915063C48000D3610 /* CameraViewController.m */,
-				D72331AB1508CB4C002AEC6B /* MiscViewController.h */,
-				D72331AC1508CB4C002AEC6B /* MiscViewController.m */,
-				D73A126A15063C48000D3610 /* Supporting Files */,
+				D789C37B150DFC4700369838 /* AppDelegate.h */,
+				D789C37C150DFC4700369838 /* AppDelegate.m */,
+				D789C37E150DFC4700369838 /* MainStoryboard.storyboard */,
+				D789C381150DFC4700369838 /* CameraViewController.h */,
+				D789C382150DFC4700369838 /* CameraViewController.m */,
+				D789C384150DFC4700369838 /* first.png */,
+				D789C386150DFC4700369838 /* first@2x.png */,
+				D789C388150DFC4700369838 /* MiscViewController.h */,
+				D789C389150DFC4700369838 /* MiscViewController.m */,
+				D789C38B150DFC4700369838 /* second.png */,
+				D789C38D150DFC4700369838 /* second@2x.png */,
+				D789C373150DFC4700369838 /* Supporting Files */,
 			);
 			path = VIRM;
 			sourceTree = "<group>";
 		};
-		D73A126A15063C48000D3610 /* Supporting Files */ = {
+		D789C373150DFC4700369838 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D73A126B15063C48000D3610 /* VIRM-Info.plist */,
-				D73A126C15063C48000D3610 /* InfoPlist.strings */,
-				D73A126F15063C48000D3610 /* main.m */,
-				D73A127115063C48000D3610 /* VIRM-Prefix.pch */,
+				D789C374150DFC4700369838 /* VIRM-Info.plist */,
+				D789C375150DFC4700369838 /* InfoPlist.strings */,
+				D789C378150DFC4700369838 /* main.m */,
+				D789C37A150DFC4700369838 /* VIRM-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D73A129615063D7D000D3610 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D73A129715063D9E000D3610 /* iqedata */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		D73A12B215064EFB000D3610 /* IQEngines */ = {
-			isa = PBXGroup;
-			children = (
-				D73A12B315064F24000D3610 /* IQE.h */,
-				D73A12B415064F24000D3610 /* libiqe.a */,
-				D73A12B515064F24000D3610 /* UI */,
-			);
-			name = IQEngines;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D73A125E15063C48000D3610 /* VIRM */ = {
+		D789C367150DFC4700369838 /* VIRM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D73A127D15063C48000D3610 /* Build configuration list for PBXNativeTarget "VIRM" */;
+			buildConfigurationList = D789C391150DFC4700369838 /* Build configuration list for PBXNativeTarget "VIRM" */;
 			buildPhases = (
-				D73A125B15063C48000D3610 /* Sources */,
-				D73A125C15063C48000D3610 /* Frameworks */,
-				D73A125D15063C48000D3610 /* Resources */,
+				D789C364150DFC4700369838 /* Sources */,
+				D789C365150DFC4700369838 /* Frameworks */,
+				D789C366150DFC4700369838 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -172,75 +132,77 @@
 			);
 			name = VIRM;
 			productName = VIRM;
-			productReference = D73A125F15063C48000D3610 /* VIRM.app */;
+			productReference = D789C368150DFC4700369838 /* VIRM.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D73A125615063C48000D3610 /* Project object */ = {
+		D789C35F150DFC4700369838 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = D73A125915063C48000D3610 /* Build configuration list for PBXProject "VIRM" */;
+			buildConfigurationList = D789C362150DFC4700369838 /* Build configuration list for PBXProject "VIRM" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = D73A125415063C48000D3610;
-			productRefGroup = D73A126015063C48000D3610 /* Products */;
+			mainGroup = D789C35D150DFC4700369838;
+			productRefGroup = D789C369150DFC4700369838 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D73A125E15063C48000D3610 /* VIRM */,
+				D789C367150DFC4700369838 /* VIRM */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D73A125D15063C48000D3610 /* Resources */ = {
+		D789C366150DFC4700369838 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D73A126E15063C48000D3610 /* InfoPlist.strings in Resources */,
-				D73A127715063C48000D3610 /* MainStoryboard.storyboard in Resources */,
-				D73A129815063D9E000D3610 /* iqedata in Resources */,
-				D73A12B715064F24000D3610 /* UI in Resources */,
+				D789C377150DFC4700369838 /* InfoPlist.strings in Resources */,
+				D789C380150DFC4700369838 /* MainStoryboard.storyboard in Resources */,
+				D789C385150DFC4700369838 /* first.png in Resources */,
+				D789C387150DFC4700369838 /* first@2x.png in Resources */,
+				D789C38C150DFC4700369838 /* second.png in Resources */,
+				D789C38E150DFC4700369838 /* second@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D73A125B15063C48000D3610 /* Sources */ = {
+		D789C364150DFC4700369838 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D73A127015063C48000D3610 /* main.m in Sources */,
-				D73A127415063C48000D3610 /* AppDelegate.m in Sources */,
-				D73A127A15063C48000D3610 /* CameraViewController.m in Sources */,
-				D72331AD1508CB4C002AEC6B /* MiscViewController.m in Sources */,
+				D789C379150DFC4700369838 /* main.m in Sources */,
+				D789C37D150DFC4700369838 /* AppDelegate.m in Sources */,
+				D789C383150DFC4700369838 /* CameraViewController.m in Sources */,
+				D789C38A150DFC4700369838 /* MiscViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D73A126C15063C48000D3610 /* InfoPlist.strings */ = {
+		D789C375150DFC4700369838 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D73A126D15063C48000D3610 /* en */,
+				D789C376150DFC4700369838 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		D73A127515063C48000D3610 /* MainStoryboard.storyboard */ = {
+		D789C37E150DFC4700369838 /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D73A127615063C48000D3610 /* en */,
+				D789C37F150DFC4700369838 /* en */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -248,7 +210,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D73A127B15063C48000D3610 /* Debug */ = {
+		D789C38F150DFC4700369838 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -273,7 +235,7 @@
 			};
 			name = Debug;
 		};
-		D73A127C15063C48000D3610 /* Release */ = {
+		D789C390150DFC4700369838 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -293,33 +255,23 @@
 			};
 			name = Release;
 		};
-		D73A127E15063C48000D3610 /* Debug */ = {
+		D789C392150DFC4700369838 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VIRM/VIRM-Prefix.pch";
 				INFOPLIST_FILE = "VIRM/VIRM-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../IQEngines/ios-sdk/IQEnginesSDK\"",
-					"\"$(SRCROOT)/VIRM\"",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		D73A127F15063C48000D3610 /* Release */ = {
+		D789C393150DFC4700369838 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VIRM/VIRM-Prefix.pch";
 				INFOPLIST_FILE = "VIRM/VIRM-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../IQEngines/ios-sdk/IQEnginesSDK\"",
-					"\"$(SRCROOT)/VIRM\"",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -328,25 +280,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D73A125915063C48000D3610 /* Build configuration list for PBXProject "VIRM" */ = {
+		D789C362150DFC4700369838 /* Build configuration list for PBXProject "VIRM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D73A127B15063C48000D3610 /* Debug */,
-				D73A127C15063C48000D3610 /* Release */,
+				D789C38F150DFC4700369838 /* Debug */,
+				D789C390150DFC4700369838 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D73A127D15063C48000D3610 /* Build configuration list for PBXNativeTarget "VIRM" */ = {
+		D789C391150DFC4700369838 /* Build configuration list for PBXNativeTarget "VIRM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D73A127E15063C48000D3610 /* Debug */,
-				D73A127F15063C48000D3610 /* Release */,
+				D789C392150DFC4700369838 /* Debug */,
+				D789C393150DFC4700369838 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D73A125615063C48000D3610 /* Project object */;
+	rootObject = D789C35F150DFC4700369838 /* Project object */;
 }

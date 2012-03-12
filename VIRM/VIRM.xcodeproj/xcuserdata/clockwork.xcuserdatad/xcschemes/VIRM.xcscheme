@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D73A125E15063C48000D3610"
+               BlueprintIdentifier = "D789C367150DFC4700369838"
                BuildableName = "VIRM.app"
                BlueprintName = "VIRM"
                ReferencedContainer = "container:VIRM.xcodeproj">
@@ -31,7 +31,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D73A125E15063C48000D3610"
+            BlueprintIdentifier = "D789C367150DFC4700369838"
             BuildableName = "VIRM.app"
             BlueprintName = "VIRM"
             ReferencedContainer = "container:VIRM.xcodeproj">
@@ -49,7 +49,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D73A125E15063C48000D3610"
+            BlueprintIdentifier = "D789C367150DFC4700369838"
             BuildableName = "VIRM.app"
             BlueprintName = "VIRM"
             ReferencedContainer = "container:VIRM.xcodeproj">
@@ -67,7 +67,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D73A125E15063C48000D3610"
+            BlueprintIdentifier = "D789C367150DFC4700369838"
             BuildableName = "VIRM.app"
             BlueprintName = "VIRM"
             ReferencedContainer = "container:VIRM.xcodeproj">

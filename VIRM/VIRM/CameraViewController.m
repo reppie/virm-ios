@@ -1,19 +1,17 @@
 //
-//  ViewController.m
+//  FirstViewController.m
 //  VIRM
 //
-//  Created by Clockwork Clockwork on 3/6/12.
+//  Created by Clockwork Clockwork on 3/12/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "AppDelegate.h"
 #import "CameraViewController.h"
-#import "MiscViewController.h"
+#import "AppDelegate.h"
 
 @implementation CameraViewController
 
 @synthesize imagePicker = _imagePicker;
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -26,16 +24,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    
     _imagePicker = [[UIImagePickerController alloc] init];
-    
-    // Set up the image view and add it to the view but make it hidden
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	imageView = [[UIImageView alloc] initWithFrame:[appDelegate.window bounds]];
-	imageView.hidden = YES;
-	[appDelegate.window addSubview:imageView];
-    
-    [appDelegate.window makeKeyAndVisible];
-    
     _imagePicker.delegate = (id)self;
 }
 
@@ -72,44 +63,39 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (void) dealloc {
-}
 - (IBAction)cameraClicked:(id)sender {    
-    printf("[MVC] Camera clicked!\n");
-    // Set source to the camera
-	_imagePicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
+    printf("[CameraVC] Camera clicked!\n");
     
-    // Show image picker
+	_imagePicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
 	[self presentModalViewController:_imagePicker animated:YES];	
 }
 
 - (IBAction)libraryClicked:(id)sender {
-    printf("[MVC] Library clicked!\n");
+    printf("[CameraVC] Library clicked!\n");
+    
     _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     _imagePicker.view.hidden = NO;
-    [self presentModalViewController:_imagePicker animated:YES];	
-}
-
-- (IBAction)miscClicked:(id)sender {
-    printf("[MVC] Misc clicked!\n");
-    [self.view addSubview: [[MiscViewController alloc] init].view];
+    [self presentModalViewController:_imagePicker animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)img editingInfo:(NSDictionary *)editInfo {
+    
+    // This implementation is bad and unfinished, its just here for testing purposes!
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	imageView = [[UIImageView alloc] initWithFrame:[appDelegate.window bounds]];
+	imageView.hidden = YES;
+	[appDelegate.window addSubview:imageView];
+    
+    [appDelegate.window makeKeyAndVisible];
+    
 	// Dismiss the image selection, hide the picker and show the image view with the picked image
 	[picker dismissModalViewControllerAnimated:YES];
 	_imagePicker.view.hidden = YES;
 	imageView.image = img;
 	imageView.hidden = NO;
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	[appDelegate.window bringSubviewToFront:imageView];
-}
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    printf("[MVC] Touched\n");
-    if (imageView.hidden == NO) {
-        printf("[MVC] Touched in imageView\n");
-        imageView.hidden = YES;
-    }
+	[appDelegate.window bringSubviewToFront:imageView];
+    printf("[CameraVC] Image picked.\n");
 }
 @end
