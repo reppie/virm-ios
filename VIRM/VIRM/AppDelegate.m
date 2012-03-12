@@ -7,17 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "MultiViewController.h"
+#import "CameraViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window;
 @synthesize viewController;
-
--(void) displayView:(int)intNewView {
-    printf("[DELEGATE] Displaying view: %i\n", intNewView);
-	[viewController displayView:intNewView];
-}
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     printf("[DELEGATE] Finished launching\n");
@@ -25,7 +20,7 @@
     [window addSubview:viewController.view];
     [window makeKeyAndVisible];
     
-    viewController = [[MultiViewController alloc] init];
+    viewController = [[CameraViewController alloc] init];
 }
 
 @end

@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class MultiViewController;
+@class CameraViewController;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-    MultiViewController *viewController;
+    CameraViewController *viewController;
 }
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, retain) IBOutlet MultiViewController *viewController;
-
--(void) displayView:(int)intNewView;
+@property (nonatomic, retain) IBOutlet CameraViewController *viewController;
 
 @end

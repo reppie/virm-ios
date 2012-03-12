@@ -11,25 +11,8 @@
 
 @implementation MiscViewController
 
--(id)init
-{
-    printf("[MiscVC] Initialized.");
-    return self;
-}
-
-- (void)goToOne {
-	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-	[appDelegate displayView:1];
-}
-
 - (void)viewDidLoad {
-	printf("[MiscVC] View loaded.\n");
-	UIButton *btnOne = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
-	btnOne.frame = CGRectMake(40, 40, 240, 30);
-	[btnOne setTitle:@"Two!" forState:UIControlStateNormal];
-	[btnOne addTarget:self action:@selector(goToOne) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:btnOne];
-	
+	printf("[MiscVC] View loaded.\n");	
     [super viewDidLoad];
 }
 

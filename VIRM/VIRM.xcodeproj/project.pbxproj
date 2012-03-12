@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D70791D91508F6B40038D193 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70791D81508F6B40038D193 /* MainViewController.m */; };
 		D72331AD1508CB4C002AEC6B /* MiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72331AC1508CB4C002AEC6B /* MiscViewController.m */; };
 		D73A126415063C48000D3610 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A126315063C48000D3610 /* UIKit.framework */; };
 		D73A126615063C48000D3610 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A126515063C48000D3610 /* Foundation.framework */; };
@@ -16,7 +15,7 @@
 		D73A127015063C48000D3610 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A126F15063C48000D3610 /* main.m */; };
 		D73A127415063C48000D3610 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A127315063C48000D3610 /* AppDelegate.m */; };
 		D73A127715063C48000D3610 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D73A127515063C48000D3610 /* MainStoryboard.storyboard */; };
-		D73A127A15063C48000D3610 /* MultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A127915063C48000D3610 /* MultiViewController.m */; };
+		D73A127A15063C48000D3610 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73A127915063C48000D3610 /* CameraViewController.m */; };
 		D73A128715063C9D000D3610 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128615063C9D000D3610 /* AVFoundation.framework */; };
 		D73A128915063CA5000D3610 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128815063CA5000D3610 /* CoreMedia.framework */; };
 		D73A128B15063CAC000D3610 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A128A15063CAC000D3610 /* CoreVideo.framework */; };
@@ -29,8 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D70791D71508F6B40038D193 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		D70791D81508F6B40038D193 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		D72331AB1508CB4C002AEC6B /* MiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiscViewController.h; sourceTree = "<group>"; };
 		D72331AC1508CB4C002AEC6B /* MiscViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiscViewController.m; sourceTree = "<group>"; };
 		D73A125F15063C48000D3610 /* VIRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,8 +41,8 @@
 		D73A127215063C48000D3610 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D73A127315063C48000D3610 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D73A127615063C48000D3610 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		D73A127815063C48000D3610 /* MultiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiViewController.h; sourceTree = "<group>"; };
-		D73A127915063C48000D3610 /* MultiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiViewController.m; sourceTree = "<group>"; };
+		D73A127815063C48000D3610 /* CameraViewController.h */ = {isa = PBXFileReference; path = CameraViewController.h; sourceTree = "<group>"; };
+		D73A127915063C48000D3610 /* CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		D73A128615063C9D000D3610 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D73A128815063CA5000D3610 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D73A128A15063CAC000D3610 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -120,10 +117,8 @@
 				D73A127215063C48000D3610 /* AppDelegate.h */,
 				D73A127315063C48000D3610 /* AppDelegate.m */,
 				D73A127515063C48000D3610 /* MainStoryboard.storyboard */,
-				D70791D71508F6B40038D193 /* MainViewController.h */,
-				D70791D81508F6B40038D193 /* MainViewController.m */,
-				D73A127815063C48000D3610 /* MultiViewController.h */,
-				D73A127915063C48000D3610 /* MultiViewController.m */,
+				D73A127815063C48000D3610 /* CameraViewController.h */,
+				D73A127915063C48000D3610 /* CameraViewController.m */,
 				D72331AB1508CB4C002AEC6B /* MiscViewController.h */,
 				D72331AC1508CB4C002AEC6B /* MiscViewController.m */,
 				D73A126A15063C48000D3610 /* Supporting Files */,
@@ -226,9 +221,8 @@
 			files = (
 				D73A127015063C48000D3610 /* main.m in Sources */,
 				D73A127415063C48000D3610 /* AppDelegate.m in Sources */,
-				D73A127A15063C48000D3610 /* MultiViewController.m in Sources */,
+				D73A127A15063C48000D3610 /* CameraViewController.m in Sources */,
 				D72331AD1508CB4C002AEC6B /* MiscViewController.m in Sources */,
-				D70791D91508F6B40038D193 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
