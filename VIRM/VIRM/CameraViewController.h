@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface CameraViewController : UIViewController {
-    UIImageView* imageView;
+    UIImage *image;
+    IBOutlet UIImageView *imageView;
+    
+    UIImagePickerController *picker;
 }
 
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
+@property (nonatomic, retain) UIImage *image;
+@property (strong, nonatomic) UIImageView *imageView;
 
 - (IBAction)cameraClicked:(id)sender;
 - (IBAction)libraryClicked:(id)sender;
