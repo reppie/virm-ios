@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D73D1719150F5AE5004F7039 /* clockwork.png in Resources */ = {isa = PBXBuildFile; fileRef = D73D1718150F5AE5004F7039 /* clockwork.png */; };
+		D73D1721150F5D45004F7039 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73D1720150F5D45004F7039 /* CoreMedia.framework */; };
+		D73D1723150F5D4C004F7039 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73D1722150F5D4C004F7039 /* CoreVideo.framework */; };
+		D749FA95150F7A970034FD59 /* libmoodstocks-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D749FA92150F7A970034FD59 /* libmoodstocks-sdk.a */; };
+		D749FAB1150F7D7C0034FD59 /* MSApiSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAA8150F7D7C0034FD59 /* MSApiSearch.m */; };
+		D749FAB2150F7D7C0034FD59 /* MSBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAAA150F7D7C0034FD59 /* MSBarcode.m */; };
+		D749FAB3150F7D7C0034FD59 /* MSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAAC150F7D7C0034FD59 /* MSImage.m */; };
+		D749FAB4150F7D7C0034FD59 /* MSScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAAE150F7D7C0034FD59 /* MSScanner.m */; };
+		D749FAB5150F7D7C0034FD59 /* MSSync.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAB0150F7D7C0034FD59 /* MSSync.m */; };
 		D789C36D150DFC4700369838 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D789C36C150DFC4700369838 /* UIKit.framework */; };
 		D789C36F150DFC4700369838 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D789C36E150DFC4700369838 /* Foundation.framework */; };
 		D789C371150DFC4700369838 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D789C370150DFC4700369838 /* CoreGraphics.framework */; };
@@ -23,6 +32,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D73D1718150F5AE5004F7039 /* clockwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockwork.png; sourceTree = "<group>"; };
+		D73D1720150F5D45004F7039 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		D73D1722150F5D4C004F7039 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D749FA92150F7A970034FD59 /* libmoodstocks-sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libmoodstocks-sdk.a"; sourceTree = "<group>"; };
+		D749FA93150F7A970034FD59 /* moodstocks_sdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moodstocks_sdk.h; sourceTree = "<group>"; };
+		D749FAA7150F7D7C0034FD59 /* MSApiSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSApiSearch.h; sourceTree = "<group>"; };
+		D749FAA8150F7D7C0034FD59 /* MSApiSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSApiSearch.m; sourceTree = "<group>"; };
+		D749FAA9150F7D7C0034FD59 /* MSBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBarcode.h; sourceTree = "<group>"; };
+		D749FAAA150F7D7C0034FD59 /* MSBarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBarcode.m; sourceTree = "<group>"; };
+		D749FAAB150F7D7C0034FD59 /* MSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSImage.h; sourceTree = "<group>"; };
+		D749FAAC150F7D7C0034FD59 /* MSImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSImage.m; sourceTree = "<group>"; };
+		D749FAAD150F7D7C0034FD59 /* MSScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSScanner.h; sourceTree = "<group>"; };
+		D749FAAE150F7D7C0034FD59 /* MSScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSScanner.m; sourceTree = "<group>"; };
+		D749FAAF150F7D7C0034FD59 /* MSSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSync.h; sourceTree = "<group>"; };
+		D749FAB0150F7D7C0034FD59 /* MSSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSync.m; sourceTree = "<group>"; };
 		D789C368150DFC4700369838 /* VIRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D789C36C150DFC4700369838 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D789C36E150DFC4700369838 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,15 +73,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D73D1723150F5D4C004F7039 /* CoreVideo.framework in Frameworks */,
+				D73D1721150F5D45004F7039 /* CoreMedia.framework in Frameworks */,
 				D789C36D150DFC4700369838 /* UIKit.framework in Frameworks */,
 				D789C36F150DFC4700369838 /* Foundation.framework in Frameworks */,
 				D789C371150DFC4700369838 /* CoreGraphics.framework in Frameworks */,
+				D749FA95150F7A970034FD59 /* libmoodstocks-sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D749FA78150F78580034FD59 /* Moodstocks SDK */ = {
+			isa = PBXGroup;
+			children = (
+				D749FAA1150F7C6C0034FD59 /* Obj-C */,
+				D749FA92150F7A970034FD59 /* libmoodstocks-sdk.a */,
+				D749FA93150F7A970034FD59 /* moodstocks_sdk.h */,
+			);
+			name = "Moodstocks SDK";
+			sourceTree = "<group>";
+		};
+		D749FAA1150F7C6C0034FD59 /* Obj-C */ = {
+			isa = PBXGroup;
+			children = (
+				D749FAA7150F7D7C0034FD59 /* MSApiSearch.h */,
+				D749FAA8150F7D7C0034FD59 /* MSApiSearch.m */,
+				D749FAA9150F7D7C0034FD59 /* MSBarcode.h */,
+				D749FAAA150F7D7C0034FD59 /* MSBarcode.m */,
+				D749FAAB150F7D7C0034FD59 /* MSImage.h */,
+				D749FAAC150F7D7C0034FD59 /* MSImage.m */,
+				D749FAAD150F7D7C0034FD59 /* MSScanner.h */,
+				D749FAAE150F7D7C0034FD59 /* MSScanner.m */,
+				D749FAAF150F7D7C0034FD59 /* MSSync.h */,
+				D749FAB0150F7D7C0034FD59 /* MSSync.m */,
+			);
+			name = "Obj-C";
+			sourceTree = "<group>";
+		};
 		D789C35D150DFC4700369838 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +132,8 @@
 		D789C36B150DFC4700369838 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D73D1722150F5D4C004F7039 /* CoreVideo.framework */,
+				D73D1720150F5D45004F7039 /* CoreMedia.framework */,
 				D789C36C150DFC4700369838 /* UIKit.framework */,
 				D789C36E150DFC4700369838 /* Foundation.framework */,
 				D789C370150DFC4700369838 /* CoreGraphics.framework */,
@@ -88,6 +144,7 @@
 		D789C372150DFC4700369838 /* VIRM */ = {
 			isa = PBXGroup;
 			children = (
+				D749FA78150F78580034FD59 /* Moodstocks SDK */,
 				D789C37B150DFC4700369838 /* AppDelegate.h */,
 				D789C37C150DFC4700369838 /* AppDelegate.m */,
 				D789C37E150DFC4700369838 /* MainStoryboard.storyboard */,
@@ -107,6 +164,7 @@
 		D789C373150DFC4700369838 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D73D1718150F5AE5004F7039 /* clockwork.png */,
 				D789C374150DFC4700369838 /* VIRM-Info.plist */,
 				D789C375150DFC4700369838 /* InfoPlist.strings */,
 				D789C378150DFC4700369838 /* main.m */,
@@ -171,6 +229,7 @@
 				D789C387150DFC4700369838 /* first@2x.png in Resources */,
 				D789C38C150DFC4700369838 /* second.png in Resources */,
 				D789C38E150DFC4700369838 /* second@2x.png in Resources */,
+				D73D1719150F5AE5004F7039 /* clockwork.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +244,11 @@
 				D789C37D150DFC4700369838 /* AppDelegate.m in Sources */,
 				D789C383150DFC4700369838 /* CameraViewController.m in Sources */,
 				D789C38A150DFC4700369838 /* MiscViewController.m in Sources */,
+				D749FAB1150F7D7C0034FD59 /* MSApiSearch.m in Sources */,
+				D749FAB2150F7D7C0034FD59 /* MSBarcode.m in Sources */,
+				D749FAB3150F7D7C0034FD59 /* MSImage.m in Sources */,
+				D749FAB4150F7D7C0034FD59 /* MSScanner.m in Sources */,
+				D749FAB5150F7D7C0034FD59 /* MSSync.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +279,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -230,8 +294,12 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -240,7 +308,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -248,20 +316,33 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
 		D789C392150DFC4700369838 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VIRM/VIRM-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
 				INFOPLIST_FILE = "VIRM/VIRM-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/VIRM\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -269,10 +350,19 @@
 		D789C393150DFC4700369838 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VIRM/VIRM-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
 				INFOPLIST_FILE = "VIRM/VIRM-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/VIRM\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

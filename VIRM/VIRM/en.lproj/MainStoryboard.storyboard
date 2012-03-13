@@ -37,7 +37,7 @@
                                     <barButtonItem title="Item" id="qKo-5n-L4H"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="first" id="88R-iS-8pl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="clockwork.png" id="88R-iS-8pl">
                                 <rect key="frame" x="1" y="0.0" width="319" height="367"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -88,7 +88,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Misc" image="second" id="6"/>
+                    <tabBarItem key="tabBarItem" image="second" id="6"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="981" y="598"/>
@@ -131,22 +131,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="clockwork.png" width="200" height="200"/>
         <image name="first" width="16" height="16"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="CameraViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cameraClicked:"/>
-                <relationship kind="action" name="libraryClicked:"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MiscViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MiscViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

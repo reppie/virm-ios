@@ -84,9 +84,9 @@
     printf("[CameraVC] Image picked.\n");
     
     _image = img;
-    imageView.image = _image;
-    
     [_imagePicker dismissModalViewControllerAnimated:YES];
+    imageView.image = _image;
+
     
     
     

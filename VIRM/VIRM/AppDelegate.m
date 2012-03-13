@@ -6,16 +6,44 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "MSScanner.h"
 #import "AppDelegate.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+    MSScanner *scanner = [MSScanner sharedInstance];
+    [scanner open:nil];
+    [scanner syncWithDelegate:self];
+}
+
+-(void)scannerWillSync:(MSScanner *)scanner
 {
-    // Override point for customization after application launch.    
-    return YES;
+    printf("[Moodstocks] Will sync.\n");
+}
+
+- (void)scannerDidSync:(MSScanner *)scanner
+{
+    scanner = [MSScanner sharedInstance];
+    NSInteger count = [scanner count:nil];
+    printf("[Moodstocks] Did sync. Database size = %d image(s).\n", count);
+}
+
+- (void)scanner:(MSScanner *)scanner failedToSyncWithError:(NSError *)error
+{
+    ms_errcode ecode = [error code];
+    if (ecode >= 0) {
+        NSString *errStr;
+        if (ecode == MS_BUSY)
+            errStr = @"A sync is pending";
+        else
+            errStr = [NSString stringWithCString:ms_errmsg(ecode) encoding:NSUTF8StringEncoding];
+        
+        //NSLog("[MSScanner] Failed to sync with error: %@", errStr);
+        printf("[Moodstocks] Failed to sync.\n");
+    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -56,5 +84,7 @@
      See also applicationDidEnterBackground:.
      */
 }
+
+
 
 @end
