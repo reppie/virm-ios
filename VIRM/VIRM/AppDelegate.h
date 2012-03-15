@@ -10,10 +10,13 @@
 #import "MSScanner.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, MSScannerDelegate> {
-    NSString *globalImageId;
+    NSString *text;
+
 }
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) NSString *globalImageId;
+@property (strong, nonatomic) NSString *text;
+
+- (void) updateText: (NSString *) txt;
 
 @end

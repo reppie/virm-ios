@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70BCF85151225D900211C7B /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BCF84151225D900211C7B /* TextViewController.m */; };
 		D73D1719150F5AE5004F7039 /* clockwork.png in Resources */ = {isa = PBXBuildFile; fileRef = D73D1718150F5AE5004F7039 /* clockwork.png */; };
 		D749FA95150F7A970034FD59 /* libmoodstocks-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D749FA92150F7A970034FD59 /* libmoodstocks-sdk.a */; };
 		D749FAB1150F7D7C0034FD59 /* MSApiSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAA8150F7D7C0034FD59 /* MSApiSearch.m */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D70BCF83151225D900211C7B /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		D70BCF84151225D900211C7B /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		D73D1718150F5AE5004F7039 /* clockwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockwork.png; sourceTree = "<group>"; };
 		D73D1720150F5D45004F7039 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D73D1722150F5D4C004F7039 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -160,6 +163,8 @@
 				D789C389150DFC4700369838 /* MSViewController.m */,
 				D789C38B150DFC4700369838 /* second.png */,
 				D789C38D150DFC4700369838 /* second@2x.png */,
+				D70BCF83151225D900211C7B /* TextViewController.h */,
+				D70BCF84151225D900211C7B /* TextViewController.m */,
 				D789C373150DFC4700369838 /* Supporting Files */,
 			);
 			path = VIRM;
@@ -253,6 +258,7 @@
 				D749FAB3150F7D7C0034FD59 /* MSImage.m in Sources */,
 				D749FAB4150F7D7C0034FD59 /* MSScanner.m in Sources */,
 				D749FAB5150F7D7C0034FD59 /* MSSync.m in Sources */,
+				D70BCF85151225D900211C7B /* TextViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

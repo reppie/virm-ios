@@ -8,13 +8,20 @@
 
 #import "MSScanner.h"
 #import "AppDelegate.h"
+#import "TextViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize globalImageId;
+@synthesize text = _text;
+
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+    _text = @"Er is nog geen zoekopdracht uitgevoerd.";
+}
+
+- (void) updateText:(NSString *)txt {
+    _text = txt;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

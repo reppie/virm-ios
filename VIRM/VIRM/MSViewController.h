@@ -54,6 +54,8 @@
     MSResultType _resultType; // previous result type
     NSInteger _losts;         // previous result "lock lost" counter
     NSTimeInterval _ts;       // timestamp of the latest result found
+    
+    BOOL recognized;          // check for first image recognized
 }
 
 @property (nonatomic, retain) UIView *videoPreviewView;
