@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "MSScanner.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, MSScannerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, MSScannerDelegate> {
+    NSString *globalImageId;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSString *globalImageId;
 
 @end

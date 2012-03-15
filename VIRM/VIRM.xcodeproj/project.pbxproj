@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D73D1719150F5AE5004F7039 /* clockwork.png in Resources */ = {isa = PBXBuildFile; fileRef = D73D1718150F5AE5004F7039 /* clockwork.png */; };
-		D73D1721150F5D45004F7039 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73D1720150F5D45004F7039 /* CoreMedia.framework */; };
-		D73D1723150F5D4C004F7039 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73D1722150F5D4C004F7039 /* CoreVideo.framework */; };
 		D749FA95150F7A970034FD59 /* libmoodstocks-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D749FA92150F7A970034FD59 /* libmoodstocks-sdk.a */; };
 		D749FAB1150F7D7C0034FD59 /* MSApiSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAA8150F7D7C0034FD59 /* MSApiSearch.m */; };
 		D749FAB2150F7D7C0034FD59 /* MSBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAAA150F7D7C0034FD59 /* MSBarcode.m */; };
 		D749FAB3150F7D7C0034FD59 /* MSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAAC150F7D7C0034FD59 /* MSImage.m */; };
 		D749FAB4150F7D7C0034FD59 /* MSScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAAE150F7D7C0034FD59 /* MSScanner.m */; };
 		D749FAB5150F7D7C0034FD59 /* MSSync.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAB0150F7D7C0034FD59 /* MSSync.m */; };
+		D754293D1511E38400D8A588 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73D1720150F5D45004F7039 /* CoreMedia.framework */; };
+		D754293E1511E38B00D8A588 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73D1722150F5D4C004F7039 /* CoreVideo.framework */; };
+		D75429401511E4D100D8A588 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D754293F1511E4D100D8A588 /* AVFoundation.framework */; };
 		D789C36D150DFC4700369838 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D789C36C150DFC4700369838 /* UIKit.framework */; };
 		D789C36F150DFC4700369838 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D789C36E150DFC4700369838 /* Foundation.framework */; };
 		D789C371150DFC4700369838 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D789C370150DFC4700369838 /* CoreGraphics.framework */; };
@@ -26,7 +27,7 @@
 		D789C383150DFC4700369838 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D789C382150DFC4700369838 /* CameraViewController.m */; };
 		D789C385150DFC4700369838 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C384150DFC4700369838 /* first.png */; };
 		D789C387150DFC4700369838 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C386150DFC4700369838 /* first@2x.png */; };
-		D789C38A150DFC4700369838 /* MiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D789C389150DFC4700369838 /* MiscViewController.m */; };
+		D789C38A150DFC4700369838 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D789C389150DFC4700369838 /* MSViewController.m */; };
 		D789C38C150DFC4700369838 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C38B150DFC4700369838 /* second.png */; };
 		D789C38E150DFC4700369838 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C38D150DFC4700369838 /* second@2x.png */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		D749FAAE150F7D7C0034FD59 /* MSScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSScanner.m; sourceTree = "<group>"; };
 		D749FAAF150F7D7C0034FD59 /* MSSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSync.h; sourceTree = "<group>"; };
 		D749FAB0150F7D7C0034FD59 /* MSSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSync.m; sourceTree = "<group>"; };
+		D754293F1511E4D100D8A588 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D789C368150DFC4700369838 /* VIRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D789C36C150DFC4700369838 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D789C36E150DFC4700369838 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,8 +64,8 @@
 		D789C382150DFC4700369838 /* CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		D789C384150DFC4700369838 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		D789C386150DFC4700369838 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		D789C388150DFC4700369838 /* MiscViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiscViewController.h; sourceTree = "<group>"; };
-		D789C389150DFC4700369838 /* MiscViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiscViewController.m; sourceTree = "<group>"; };
+		D789C388150DFC4700369838 /* MSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
+		D789C389150DFC4700369838 /* MSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
 		D789C38B150DFC4700369838 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		D789C38D150DFC4700369838 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,8 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D73D1723150F5D4C004F7039 /* CoreVideo.framework in Frameworks */,
-				D73D1721150F5D45004F7039 /* CoreMedia.framework in Frameworks */,
+				D75429401511E4D100D8A588 /* AVFoundation.framework in Frameworks */,
+				D754293E1511E38B00D8A588 /* CoreVideo.framework in Frameworks */,
+				D754293D1511E38400D8A588 /* CoreMedia.framework in Frameworks */,
 				D789C36D150DFC4700369838 /* UIKit.framework in Frameworks */,
 				D789C36F150DFC4700369838 /* Foundation.framework in Frameworks */,
 				D789C371150DFC4700369838 /* CoreGraphics.framework in Frameworks */,
@@ -132,6 +135,7 @@
 		D789C36B150DFC4700369838 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D754293F1511E4D100D8A588 /* AVFoundation.framework */,
 				D73D1722150F5D4C004F7039 /* CoreVideo.framework */,
 				D73D1720150F5D45004F7039 /* CoreMedia.framework */,
 				D789C36C150DFC4700369838 /* UIKit.framework */,
@@ -152,8 +156,8 @@
 				D789C382150DFC4700369838 /* CameraViewController.m */,
 				D789C384150DFC4700369838 /* first.png */,
 				D789C386150DFC4700369838 /* first@2x.png */,
-				D789C388150DFC4700369838 /* MiscViewController.h */,
-				D789C389150DFC4700369838 /* MiscViewController.m */,
+				D789C388150DFC4700369838 /* MSViewController.h */,
+				D789C389150DFC4700369838 /* MSViewController.m */,
 				D789C38B150DFC4700369838 /* second.png */,
 				D789C38D150DFC4700369838 /* second@2x.png */,
 				D789C373150DFC4700369838 /* Supporting Files */,
@@ -199,7 +203,7 @@
 		D789C35F150DFC4700369838 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = D789C362150DFC4700369838 /* Build configuration list for PBXProject "VIRM" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -243,7 +247,7 @@
 				D789C379150DFC4700369838 /* main.m in Sources */,
 				D789C37D150DFC4700369838 /* AppDelegate.m in Sources */,
 				D789C383150DFC4700369838 /* CameraViewController.m in Sources */,
-				D789C38A150DFC4700369838 /* MiscViewController.m in Sources */,
+				D789C38A150DFC4700369838 /* MSViewController.m in Sources */,
 				D749FAB1150F7D7C0034FD59 /* MSApiSearch.m in Sources */,
 				D749FAB2150F7D7C0034FD59 /* MSBarcode.m in Sources */,
 				D749FAB3150F7D7C0034FD59 /* MSImage.m in Sources */,

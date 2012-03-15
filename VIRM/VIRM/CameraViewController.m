@@ -86,26 +86,5 @@
     _image = img;
     [_imagePicker dismissModalViewControllerAnimated:YES];
     imageView.image = _image;
-
-    
-    
-    
-//    // This implementation is bad and unfinished, its just here for testing purposes!
-//    
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//	imageView = [[UIImageView alloc] initWithFrame:[appDelegate.window bounds]];
-//	imageView.hidden = YES;
-//	[appDelegate.window addSubview:imageView];
-//    
-//    [appDelegate.window makeKeyAndVisible];
-//    
-//	// Dismiss the image selection, hide the picker and show the image view with the picked image
-//	[picker dismissModalViewControllerAnimated:YES];
-//	_imagePicker.view.hidden = YES;
-//	imageView.image = img;
-//	imageView.hidden = NO;
-//
-//	[appDelegate.window bringSubviewToFront:imageView];
-//    printf("[CameraVC] Image picked.\n");
 }
 @end
