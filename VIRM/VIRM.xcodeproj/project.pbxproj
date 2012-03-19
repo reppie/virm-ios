@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D70BCF85151225D900211C7B /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BCF84151225D900211C7B /* TextViewController.m */; };
+		D7166DBF151336560039FFC4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7166DBE151336560039FFC4 /* QuartzCore.framework */; };
+		D7166DC1151336620039FFC4 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7166DC0151336620039FFC4 /* libiconv.dylib */; };
+		D7166DC4151336990039FFC4 /* IQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7166DC3151336990039FFC4 /* IQViewController.m */; };
+		D7166DCD15133EFD0039FFC4 /* iqedata in Resources */ = {isa = PBXBuildFile; fileRef = D7166DCC15133EFD0039FFC4 /* iqedata */; };
+		D7166DD1151355820039FFC4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7166DD0151355820039FFC4 /* libz.dylib */; };
 		D73D1719150F5AE5004F7039 /* clockwork.png in Resources */ = {isa = PBXBuildFile; fileRef = D73D1718150F5AE5004F7039 /* clockwork.png */; };
 		D749FA95150F7A970034FD59 /* libmoodstocks-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D749FA92150F7A970034FD59 /* libmoodstocks-sdk.a */; };
 		D749FAB1150F7D7C0034FD59 /* MSApiSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAA8150F7D7C0034FD59 /* MSApiSearch.m */; };
@@ -31,11 +36,21 @@
 		D789C38A150DFC4700369838 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D789C389150DFC4700369838 /* MSViewController.m */; };
 		D789C38C150DFC4700369838 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C38B150DFC4700369838 /* second.png */; };
 		D789C38E150DFC4700369838 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D789C38D150DFC4700369838 /* second@2x.png */; };
+		D7E0B91A15175B9600B47E26 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0B91915175B9600B47E26 /* ImageIO.framework */; };
+		D7E0B92015175CD500B47E26 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0B91F15175CD500B47E26 /* CoreLocation.framework */; };
+		D7E0B92415175E6D00B47E26 /* libiqe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0B92315175E6D00B47E26 /* libiqe.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		D7E0B926151763A200B47E26 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0B925151763A100B47E26 /* libstdc++.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D70BCF83151225D900211C7B /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
 		D70BCF84151225D900211C7B /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		D7166DBE151336560039FFC4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D7166DC0151336620039FFC4 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		D7166DC2151336990039FFC4 /* IQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQViewController.h; sourceTree = "<group>"; };
+		D7166DC3151336990039FFC4 /* IQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQViewController.m; sourceTree = "<group>"; };
+		D7166DCC15133EFD0039FFC4 /* iqedata */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iqedata; path = Resources/iqedata; sourceTree = "<group>"; };
+		D7166DD0151355820039FFC4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D73D1718150F5AE5004F7039 /* clockwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockwork.png; sourceTree = "<group>"; };
 		D73D1720150F5D45004F7039 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D73D1722150F5D4C004F7039 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -71,6 +86,12 @@
 		D789C389150DFC4700369838 /* MSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
 		D789C38B150DFC4700369838 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		D789C38D150DFC4700369838 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		D7E0B90B15172C6F00B47E26 /* tapme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapme.png; sourceTree = "<group>"; };
+		D7E0B91915175B9600B47E26 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		D7E0B91F15175CD500B47E26 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D7E0B92215175E6D00B47E26 /* IQE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQE.h; sourceTree = "<group>"; };
+		D7E0B92315175E6D00B47E26 /* libiqe.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiqe.a; sourceTree = "<group>"; };
+		D7E0B925151763A100B47E26 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +99,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7E0B926151763A200B47E26 /* libstdc++.dylib in Frameworks */,
+				D7E0B92415175E6D00B47E26 /* libiqe.a in Frameworks */,
+				D7E0B92015175CD500B47E26 /* CoreLocation.framework in Frameworks */,
+				D7E0B91A15175B9600B47E26 /* ImageIO.framework in Frameworks */,
+				D7166DD1151355820039FFC4 /* libz.dylib in Frameworks */,
+				D7166DC1151336620039FFC4 /* libiconv.dylib in Frameworks */,
+				D7166DBF151336560039FFC4 /* QuartzCore.framework in Frameworks */,
 				D75429401511E4D100D8A588 /* AVFoundation.framework in Frameworks */,
 				D754293E1511E38B00D8A588 /* CoreVideo.framework in Frameworks */,
 				D754293D1511E38400D8A588 /* CoreMedia.framework in Frameworks */,
@@ -138,6 +166,12 @@
 		D789C36B150DFC4700369838 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7E0B925151763A100B47E26 /* libstdc++.dylib */,
+				D7E0B91F15175CD500B47E26 /* CoreLocation.framework */,
+				D7E0B91915175B9600B47E26 /* ImageIO.framework */,
+				D7166DD0151355820039FFC4 /* libz.dylib */,
+				D7166DC0151336620039FFC4 /* libiconv.dylib */,
+				D7166DBE151336560039FFC4 /* QuartzCore.framework */,
 				D754293F1511E4D100D8A588 /* AVFoundation.framework */,
 				D73D1722150F5D4C004F7039 /* CoreVideo.framework */,
 				D73D1720150F5D45004F7039 /* CoreMedia.framework */,
@@ -151,18 +185,17 @@
 		D789C372150DFC4700369838 /* VIRM */ = {
 			isa = PBXGroup;
 			children = (
+				D7E0B92115175E6D00B47E26 /* IQEngines */,
 				D749FA78150F78580034FD59 /* Moodstocks SDK */,
 				D789C37B150DFC4700369838 /* AppDelegate.h */,
 				D789C37C150DFC4700369838 /* AppDelegate.m */,
-				D789C37E150DFC4700369838 /* MainStoryboard.storyboard */,
 				D789C381150DFC4700369838 /* CameraViewController.h */,
 				D789C382150DFC4700369838 /* CameraViewController.m */,
-				D789C384150DFC4700369838 /* first.png */,
-				D789C386150DFC4700369838 /* first@2x.png */,
+				D7166DC2151336990039FFC4 /* IQViewController.h */,
+				D7166DC3151336990039FFC4 /* IQViewController.m */,
+				D789C37E150DFC4700369838 /* MainStoryboard.storyboard */,
 				D789C388150DFC4700369838 /* MSViewController.h */,
 				D789C389150DFC4700369838 /* MSViewController.m */,
-				D789C38B150DFC4700369838 /* second.png */,
-				D789C38D150DFC4700369838 /* second@2x.png */,
 				D70BCF83151225D900211C7B /* TextViewController.h */,
 				D70BCF84151225D900211C7B /* TextViewController.m */,
 				D789C373150DFC4700369838 /* Supporting Files */,
@@ -173,6 +206,12 @@
 		D789C373150DFC4700369838 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D7166DCC15133EFD0039FFC4 /* iqedata */,
+				D789C384150DFC4700369838 /* first.png */,
+				D789C386150DFC4700369838 /* first@2x.png */,
+				D789C38B150DFC4700369838 /* second.png */,
+				D7E0B90B15172C6F00B47E26 /* tapme.png */,
+				D789C38D150DFC4700369838 /* second@2x.png */,
 				D73D1718150F5AE5004F7039 /* clockwork.png */,
 				D789C374150DFC4700369838 /* VIRM-Info.plist */,
 				D789C375150DFC4700369838 /* InfoPlist.strings */,
@@ -180,6 +219,15 @@
 				D789C37A150DFC4700369838 /* VIRM-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7E0B92115175E6D00B47E26 /* IQEngines */ = {
+			isa = PBXGroup;
+			children = (
+				D7E0B92315175E6D00B47E26 /* libiqe.a */,
+				D7E0B92215175E6D00B47E26 /* IQE.h */,
+			);
+			path = IQEngines;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +287,7 @@
 				D789C38C150DFC4700369838 /* second.png in Resources */,
 				D789C38E150DFC4700369838 /* second@2x.png in Resources */,
 				D73D1719150F5AE5004F7039 /* clockwork.png in Resources */,
+				D7166DCD15133EFD0039FFC4 /* iqedata in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +308,7 @@
 				D749FAB4150F7D7C0034FD59 /* MSScanner.m in Sources */,
 				D749FAB5150F7D7C0034FD59 /* MSSync.m in Sources */,
 				D70BCF85151225D900211C7B /* TextViewController.m in Sources */,
+				D7166DC4151336990039FFC4 /* IQViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +337,7 @@
 		D789C38F150DFC4700369838 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -304,11 +354,12 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
+				HEADER_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = YES;
+				LIBRARY_SEARCH_PATHS = "$SRCROOT/VIRM/**";
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				VALID_ARCHS = armv7;
 			};
 			name = Debug;
@@ -316,7 +367,7 @@
 		D789C390150DFC4700369838 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -326,12 +377,13 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
+				HEADER_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = YES;
+				LIBRARY_SEARCH_PATHS = "$SRCROOT/VIRM/**";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = armv7;
 			};
@@ -345,14 +397,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VIRM/VIRM-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
+				HEADER_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				INFOPLIST_FILE = "VIRM/VIRM-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/VIRM\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -365,14 +414,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VIRM/VIRM-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
+				HEADER_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				INFOPLIST_FILE = "VIRM/VIRM-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/VIRM\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VIRM\"/**";
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/VIRM/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
