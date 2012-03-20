@@ -32,9 +32,9 @@
     self.historyList = list;
     
     // Test data
-    UIImage *image = [UIImage imageNamed:@"mona_lisa.png"];
+    //UIImage *image = [UIImage imageNamed:@"mona_lisa.png"];
     
-    [self addHistoryItem:@"Mona Lisa" painter:@"Leonardo Da Vinci" image:image];
+    //[self addHistoryItem:@"Mona Lisa" painter:@"Leonardo Da Vinci" image:image];
 }
 
 -(void)setHistoryList:(NSMutableArray *)historyList:(NSMutableArray *)newList{

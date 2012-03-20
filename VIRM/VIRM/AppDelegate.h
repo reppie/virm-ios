@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MSScanner.h"
+#import "HistoryItemDataController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, MSScannerDelegate> {
-    NSString *text;
-
 }
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) HistoryItemDataController *historyItemDataController;
 
 - (void) processResult: (NSString *) imageId;
 

@@ -12,16 +12,19 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize text = _text;
+@synthesize historyItemDataController = _historyItemDataController;
 
 
 - (void)processResult:(NSString *) imageId {
     if([imageId isEqualToString: @"test1234"]) {
         printf("[Moodstocks] Mona Lisa found!\n");
+        UIImage *image = [UIImage imageNamed:@"mona_lisa.png"];
+        [self.historyItemDataController addHistoryItem:@"Mona Lisa" painter:@"Leonardo Da Vinci" image:image];
     }
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+    _historyItemDataController = [[HistoryItemDataController alloc] init];
 }
 
 							

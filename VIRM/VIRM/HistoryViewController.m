@@ -10,6 +10,7 @@
 #import "HistoryItemDataController.h"
 #import "HistoryItem.h"
 #import "HistoryItemViewController.h"
+#import "AppDelegate.h"
 
 @interface HistoryViewController()
 @end
@@ -29,6 +30,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    printf("[History] CountOList in HistoryViewController: %i\n", [self.dataController countOfList]);
     return [self.dataController countOfList];
 }
 
@@ -73,14 +75,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    HistoryItemDataController *dataController = [[HistoryItemDataController alloc] init];
-    self.dataController = dataController;
-    
-    self.historyItemViewController = (HistoryItemViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-    }
 }
 
 - (void)viewDidUnload
@@ -93,6 +87,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.dataController = appDelegate.historyItemDataController;
+    
+    self.historyItemViewController = (HistoryItemViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
