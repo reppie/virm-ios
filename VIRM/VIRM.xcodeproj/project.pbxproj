@@ -40,6 +40,11 @@
 		D7E0B92015175CD500B47E26 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0B91F15175CD500B47E26 /* CoreLocation.framework */; };
 		D7E0B92415175E6D00B47E26 /* libiqe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0B92315175E6D00B47E26 /* libiqe.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		D7E0B926151763A200B47E26 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0B925151763A100B47E26 /* libstdc++.dylib */; };
+		D7E625FD15187BBF006F2527 /* HistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E625FC15187BBF006F2527 /* HistoryItem.m */; };
+		D7E6260015187D33006F2527 /* HistoryItemDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E625FF15187D33006F2527 /* HistoryItemDataController.m */; };
+		D7E6260215187E9A006F2527 /* mona_lisa.png in Resources */ = {isa = PBXBuildFile; fileRef = D7E6260115187E9A006F2527 /* mona_lisa.png */; };
+		D7E6260515187F87006F2527 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E6260415187F87006F2527 /* HistoryViewController.m */; };
+		D7E6260815188118006F2527 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E6260715188118006F2527 /* HistoryItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,12 +91,20 @@
 		D789C389150DFC4700369838 /* MSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
 		D789C38B150DFC4700369838 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		D789C38D150DFC4700369838 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		D7E0B90B15172C6F00B47E26 /* tapme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapme.png; sourceTree = "<group>"; };
 		D7E0B91915175B9600B47E26 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D7E0B91F15175CD500B47E26 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D7E0B92215175E6D00B47E26 /* IQE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQE.h; sourceTree = "<group>"; };
 		D7E0B92315175E6D00B47E26 /* libiqe.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiqe.a; sourceTree = "<group>"; };
 		D7E0B925151763A100B47E26 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		D7E625FB15187BBF006F2527 /* HistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItem.h; sourceTree = "<group>"; };
+		D7E625FC15187BBF006F2527 /* HistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItem.m; sourceTree = "<group>"; };
+		D7E625FE15187D33006F2527 /* HistoryItemDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemDataController.h; sourceTree = "<group>"; };
+		D7E625FF15187D33006F2527 /* HistoryItemDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemDataController.m; sourceTree = "<group>"; };
+		D7E6260115187E9A006F2527 /* mona_lisa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mona_lisa.png; sourceTree = "<group>"; };
+		D7E6260315187F87006F2527 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		D7E6260415187F87006F2527 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		D7E6260615188118006F2527 /* HistoryItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemViewController.h; sourceTree = "<group>"; };
+		D7E6260715188118006F2527 /* HistoryItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +198,7 @@
 		D789C372150DFC4700369838 /* VIRM */ = {
 			isa = PBXGroup;
 			children = (
+				D7E625F915187B55006F2527 /* History */,
 				D7E0B92115175E6D00B47E26 /* IQEngines */,
 				D749FA78150F78580034FD59 /* Moodstocks SDK */,
 				D789C37B150DFC4700369838 /* AppDelegate.h */,
@@ -206,11 +220,11 @@
 		D789C373150DFC4700369838 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D7E6260115187E9A006F2527 /* mona_lisa.png */,
 				D7166DCC15133EFD0039FFC4 /* iqedata */,
 				D789C384150DFC4700369838 /* first.png */,
 				D789C386150DFC4700369838 /* first@2x.png */,
 				D789C38B150DFC4700369838 /* second.png */,
-				D7E0B90B15172C6F00B47E26 /* tapme.png */,
 				D789C38D150DFC4700369838 /* second@2x.png */,
 				D73D1718150F5AE5004F7039 /* clockwork.png */,
 				D789C374150DFC4700369838 /* VIRM-Info.plist */,
@@ -228,6 +242,21 @@
 				D7E0B92215175E6D00B47E26 /* IQE.h */,
 			);
 			path = IQEngines;
+			sourceTree = "<group>";
+		};
+		D7E625F915187B55006F2527 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				D7E625FB15187BBF006F2527 /* HistoryItem.h */,
+				D7E625FC15187BBF006F2527 /* HistoryItem.m */,
+				D7E625FE15187D33006F2527 /* HistoryItemDataController.h */,
+				D7E625FF15187D33006F2527 /* HistoryItemDataController.m */,
+				D7E6260315187F87006F2527 /* HistoryViewController.h */,
+				D7E6260415187F87006F2527 /* HistoryViewController.m */,
+				D7E6260615188118006F2527 /* HistoryItemViewController.h */,
+				D7E6260715188118006F2527 /* HistoryItemViewController.m */,
+			);
+			name = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +317,7 @@
 				D789C38E150DFC4700369838 /* second@2x.png in Resources */,
 				D73D1719150F5AE5004F7039 /* clockwork.png in Resources */,
 				D7166DCD15133EFD0039FFC4 /* iqedata in Resources */,
+				D7E6260215187E9A006F2527 /* mona_lisa.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +339,10 @@
 				D749FAB5150F7D7C0034FD59 /* MSSync.m in Sources */,
 				D70BCF85151225D900211C7B /* TextViewController.m in Sources */,
 				D7166DC4151336990039FFC4 /* IQViewController.m in Sources */,
+				D7E625FD15187BBF006F2527 /* HistoryItem.m in Sources */,
+				D7E6260015187D33006F2527 /* HistoryItemDataController.m in Sources */,
+				D7E6260515187F87006F2527 /* HistoryViewController.m in Sources */,
+				D7E6260815188118006F2527 /* HistoryItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
