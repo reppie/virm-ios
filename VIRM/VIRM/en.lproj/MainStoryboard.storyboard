@@ -95,7 +95,6 @@
                         <segue destination="DoN-a3-fiK" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
                         <segue destination="1SY-xl-aYp" kind="relationship" relationship="viewControllers" id="Eox-YJ-mna"/>
-                        <segue destination="a8N-Vi-0BB" kind="relationship" relationship="viewControllers" id="8mE-4V-gOk"/>
                         <segue destination="sWv-U0-DaW" kind="relationship" relationship="viewControllers" id="V7l-70-qxw"/>
                     </connections>
                 </tabBarController>
@@ -116,33 +115,6 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1518" y="-857"/>
-        </scene>
-        <!--Text View Controller - Text-->
-        <scene sceneID="4Gx-KB-ovg">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UCJ-d6-gkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="a8N-Vi-0BB" customClass="TextViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="X8t-1i-Ock">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Geen informatie." id="N9T-T1-yRz" userLabel="textView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Text" image="first" id="29B-Va-rev"/>
-                    <connections>
-                        <outlet property="textView" destination="N9T-T1-yRz" id="Eb0-gg-Zt2"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="966" y="-849"/>
         </scene>
         <!--Navigation Controller - Camera-->
         <scene sceneID="QZN-sh-nkD">
@@ -313,6 +285,34 @@
         <image name="mona_lisa.png" width="360" height="397"/>
         <image name="second" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="CameraViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cameraClicked:"/>
+                <relationship kind="action" name="libraryClicked:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="HistoryItemViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryItemViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="painterNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="paintingNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="HistoryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryViewController.h"/>
+        </class>
+        <class className="IQViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IQViewController.h"/>
+        </class>
+        <class className="MSViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

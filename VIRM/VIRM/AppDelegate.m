@@ -8,7 +8,6 @@
 
 #import "MSScanner.h"
 #import "AppDelegate.h"
-#import "TextViewController.h"
 
 @implementation AppDelegate
 
@@ -16,13 +15,15 @@
 @synthesize text = _text;
 
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-    _text = @"Er is nog geen zoekopdracht uitgevoerd.";
+- (void)processResult:(NSString *) imageId {
+    if([imageId isEqualToString: @"test1234"]) {
+        printf("[Moodstocks] Mona Lisa found!\n");
+    }
 }
 
-- (void) updateText:(NSString *)txt {
-    _text = txt;
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
 }
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D70BCF85151225D900211C7B /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70BCF84151225D900211C7B /* TextViewController.m */; };
 		D7166DBF151336560039FFC4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7166DBE151336560039FFC4 /* QuartzCore.framework */; };
 		D7166DC1151336620039FFC4 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7166DC0151336620039FFC4 /* libiconv.dylib */; };
 		D7166DC4151336990039FFC4 /* IQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7166DC3151336990039FFC4 /* IQViewController.m */; };
@@ -48,8 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D70BCF83151225D900211C7B /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
-		D70BCF84151225D900211C7B /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		D7166DBE151336560039FFC4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D7166DC0151336620039FFC4 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		D7166DC2151336990039FFC4 /* IQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQViewController.h; sourceTree = "<group>"; };
@@ -210,8 +207,6 @@
 				D789C37E150DFC4700369838 /* MainStoryboard.storyboard */,
 				D789C388150DFC4700369838 /* MSViewController.h */,
 				D789C389150DFC4700369838 /* MSViewController.m */,
-				D70BCF83151225D900211C7B /* TextViewController.h */,
-				D70BCF84151225D900211C7B /* TextViewController.m */,
 				D789C373150DFC4700369838 /* Supporting Files */,
 			);
 			path = VIRM;
@@ -337,7 +332,6 @@
 				D749FAB3150F7D7C0034FD59 /* MSImage.m in Sources */,
 				D749FAB4150F7D7C0034FD59 /* MSScanner.m in Sources */,
 				D749FAB5150F7D7C0034FD59 /* MSSync.m in Sources */,
-				D70BCF85151225D900211C7B /* TextViewController.m in Sources */,
 				D7166DC4151336990039FFC4 /* IQViewController.m in Sources */,
 				D7E625FD15187BBF006F2527 /* HistoryItem.m in Sources */,
 				D7E6260015187D33006F2527 /* HistoryItemDataController.m in Sources */,

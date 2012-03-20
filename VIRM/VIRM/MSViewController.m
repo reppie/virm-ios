@@ -23,7 +23,6 @@
 
 #import "MSViewController.h"
 #import "MSImage.h"
-#import "TextViewController.h"
 #import "AppDelegate.h"
 
 #include "moodstocks_sdk.h"
@@ -320,12 +319,10 @@ static const BOOL kMSScannerAutoSync = YES;
             result = imageID;
             resultType = MSSCANNER_IMAGE;
             
-            [self processResult:imageID : YES];
-        }
-        else {
-            [self processResult:@"" : NO];
+            [self processResult:imageID];
         }
     }
+    
     
     // -------------------------------------------------
     // Notify the overlay
@@ -361,6 +358,14 @@ static const BOOL kMSScannerAutoSync = YES;
     return;
 }
 #endif
+
+
+- (void)processResult:(NSString *)id{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    printf("[Moodstocks] Found image.\n");
+    [appDelegate processResult: id];
+}
 
 #pragma mark - View lifecycle
 
@@ -463,31 +468,4 @@ static const BOOL kMSScannerAutoSync = YES;
     }
 }
 #endif
-
-- (void)processResult:(NSString *)id : (BOOL) match {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    if(match == YES) {
-        printf("[Moodstocks] Found image.\n");
-        recognized = YES;
-        
-        if([id isEqualToString: @"test1234"]) {
-            [appDelegate updateText:@"Dit is de Mona Lisa."];
-        }
-        
-        else {
-            [appDelegate updateText:@"Dit is een ander schilderij."];
-        }
-    }
-
-    else {
-        if (recognized == NO) {
-            [appDelegate updateText:@"Geen resultaten."];
-        }
-        else {
-            // Display last result. More implementation needed here.
-        }
-    }
-}
-
 @end

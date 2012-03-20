@@ -17,6 +17,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *text;
 
-- (void) updateText: (NSString *) txt;
+- (void) processResult: (NSString *) imageId;
 
 @end
