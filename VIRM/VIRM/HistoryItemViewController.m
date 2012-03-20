@@ -34,6 +34,29 @@
     }        
 }
 
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"PaintingIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    // Configure the cell.
+    cell.textLabel.text = @"Mona Lisa";
+    cell.detailTextLabel.text = @"Leonardo Da Vinci";
+    cell.imageView.image = self.historyItem.image;
+    
+    return cell;
+}
+
 - (void)configureView
 {
     HistoryItem *theHistoryItem = self.historyItem;

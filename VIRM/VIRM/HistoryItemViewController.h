@@ -10,7 +10,7 @@
 
 @class HistoryItem;
 
-@interface HistoryItemViewController : UITableViewController
+@interface HistoryItemViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) HistoryItem *historyItem;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
