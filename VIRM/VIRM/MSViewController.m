@@ -25,7 +25,7 @@
 #import "MSImage.h"
 #import "AppDelegate.h"
 #import "HistoryItem.h"
-#import "PaintingViewController.h"
+#import "HistoryItemViewController.h"
 
 #include "moodstocks_sdk.h"
 
@@ -377,7 +377,7 @@ static const BOOL kMSScannerAutoSync = YES;
 
 -(void)switchToPaintingView{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    PaintingViewController *paintingViewController =[storyboard instantiateViewControllerWithIdentifier:@"paintingViewController"];
+    HistoryItemViewController *paintingViewController =[storyboard instantiateViewControllerWithIdentifier:@"paintingViewController"];
     
     HistoryItem *historyItem;
     NSDate *today = [[NSDate alloc] init];

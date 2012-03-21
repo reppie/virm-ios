@@ -32,7 +32,7 @@
 #endif
 
 #import "MSScanner.h"
-#import "PaintingViewController.h"
+#import "HistoryViewController.h"
 
 @protocol MSScannerOverlayDelegate;
 @class MSViewController;
