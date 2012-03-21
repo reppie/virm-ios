@@ -370,19 +370,26 @@ static const BOOL kMSScannerAutoSync = YES;
     
     [self stopCapture];
 
-    [self performSelectorOnMainThread:@selector(switchToPaintingView) withObject:nil waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(switchToPaintingViewWithId:) withObject:id waitUntilDone:NO];
     [self performSelector:@selector(loadListHomesViewNext) withObject:nil afterDelay:0.25];
     
 }
 
--(void)switchToPaintingView{
+-(void)switchToPaintingViewWithId: (NSString *) id{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     HistoryItemViewController *paintingViewController =[storyboard instantiateViewControllerWithIdentifier:@"paintingViewController"];
     
     HistoryItem *historyItem;
     NSDate *today = [[NSDate alloc] init];
-    UIImage *image = [UIImage imageNamed:@"mona_lisa.png"];
-    historyItem = [[HistoryItem alloc] initWithName:@"Mona Lisa" painter:@"Leonardo Da Vinci" image:image date:today];
+    
+    if([id isEqualToString: @"test1234"]) {
+        UIImage *image = [UIImage imageNamed:@"mona_lisa.png"];
+        historyItem = [[HistoryItem alloc] initWithName:@"Mona Lisa" painter:@"Leonardo Da Vinci" image:image date:today];
+    }
+    else if([id isEqualToString: @"nachtwacht"]) {
+        UIImage *image = [UIImage imageNamed:@"nachtwacht.jpg"];
+        historyItem = [[HistoryItem alloc] initWithName:@"De Nachtwacht" painter:@"Rembrandt van Rijn" image:image date:today];
+    }
     
     paintingViewController.historyItem = historyItem;
     

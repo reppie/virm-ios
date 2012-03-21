@@ -13,6 +13,7 @@
 		D7166DCD15133EFD0039FFC4 /* iqedata in Resources */ = {isa = PBXBuildFile; fileRef = D7166DCC15133EFD0039FFC4 /* iqedata */; };
 		D7166DD1151355820039FFC4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7166DD0151355820039FFC4 /* libz.dylib */; };
 		D73D1719150F5AE5004F7039 /* clockwork.png in Resources */ = {isa = PBXBuildFile; fileRef = D73D1718150F5AE5004F7039 /* clockwork.png */; };
+		D73E0D44151A1A6B006CA54C /* nachtwacht.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D73E0D43151A1A6B006CA54C /* nachtwacht.jpg */; };
 		D749FA95150F7A970034FD59 /* libmoodstocks-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D749FA92150F7A970034FD59 /* libmoodstocks-sdk.a */; };
 		D749FAB1150F7D7C0034FD59 /* MSApiSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAA8150F7D7C0034FD59 /* MSApiSearch.m */; };
 		D749FAB2150F7D7C0034FD59 /* MSBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = D749FAAA150F7D7C0034FD59 /* MSBarcode.m */; };
@@ -56,6 +57,7 @@
 		D73D1718150F5AE5004F7039 /* clockwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clockwork.png; sourceTree = "<group>"; };
 		D73D1720150F5D45004F7039 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D73D1722150F5D4C004F7039 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D73E0D43151A1A6B006CA54C /* nachtwacht.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nachtwacht.jpg; sourceTree = "<group>"; };
 		D749FA92150F7A970034FD59 /* libmoodstocks-sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libmoodstocks-sdk.a"; sourceTree = "<group>"; };
 		D749FA93150F7A970034FD59 /* moodstocks_sdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moodstocks_sdk.h; sourceTree = "<group>"; };
 		D749FAA7150F7D7C0034FD59 /* MSApiSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSApiSearch.h; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		D789C373150DFC4700369838 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D73E0D43151A1A6B006CA54C /* nachtwacht.jpg */,
 				D7E6260115187E9A006F2527 /* mona_lisa.png */,
 				D7166DCC15133EFD0039FFC4 /* iqedata */,
 				D789C384150DFC4700369838 /* first.png */,
@@ -313,6 +316,7 @@
 				D73D1719150F5AE5004F7039 /* clockwork.png in Resources */,
 				D7166DCD15133EFD0039FFC4 /* iqedata in Resources */,
 				D7E6260215187E9A006F2527 /* mona_lisa.png in Resources */,
+				D73E0D44151A1A6B006CA54C /* nachtwacht.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

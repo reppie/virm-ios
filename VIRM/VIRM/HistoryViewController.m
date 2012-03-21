@@ -49,7 +49,13 @@
     HistoryItem *historyItemAtIndex = [self.dataController objectInListAtIndex:indexPath.row];
     [[cell textLabel] setText:historyItemAtIndex.name];
     [[cell detailTextLabel] setText:[formatter stringFromDate:(NSDate *)historyItemAtIndex.date]];
-    [[cell imageView] setImage: historyItemAtIndex.image];
+    
+    UIGraphicsBeginImageContext(CGSizeMake(50, 50));
+    [historyItemAtIndex.image drawInRect:CGRectMake(0,0,50,50)];
+    UIImage *thumb = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [[cell imageView] setImage: thumb];
     
     return cell;
 }

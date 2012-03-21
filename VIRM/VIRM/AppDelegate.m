@@ -21,6 +21,11 @@
         UIImage *image = [UIImage imageNamed:@"mona_lisa.png"];
         [self.historyItemDataController addHistoryItem:@"Mona Lisa" painter:@"Leonardo Da Vinci" image:image];
     }
+    else if([imageId isEqualToString: @"nachtwacht"]) {
+        printf("[Moodstocks] De Nachtwacht found!\n");
+        UIImage *image = [UIImage imageNamed:@"nachtwacht.jpg"];
+        [self.historyItemDataController addHistoryItem:@"De Nachtwacht" painter:@"Rembrandt van Rijn" image:image];
+    }
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
