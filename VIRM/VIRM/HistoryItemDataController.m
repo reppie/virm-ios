@@ -54,10 +54,11 @@
 -(void)addHistoryItem:(NSString *)name painter:(NSString *)painter image:(UIImage *)image {
     printf("[History] Adding history item.\n");
     HistoryItem *historyItem;
-    NSDate *today = [NSDate date];
+    NSDate *today = [[NSDate alloc] init];
     historyItem = [[HistoryItem alloc] initWithName:name painter:painter image:image date:today];
     [self.historyList addObject:historyItem];
     printf("[History] List count: %i\n", self.historyList.count);
+    
 }
 
 -(void)addHistoryItem:(HistoryItem *) historyItem {

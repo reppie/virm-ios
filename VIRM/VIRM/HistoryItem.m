@@ -12,7 +12,7 @@
 
 @synthesize image = _image, name = _name, painter = _painter, date = _date;
 
--(id)initWithName:(NSString *)name painter: (NSString *)painter image:(UIImage *)image date:(NSDate *)date {
+-(id)initWithName:(NSString *)name painter: (NSString *)painter image:(UIImage *)image date:(NSDate *) date{
     self = [super init];
     if (self) {
         _name = name;

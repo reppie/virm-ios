@@ -139,6 +139,7 @@
 
 - (void)dealloc {
     [_textView release];
+    [_historyItem release];
     [super dealloc];
 }
 @end

@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *painter;
 @property (nonatomic, copy) UIImage *image;
-@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, copy) NSDate *date;
 
 -(id)initWithName:(NSString *)name painter:(NSString *)painter image:(UIImage *)image date:(NSDate *)date;
 
