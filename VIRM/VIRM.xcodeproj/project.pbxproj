@@ -44,6 +44,7 @@
 		D7E6260215187E9A006F2527 /* mona_lisa.png in Resources */ = {isa = PBXBuildFile; fileRef = D7E6260115187E9A006F2527 /* mona_lisa.png */; };
 		D7E6260515187F87006F2527 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E6260415187F87006F2527 /* HistoryViewController.m */; };
 		D7E6260815188118006F2527 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E6260715188118006F2527 /* HistoryItemViewController.m */; };
+		D7E62E771519E05D007A625B /* PaintingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E62E761519E05D007A625B /* PaintingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,8 @@
 		D7E6260415187F87006F2527 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		D7E6260615188118006F2527 /* HistoryItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemViewController.h; sourceTree = "<group>"; };
 		D7E6260715188118006F2527 /* HistoryItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewController.m; sourceTree = "<group>"; };
+		D7E62E751519E05D007A625B /* PaintingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaintingViewController.h; path = ../PaintingViewController.h; sourceTree = "<group>"; };
+		D7E62E761519E05D007A625B /* PaintingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaintingViewController.m; path = ../PaintingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +210,8 @@
 				D789C37E150DFC4700369838 /* MainStoryboard.storyboard */,
 				D789C388150DFC4700369838 /* MSViewController.h */,
 				D789C389150DFC4700369838 /* MSViewController.m */,
+				D7E62E751519E05D007A625B /* PaintingViewController.h */,
+				D7E62E761519E05D007A625B /* PaintingViewController.m */,
 				D789C373150DFC4700369838 /* Supporting Files */,
 			);
 			path = VIRM;
@@ -337,6 +342,7 @@
 				D7E6260015187D33006F2527 /* HistoryItemDataController.m in Sources */,
 				D7E6260515187F87006F2527 /* HistoryViewController.m in Sources */,
 				D7E6260815188118006F2527 /* HistoryItemViewController.m in Sources */,
+				D7E62E771519E05D007A625B /* PaintingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

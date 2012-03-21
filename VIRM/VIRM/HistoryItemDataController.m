@@ -60,4 +60,11 @@
     printf("[History] List count: %i\n", self.historyList.count);
 }
 
+-(void)addHistoryItem:(HistoryItem *) historyItem {
+    printf("[History] Adding history item.\n");
+    historyItem = [[HistoryItem alloc] initWithName:historyItem.name painter:historyItem.painter image:historyItem.image date:historyItem.date];
+    [self.historyList addObject:historyItem];
+    printf("[History] List count: %i\n", self.historyList.count);
+}
+
 @end

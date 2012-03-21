@@ -17,5 +17,6 @@
 -(unsigned)countOfList;
 -(HistoryItem *)objectInListAtIndex:(unsigned)theIndex;
 -(void)addHistoryItem:(NSString *)name painter:(NSString *)painter image:(UIImage *)image;
+-(void)addHistoryItem:(HistoryItem *) historyItem;
 
 @end

@@ -365,6 +365,19 @@ static const BOOL kMSScannerAutoSync = YES;
 
     printf("[Moodstocks] Found image.\n");
     [appDelegate processResult: id];
+    
+    [self stopCapture];
+
+    [self performSelectorOnMainThread:@selector(switchToPaintingView) withObject:nil waitUntilDone:NO];
+    [self performSelector:@selector(loadListHomesViewNext) withObject:nil afterDelay:0.25];
+    
+}
+
+-(void)switchToPaintingView{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    PaintingViewController *paintingViewController =[storyboard instantiateViewControllerWithIdentifier:@"paintingViewController"];
+    
+    [self.navigationController pushViewController:paintingViewController animated:YES];
 }
 
 #pragma mark - View lifecycle
@@ -387,7 +400,9 @@ static const BOOL kMSScannerAutoSync = YES;
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationController.navigationBar.tintColor = nil;
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
     [self startCapture];
 }
 

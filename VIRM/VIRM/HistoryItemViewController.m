@@ -48,7 +48,6 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    
     // Configure the cell.
     cell.textLabel.text = @"Mona Lisa";
     cell.detailTextLabel.text = @"Leonardo Da Vinci";

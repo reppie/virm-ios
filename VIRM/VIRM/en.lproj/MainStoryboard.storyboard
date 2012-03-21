@@ -65,20 +65,42 @@
             </objects>
             <point key="canvasLocation" x="1518" y="-246"/>
         </scene>
-        <!--View Controller - Misc-->
+        <!--Painting View Controller-->
+        <scene sceneID="IwD-87-8kk">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LfM-e3-301" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="paintingViewController" id="ySR-qS-YbR" customClass="PaintingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1NM-sG-ptM">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Jaaaa het werkt!" id="igq-Sf-NDM">
+                                <rect key="frame" x="-6" y="0.0" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8y6-jy-cSv"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1402" y="-1099"/>
+        </scene>
+        <!--View Controller - Moodstocks-->
         <scene sceneID="13">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
-                <viewController title="Misc" id="3" customClass="MSViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Moodstocks" image="second" id="6"/>
+                <viewController title="Moodstocks" id="3" customClass="MSViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QMY-yr-wYE"/>
+                    <connections>
+                        <segue destination="ySR-qS-YbR" kind="modal" id="h9m-LM-eb1"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1941" y="-868"/>
+            <point key="canvasLocation" x="862" y="-1084"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -93,7 +115,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="DoN-a3-fiK" kind="relationship" relationship="viewControllers" id="26"/>
-                        <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
+                        <segue destination="blq-Ve-VMM" kind="relationship" relationship="viewControllers" id="27"/>
                         <segue destination="1SY-xl-aYp" kind="relationship" relationship="viewControllers" id="Eox-YJ-mna"/>
                         <segue destination="sWv-U0-DaW" kind="relationship" relationship="viewControllers" id="V7l-70-qxw"/>
                     </connections>
@@ -114,7 +136,7 @@
                     <tabBarItem key="tabBarItem" title="IQ Engines" image="second" id="r1M-6R-jrp"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1518" y="-857"/>
+            <point key="canvasLocation" x="2044" y="-857"/>
         </scene>
         <!--Navigation Controller - Camera-->
         <scene sceneID="QZN-sh-nkD">
@@ -278,6 +300,25 @@
             </objects>
             <point key="canvasLocation" x="1612" y="520"/>
         </scene>
+        <!--Navigation Controller - Moodstocks-->
+        <scene sceneID="lZm-fx-eub">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qKp-tx-kJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="moodstocksNC" id="blq-Ve-VMM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Moodstocks" image="second" id="6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="g6M-qq-sbF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3" kind="relationship" relationship="rootViewController" id="2Jc-Pl-Bjk"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="213" y="-1084"/>
+        </scene>
     </scenes>
     <resources>
         <image name="clockwork.png" width="200" height="200"/>
@@ -285,34 +326,6 @@
         <image name="mona_lisa.png" width="360" height="397"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="CameraViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cameraClicked:"/>
-                <relationship kind="action" name="libraryClicked:"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="HistoryItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryItemViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="painterNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="paintingNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="HistoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryViewController.h"/>
-        </class>
-        <class className="IQViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IQViewController.h"/>
-        </class>
-        <class className="MSViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
