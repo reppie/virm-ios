@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PaintingViewController : UIViewController
+@class HistoryItem;
+
+@interface PaintingViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) HistoryItem *historyItem;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
 
 @end
