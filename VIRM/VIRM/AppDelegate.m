@@ -8,6 +8,8 @@
 
 #import "MSScanner.h"
 #import "AppDelegate.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 
 @implementation AppDelegate
 
@@ -28,10 +30,34 @@
     }
 }
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-    _historyItemDataController = [[HistoryItemDataController alloc] init];
+- (void)testDataBaseConnection {
+    // Start request
+    NSString *uniqueIdentifier = @"testApp";
+    NSString *code = @"testCode";
+    NSURL *url = [NSURL URLWithString:@"http://192.168.0.144/"];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setPostValue:@"1" forKey:@"rw_app_id"];
+    [request setPostValue:code forKey:@"code"];
+    [request setPostValue:uniqueIdentifier forKey:@"device_id"];
+    [request setDelegate:self];
+    [request startAsynchronous];
 }
 
+- (void)requestFinished:(ASIHTTPRequest *)request
+{    
+    printf("[Database] Connection succesful.");        
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{    
+    NSError *error = [request error];
+    printf("[Database] Error: %s.", [error.localizedDescription UTF8String]);
+}
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+    _historyItemDataController = [[HistoryItemDataController alloc] init];
+    [self testDataBaseConnection];
+}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
