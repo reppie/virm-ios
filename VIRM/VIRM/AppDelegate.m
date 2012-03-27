@@ -45,13 +45,13 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {    
-    printf("[Database] Connection succesful.");        
+    printf("[Database] Connection succesful.\n");        
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {    
     NSError *error = [request error];
-    printf("[Database] Error: %s.", [error.localizedDescription UTF8String]);
+    printf("[Database] Error: %s.\n", [error.localizedDescription UTF8String]);
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
