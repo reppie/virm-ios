@@ -12,16 +12,10 @@
 {
     cv::VideoCapture *_videoCapture;
     cv::Mat _lastFrame;
+    NSTimer *timer;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
-@property (nonatomic, retain) IBOutlet UILabel *elapsedTimeLabel;
-@property (nonatomic, retain) IBOutlet UISlider *highSlider;
-@property (nonatomic, retain) IBOutlet UISlider *lowSlider;
-@property (nonatomic, retain) IBOutlet UILabel *highLabel;
-@property (nonatomic, retain) IBOutlet UILabel *lowLabel;
-
-- (IBAction)capture:(id)sender;
-- (IBAction)sliderChanged:(id)sender;
+@property (nonatomic, retain) NSTimer *timer;
 
 @end
