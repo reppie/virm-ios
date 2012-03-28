@@ -111,7 +111,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	
     IplImage *capture = [self createIplImageFromSampleBuffer:sampleBuffer];
     
-    Mat monaLisa = imread("mona_lisa.png", CV_LOAD_IMAGE_GRAYSCALE);
+    UIImage *uiImage = [UIImage imageNamed:@"mona_lisa.png"];
+    Mat monaLisa = [self MatFromUIImage:uiImage];
+
     if(monaLisa.empty())
     {
         printf("[OpenCV] Can't read image.\n");
@@ -151,6 +153,36 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     printf("[OpenCV] Matches size: %lu.\n", matches.size());
     
 	[pool drain];
+}
+
+- (Mat)MatFromUIImage:(UIImage *)image
+{
+    IplImage *iplImage = [self IplImageFromUIImage:image];
+    Mat result(iplImage, true);
+    cvReleaseImage(&iplImage);
+    return result;
+}
+
+- (IplImage *)IplImageFromUIImage:(UIImage *)image 
+{
+    // NOTE you SHOULD cvReleaseImage() for the return value when end of the code.
+    CGImageRef imageRef = image.CGImage;
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    IplImage *iplimage = cvCreateImage(cvSize(image.size.width, image.size.height), IPL_DEPTH_8U, 4);
+    CGContextRef contextRef = CGBitmapContextCreate(iplimage->imageData, iplimage->width, iplimage->height,
+                                                    iplimage->depth, iplimage->widthStep,
+                                                    colorSpace, kCGImageAlphaPremultipliedLast|kCGBitmapByteOrderDefault);
+    CGContextDrawImage(contextRef, CGRectMake(0, 0, image.size.width, image.size.height), imageRef);
+    CGContextRelease(contextRef);
+    CGColorSpaceRelease(colorSpace);
+    
+    IplImage *ret = cvCreateImage(cvGetSize(iplimage), IPL_DEPTH_8U, 3);
+    cvCvtColor(iplimage, ret, CV_RGBA2RGB);
+    
+    cvReleaseImage(&iplimage);
+    
+    return ret;
 }
 
 - (IplImage *)createIplImageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer {
