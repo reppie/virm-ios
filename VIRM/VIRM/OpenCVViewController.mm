@@ -109,31 +109,46 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	
-    IplImage *image = [self createIplImageFromSampleBuffer:sampleBuffer];
+    IplImage *capture = [self createIplImageFromSampleBuffer:sampleBuffer];
+    
+    Mat monaLisa = imread("mona_lisa.png", CV_LOAD_IMAGE_GRAYSCALE);
+    if(monaLisa.empty())
+    {
+        printf("[OpenCV] Can't read image.\n");
+    }    
+    Mat image(capture);
     
     // Create smart pointer for SIFT feature detector.
     Ptr<FeatureDetector> featureDetector = FeatureDetector::create("ORB");
     
-    
-    vector<KeyPoint> keypoints;
+    vector<KeyPoint> keypointsTrained;    
+    vector<KeyPoint> keypointsCapture;
     
     // Detect the keypoints
-    featureDetector->detect(image, keypoints); // NOTE: featureDetector is a pointer hence the '->'.
+    featureDetector->detect(image, keypointsCapture); // NOTE: featureDetector is a pointer hence the '->'.
+    featureDetector->detect(monaLisa, keypointsTrained);
     
     //Similarly, we create a smart pointer to the SIFT extractor.
     Ptr<DescriptorExtractor> featureExtractor = DescriptorExtractor::create("ORB");
     
     // Compute the 128 dimension SIFT descriptor at each keypoint.
     // Each row in "descriptors" correspond to the SIFT descriptor for each keypoint
-    Mat descriptors;
-    featureExtractor->compute(image, keypoints, descriptors);
-    
+    Mat descriptorsCapture;
+    Mat descriptorsTrained;
+    featureExtractor->compute(image, keypointsCapture, descriptorsCapture);
+    featureExtractor->compute(monaLisa, keypointsTrained, descriptorsTrained);    
     //    // Add results to image and save.
     //    cv::Mat output;
     //    cv::drawKeypoints(input, keypoints, output);
     //    cv::imwrite("sift_result.jpg", output);
     
-    printf("[OpenCV] Keypoints size: %lu.\n", keypoints.size());
+    vector<DMatch> matches;
+    Ptr<DescriptorMatcher> descriptionMatcher = DescriptorMatcher::create("BruteForce-Hamming");
+    descriptionMatcher->match(descriptorsCapture, descriptorsTrained, matches);
+    
+    printf("[OpenCV] Capture Keypoints size: %lu.\n", keypointsCapture.size());
+    printf("[OpenCV] Trained Keypoints size: %lu.\n", keypointsTrained.size());
+    printf("[OpenCV] Matches size: %lu.\n", matches.size());
     
 	[pool drain];
 }
