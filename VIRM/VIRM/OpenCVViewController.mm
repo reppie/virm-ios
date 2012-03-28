@@ -1,114 +1,222 @@
-//
-//  OpenCVViewController.m
-//  VIRM
-//
-//  Created by Clockwork Clockwork on 3/27/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
+#import "OpenCVViewController.h"
 #import "UIImage+OpenCV.h"
 
-#import "OpenCVViewController.h"
+#include <opencv2/core/core.hpp>
+#include <opencv2/features2d/features2d.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
-// Aperture value to use for the Canny edge detection
-const int kCannyAperture = 7;
+#include <vector>
 
-@interface OpenCVViewController ()
-- (void)processFrame;
-@end
+using namespace std;
+using namespace cv;
 
 @implementation OpenCVViewController
 
-@synthesize imageView = _imageView;
-@synthesize timer = _timer;
+@synthesize captureSession = _captureSession;
+@synthesize previewLayer = _previewLayer;
 
-- (void)viewDidLoad
-{
-    printf("[OpenCV] View loaded.\n");
-    [super viewDidLoad];
+#pragma mark -
+#pragma mark Initialization
+- (id)init {
+	self = [super init];
+	if (self) {
+		/*We initialize some variables (they might be not initialized depending on what is commented or not)*/
 
+		self.previewLayer = nil;
+	}
+	return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self setupCaptureSession];
+}
 
-- (void)viewDidAppear:(BOOL)animated {
-    printf("[OpenCV] View appeared.\n");
-    _videoCapture = new cv::VideoCapture;
+- (void) viewDidDisappear:(BOOL)animated {
+        printf("[OpenCV] Capturesession stopped.\n");
+    [self.captureSession stopRunning];
+}
+
+- (void)setupCaptureSession 
+{
+    NSError *error = nil;
     
-    if (!_videoCapture->open(CV_CAP_AVFOUNDATION))
-    {
-        printf("[OpenCV] Failed to open video camera.\n");
+    // Create the session
+    self.captureSession = [[AVCaptureSession alloc] init];
+    
+    // Configure the session to produce lower resolution video frames, if your 
+    // processing algorithm can cope. We'll specify medium quality for the
+    // chosen device.
+    self.captureSession.sessionPreset = AVCaptureSessionPresetMedium;
+    
+    // Find a suitable AVCaptureDevice
+    AVCaptureDevice *device = [AVCaptureDevice
+                               defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    // Create a device input with the device and add it to the session.
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device 
+                                                                        error:&error];
+    if (!input) {
+        // Handling the error appropriately.
     }
-    [self startCapture];
+    [self.captureSession addInput:input];
+    
+    // Create a VideoDataOutput and add it to the session
+    AVCaptureVideoDataOutput *output = [[[AVCaptureVideoDataOutput alloc] init] autorelease];
+    [self.captureSession addOutput:output];
+    
+    // Configure your output.
+    dispatch_queue_t queue = dispatch_queue_create("myQueue", NULL);
+    [output setSampleBufferDelegate:self queue:queue];
+    dispatch_release(queue);
+    
+    // Specify the pixel format
+    output.videoSettings = 
+    [NSDictionary dictionaryWithObject:
+     [NSNumber numberWithInt:kCVPixelFormatType_32BGRA] 
+                                forKey:(id)kCVPixelBufferPixelFormatTypeKey];
+    
+    
+    AVCaptureConnection *conn = [output connectionWithMediaType:AVMediaTypeVideo];
+    
+    if (conn.supportsVideoMinFrameDuration)
+        conn.videoMinFrameDuration = CMTimeMake(1,15);
+    if (conn.supportsVideoMaxFrameDuration)
+        conn.videoMaxFrameDuration = CMTimeMake(1,15);
+    
+    [self setPreviewLayer:[[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession]];
+    self.previewLayer.orientation = UIInterfaceOrientationPortrait;
+    [[self previewLayer] setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    CGRect layerRect = [[self view] bounds];
+	[self.previewLayer setBounds:layerRect];
+    [self.previewLayer setPosition:CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect))];
+    [self.view.layer addSublayer: self.previewLayer];
+    
+    // Start the session running to start the flow of data
+    printf("[OpenCV] Capturesession started.\n");
+    [self.captureSession startRunning];
+    
+    // Assign session to an ivar.
+    [self setCaptureSession:self.captureSession];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [self stopCapture];
+// Delegate routine that is called when a sample buffer was written
+- (void)captureOutput:(AVCaptureOutput *)captureOutput 
+didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer 
+       fromConnection:(AVCaptureConnection *)connection
+{ 
+    // Create a UIImage from the sample buffer data
+//    UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
+    
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	
+    IplImage *image = [self createIplImageFromSampleBuffer:sampleBuffer];
+    
+    // Create smart pointer for SIFT feature detector.
+    Ptr<FeatureDetector> featureDetector = FeatureDetector::create("ORB");
+    
+    
+    vector<KeyPoint> keypoints;
+    
+    // Detect the keypoints
+    featureDetector->detect(image, keypoints); // NOTE: featureDetector is a pointer hence the '->'.
+    
+    //Similarly, we create a smart pointer to the SIFT extractor.
+    Ptr<DescriptorExtractor> featureExtractor = DescriptorExtractor::create("ORB");
+    
+    // Compute the 128 dimension SIFT descriptor at each keypoint.
+    // Each row in "descriptors" correspond to the SIFT descriptor for each keypoint
+    Mat descriptors;
+    featureExtractor->compute(image, keypoints, descriptors);
+    
+    //    // Add results to image and save.
+    //    cv::Mat output;
+    //    cv::drawKeypoints(input, keypoints, output);
+    //    cv::imwrite("sift_result.jpg", output);
+    
+    printf("[OpenCV] Keypoints size: %lu.\n", keypoints.size());
+    
+	[pool drain];
 }
 
-- (void)startCapture {
-    printf("[OpenCV] Starting videocapture.\n");
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(capture) userInfo:nil repeats:YES];
-}
-
-- (void) stopCapture
-{
-    printf("[OpenCV] Stopping videocapture.\n");
-    if (timer) {
-        [timer invalidate];
-        timer = nil;
+- (IplImage *)createIplImageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer {
+    IplImage *iplimage = 0;
+    if (sampleBuffer) {
+        CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+        CVPixelBufferLockBaseAddress(imageBuffer, 0);
+        
+        // get information of the image in the buffer
+        uint8_t *bufferBaseAddress = (uint8_t *)CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0);
+        size_t bufferWidth = CVPixelBufferGetWidth(imageBuffer);
+        size_t bufferHeight = CVPixelBufferGetHeight(imageBuffer);
+        
+        // create IplImage
+        if (bufferBaseAddress) {
+            iplimage = cvCreateImage(cvSize(bufferWidth, bufferHeight), IPL_DEPTH_8U, 4);
+            iplimage->imageData = (char*)bufferBaseAddress;
+        }
+        
+        // release memory
+        CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
+    }
+    else {
+        printf("[OpenCV] Error: No sample buffer.\n");
     }
     
+    return iplimage;
 }
 
-- (void)viewDidUnload
+// Create a UIImage from sample buffer data
+- (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer 
 {
-    [super viewDidUnload];
-    self.imageView = nil;
-
-    delete _videoCapture;
-    _videoCapture = nil;
+    // Get a CMSampleBuffer's Core Video image buffer for the media data
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
+    // Lock the base address of the pixel buffer
+    CVPixelBufferLockBaseAddress(imageBuffer, 0); 
+    
+    // Get the number of bytes per row for the pixel buffer
+    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer); 
+    
+    // Get the number of bytes per row for the pixel buffer
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer); 
+    // Get the pixel buffer width and height
+    size_t width = CVPixelBufferGetWidth(imageBuffer); 
+    size_t height = CVPixelBufferGetHeight(imageBuffer); 
+    
+    // Create a device-dependent RGB color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
+    
+    // Create a bitmap graphics context with the sample buffer data
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, 
+                                                 bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst); 
+    // Create a Quartz image from the pixel data in the bitmap graphics context
+    CGImageRef quartzImage = CGBitmapContextCreateImage(context); 
+    // Unlock the pixel buffer
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    
+    // Free up the context and color space
+    CGContextRelease(context); 
+    CGColorSpaceRelease(colorSpace);
+    
+    // Create an image object from the Quartz image
+    UIImage *image = [UIImage imageWithCGImage:quartzImage];
+    
+    // Release the Quartz image
+    CGImageRelease(quartzImage);
+    
+    return (image);
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+#pragma mark -
+#pragma mark Memory management
+
+- (void)viewDidUnload {
+	self.previewLayer = nil;
 }
 
-// Grab a frame and process it
-- (void)capture
-{
-    if (_videoCapture && _videoCapture->grab())
-    {
-        (*_videoCapture) >> _lastFrame;
-        [self processFrame];
-    }
-    else
-    {
-        printf("[OpenCV] Failed to grab frame.\n");        
-    }
+- (void)dealloc {
+	[self.captureSession release];
+    [super dealloc];
 }
 
-// Perform image processing on the last captured frame and display the results
-- (void)processFrame
-{
-    double t = (double)cv::getTickCount();
-    
-    cv::Mat grayFrame, output;
-    
-    // Convert captured frame to grayscale
-    cv::cvtColor(_lastFrame, grayFrame, cv::COLOR_RGB2GRAY);
-    
-    // Perform Canny edge detection using slide values for thresholds
-    cv::Canny(grayFrame, output,
-              0.1 * kCannyAperture * kCannyAperture,
-              0.1 * kCannyAperture * kCannyAperture,
-              kCannyAperture);
-    
-    t = 1000 * ((double)cv::getTickCount() - t) / cv::getTickFrequency();
-    
-    // Display result 
-    self.imageView.image = [UIImage imageWithCVMat:output];
-}
 
 @end
