@@ -107,17 +107,30 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     // Create a UIImage from the sample buffer data
 //    UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
     
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];	
     IplImage *capture = [self createIplImageFromSampleBuffer:sampleBuffer];
     
+    
+    
+    
     UIImage *uiImage = [UIImage imageNamed:@"mona_lisa.png"];
-    Mat monaLisa = [self MatFromUIImage:uiImage];
+    IplImage* monaLisaColored = [self IplImageFromUIImage:uiImage];
+    IplImage* resizedIplImageColored = cvCreateImage(cvSize(150,150),monaLisaColored->depth,monaLisaColored->nChannels);
+    
+    IplImage *monaLisaGray = cvCreateImage(cvGetSize(monaLisaColored), 8, 1);
+    IplImage *resizedIplImageGray = cvCreateImage(cvGetSize(resizedIplImageColored), 8, 1);
+    
+//    cvCvtColor(monaLisaColored,monaLisaGray,CV_BGR2GRAY);
+//    cvCvtColor(resizedIplImageColored,resizedIplImageGray,CV_BGR2GRAY);    
+//    
+    cvResize(monaLisaColored, resizedIplImageColored);
+    
+    Mat resizedImage(resizedIplImageColored);
 
-    if(monaLisa.empty())
-    {
-        printf("[OpenCV] Can't read image.\n");
-    }    
+//    if(monaLisa.empty())
+//    {
+//        printf("[OpenCV] Can't read image.\n");
+//    }    
     Mat image(capture);
     
     // Create smart pointer for SIFT feature detector.
@@ -128,7 +141,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     // Detect the keypoints
     featureDetector->detect(image, keypointsCapture); // NOTE: featureDetector is a pointer hence the '->'.
-    featureDetector->detect(monaLisa, keypointsTrained);
+    featureDetector->detect(resizedImage, keypointsTrained);
     
     //Similarly, we create a smart pointer to the SIFT extractor.
     Ptr<DescriptorExtractor> featureExtractor = DescriptorExtractor::create("ORB");
@@ -138,7 +151,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     Mat descriptorsCapture;
     Mat descriptorsTrained;
     featureExtractor->compute(image, keypointsCapture, descriptorsCapture);
-    featureExtractor->compute(monaLisa, keypointsTrained, descriptorsTrained);    
+    featureExtractor->compute(resizedImage, keypointsTrained, descriptorsTrained);    
     //    // Add results to image and save.
     //    cv::Mat output;
     //    cv::drawKeypoints(input, keypoints, output);
@@ -148,12 +161,41 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     Ptr<DescriptorMatcher> descriptionMatcher = DescriptorMatcher::create("BruteForce-Hamming");
     descriptionMatcher->match(descriptorsCapture, descriptorsTrained, matches);
     
-    printf("[OpenCV] Capture Keypoints size: %lu.\n", keypointsCapture.size());
-    printf("[OpenCV] Trained Keypoints size: %lu.\n", keypointsTrained.size());
-    printf("[OpenCV] Matches size: %lu.\n", matches.size());
+    double max_dist = 0; double min_dist = 25;
+    
+    //-- Quick calculation of max and min distances between keypoints
+    for( int i = 0; i < descriptorsCapture.rows; i++ )
+    { double dist = matches[i].distance;
+        if( dist < min_dist ) min_dist = dist;
+        if( dist > max_dist ) max_dist = dist;
+    }
+    
+    //-- Draw only "good" matches (i.e. whose distance is less than 2*min_dist )
+    //-- PS.- radiusMatch can also be used here.
+    std::vector< DMatch > good_matches;
+    
+    for( int i = 0; i < descriptorsCapture.rows; i++ )
+    { if( matches[i].distance < 2*min_dist )
+    { good_matches.push_back( matches[i]); }
+    }
+    
+//    printf("[OpenCV] Capture Keypoints size: %lu.\n", keypointsCapture.size());
+//    printf("[OpenCV] Trained Keypoints size: %lu.\n", keypointsTrained.size());
+//    printf("[OpenCV] Matches size: %lu.\n", matches.size());
+//    printf("[OpenCV] Max dist : %f. \n", max_dist);
+//    printf("[OpenCV] Min dist : %f. \n", min_dist);
+    printf("[OpenCV] Good matches : %lu. \n", good_matches.size());
+    
+//    for( int i = 0; i < good_matches.size(); i++ ) {
+//        printf( "[OpenCV] Good Match [%d] Keypoint 1: %d  -- Keypoint 2: %d.  \n", i, good_matches[i].queryIdx, good_matches[i].trainIdx ); 
+//    }
+    if(good_matches.size() > 30) {
+        printf("[OpenCV] Mona Lisa recognized!\n");
+    }
     
 	[pool drain];
 }
+
 
 - (Mat)MatFromUIImage:(UIImage *)image
 {
