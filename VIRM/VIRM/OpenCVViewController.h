@@ -1,26 +1,25 @@
+//
+//  OpenCVViewController.h
+//  VIRM
+//
+//  Created by Clockwork Clockwork on 4/10/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreVideo/CoreVideo.h>
 #import <CoreMedia/CoreMedia.h>
 
-/*!
- @class	AVController 
- @author Benjamin Loulier
- 
- @brief    Controller to demonstrate how we can have a direct access to the camera using the iPhone SDK 4
- */
 @interface OpenCVViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate> {
 	AVCaptureSession *_captureSession;
 	AVCaptureVideoPreviewLayer *_prevLayer;
+    int totalCaptures;
+    int totalMatches;
 }
 
-/*!
- @brief	The capture session takes the input from the camera and capture it
- */
 @property (nonatomic, retain) AVCaptureSession *captureSession;
 
 @property (nonatomic, retain) AVCaptureVideoPreviewLayer *previewLayer;
-
 
 @end

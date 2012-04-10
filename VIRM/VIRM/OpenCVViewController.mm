@@ -21,18 +21,21 @@ using namespace cv;
 	self = [super init];
 	if (self) {
 		/*We initialize some variables (they might be not initialized depending on what is commented or not)*/
-
+        
 		self.previewLayer = nil;
 	}
 	return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidLoad {
+    printf("[OpenCV] View loaded.\n");
     [self setupCaptureSession];
+    totalMatches = 0;
+    totalCaptures = 0;
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
-        printf("[OpenCV] Capturesession stopped.\n");
+    printf("[OpenCV] Capturesession stopped.\n");
     [self.captureSession stopRunning];
 }
 
@@ -103,9 +106,11 @@ using namespace cv;
 - (void)captureOutput:(AVCaptureOutput *)captureOutput 
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer 
        fromConnection:(AVCaptureConnection *)connection
-{ 
+{
+//    NSDate *start = [NSDate date];
+    
     // Create a UIImage from the sample buffer data
-//    UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
+    //    UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
     
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];	
     IplImage* capture = [self createIplImageFromSampleBuffer:sampleBuffer];
@@ -116,44 +121,40 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     IplImage* resizedIplImageColored = cvCreateImage(cvSize(150,150),monaLisaColored->depth,monaLisaColored->nChannels);
     
     // Gray scaling stuff
-//    IplImage *monaLisaGray = cvCreateImage(cvGetSize(monaLisaColored), 8, 1);
-//    IplImage *resizedIplImageGray = cvCreateImage(cvGetSize(resizedIplImageColored), 8, 1);    
-//    cvCvtColor(monaLisaColored,monaLisaGray,CV_BGR2GRAY);
-//    cvCvtColor(resizedIplImageColored,resizedIplImageGray,CV_BGR2GRAY);    
-//    
+    //    IplImage *monaLisaGray = cvCreateImage(cvGetSize(monaLisaColored), 8, 1);
+    //    IplImage *resizedIplImageGray = cvCreateImage(cvGetSize(resizedIplImageColored), 8, 1);    
+    //    cvCvtColor(monaLisaColored,monaLisaGray,CV_BGR2GRAY);
+    //    cvCvtColor(resizedIplImageColored,resizedIplImageGray,CV_BGR2GRAY);    
+    //    
     cvResize(monaLisaColored, resizedIplImageColored);
     cvResize(capture, resizedCapture);
     
     Mat target(resizedIplImageColored);
     Mat image(resizedCapture);   
     
-    // Create smart pointer for SIFT feature detector.
-    Ptr<FeatureDetector> featureDetector = FeatureDetector::create("ORB");
+    // Create smart pointer for ORB feature detector.
+    OrbFeatureDetector featureDetector;
     
     vector<KeyPoint> keypointsTrained;    
     vector<KeyPoint> keypointsCapture;
     
     // Detect the keypoints
-    featureDetector->detect(image, keypointsCapture); // NOTE: featureDetector is a pointer hence the '->'.
-    featureDetector->detect(target, keypointsTrained);
+    featureDetector.detect(image, keypointsCapture);
+    featureDetector.detect(target, keypointsTrained);
     
-    //Similarly, we create a smart pointer to the SIFT extractor.
-    Ptr<DescriptorExtractor> featureExtractor = DescriptorExtractor::create("ORB");
+    //Similarly, we create a smart pointer to the ORB extractor.
+    OrbDescriptorExtractor featureExtractor;
     
     // Compute the 128 dimension SIFT descriptor at each keypoint.
-    // Each row in "descriptors" correspond to the SIFT descriptor for each keypoint
+    // Each row in "descriptors" correspond to the ORB descriptor for each keypoint
     Mat descriptorsCapture;
     Mat descriptorsTrained;
-    featureExtractor->compute(image, keypointsCapture, descriptorsCapture);
-    featureExtractor->compute(target, keypointsTrained, descriptorsTrained);    
-    //    // Add results to image and save.
-    //    cv::Mat output;
-    //    cv::drawKeypoints(input, keypoints, output);
-    //    cv::imwrite("sift_result.jpg", output);
+    featureExtractor.compute(image, keypointsCapture, descriptorsCapture);
+    featureExtractor.compute(target, keypointsTrained, descriptorsTrained); 
     
     vector<DMatch> matches;
-    Ptr<DescriptorMatcher> descriptionMatcher = DescriptorMatcher::create("BruteForce-Hamming");
-    descriptionMatcher->match(descriptorsCapture, descriptorsTrained, matches);
+    BFMatcher matcher(NORM_HAMMING);
+    matcher.match(descriptorsCapture, descriptorsTrained, matches);
     
     double max_dist = 0; 
     double min_dist = 25;
@@ -175,20 +176,33 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         }
     }
     
-//    printf("[OpenCV] Capture Keypoints size: %lu.\n", keypointsCapture.size());
-//    printf("[OpenCV] Trained Keypoints size: %lu.\n", keypointsTrained.size());
-//    printf("[OpenCV] Matches size: %lu.\n", matches.size());
-//    printf("[OpenCV] Max dist : %f. \n", max_dist);
-//    printf("[OpenCV] Min dist : %f. \n", min_dist);
+    //    printf("[OpenCV] Capture Keypoints size: %lu.\n", keypointsCapture.size());
+    //    printf("[OpenCV] Trained Keypoints size: %lu.\n", keypointsTrained.size());
+    //    printf("[OpenCV] Matches size: %lu.\n", matches.size());
+    //    printf("[OpenCV] Max dist : %f. \n", max_dist);
+    //    printf("[OpenCV] Min dist : %f. \n", min_dist);
     printf("[OpenCV] Good matches : %lu. \n", good_matches.size());
     
-//    for( int i = 0; i < good_matches.size(); i++ ) {
-//        printf( "[OpenCV] Good Match [%d] Keypoint 1: %d  -- Keypoint 2: %d.  \n", i, good_matches[i].queryIdx, good_matches[i].trainIdx ); 
-//    }
+    //    for( int i = 0; i < good_matches.size(); i++ ) {
+    //        printf( "[OpenCV] Good Match [%d] Keypoint 1: %d  -- Keypoint 2: %d.  \n", i, good_matches[i].queryIdx, good_matches[i].trainIdx ); 
+    //    }
     
+    // Check for result
     if(good_matches.size() > 30) {
         printf("[OpenCV] Mona Lisa recognized!\n");
     }
+    
+    // Calculate averages
+    //    totalMatches = totalMatches + good_matches.size();
+    //    totalCaptures++;
+    //    
+    //    int average = totalMatches / totalCaptures;
+    //    printf("[OpenCV] Average number of matches: %i.\n", average);
+    
+    // Calculate time
+//    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
+    
+    //    printf("[OpenCV] FPS: %f.\n", (1 / timeInterval) * -1);
     
 	[pool drain];
 }
