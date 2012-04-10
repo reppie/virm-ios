@@ -54,6 +54,7 @@
 		D7172459153423D400F1F63E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7172458153423D400F1F63E /* libz.dylib */; };
 		D717245B153423DC00F1F63E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D717245A153423DC00F1F63E /* ImageIO.framework */; };
 		D717245D1534252600F1F63E /* mona_lisa.png in Resources */ = {isa = PBXBuildFile; fileRef = D717245C1534252600F1F63E /* mona_lisa.png */; };
+		D717246F15345CD400F1F63E /* nachtwacht.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D717246E15345CD400F1F63E /* nachtwacht.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,6 +220,7 @@
 		D7172458153423D400F1F63E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D717245A153423DC00F1F63E /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D717245C1534252600F1F63E /* mona_lisa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mona_lisa.png; sourceTree = "<group>"; };
+		D717246E15345CD400F1F63E /* nachtwacht.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nachtwacht.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +323,7 @@
 		D717237115341F2B00F1F63E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D717246E15345CD400F1F63E /* nachtwacht.jpg */,
 				D717245C1534252600F1F63E /* mona_lisa.png */,
 				D717237215341F2B00F1F63E /* VIRM-Info.plist */,
 				D717237315341F2B00F1F63E /* InfoPlist.strings */,
@@ -709,6 +712,7 @@
 				D717237515341F2B00F1F63E /* InfoPlist.strings in Resources */,
 				D717237E15341F2B00F1F63E /* MainStoryboard.storyboard in Resources */,
 				D717245D1534252600F1F63E /* mona_lisa.png in Resources */,
+				D717246F15345CD400F1F63E /* nachtwacht.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

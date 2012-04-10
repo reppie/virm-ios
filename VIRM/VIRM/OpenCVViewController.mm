@@ -29,10 +29,11 @@ using namespace cv;
 
 - (void)viewDidLoad {
     printf("[OpenCV] View loaded.\n");
-    [self generateTestData];
+    
+    [self addImageToDataset:@"mona_lisa.png"];
+    [self addImageToDataset:@"nachtwacht.jpg"];
+    
     [self setupCaptureSession];
-    totalMatches = 0;
-    totalCaptures = 0;
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -112,8 +113,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
  
     // Clear previous results.
     keypointsCapture.clear();
-    matches.clear();
-    good_matches.clear();
     
     // Create matcher.
     BFMatcher matcher(NORM_HAMMING);
@@ -134,66 +133,78 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     // Extract features.
     featureExtractor.compute(image, keypointsCapture, descriptorsCapture);
     
-    // Use the matcher.
-    matcher.match(descriptorsCapture, descriptorsTrained, matches);
-    
-    
-    // For every keypoint, check its distance.
-    double max_dist = 0; 
-    double min_dist = 25;
-    
-    for( int i = 0; i < descriptorsCapture.rows; i++) { 
-        double dist = matches[i].distance;
-        if( dist < min_dist ) min_dist = dist;
-        if( dist > max_dist ) max_dist = dist;
-    }
-    
-    // Save good matches (low distance) in list.
-    for( int i = 0; i < descriptorsCapture.rows; i++ ) {
-        if( matches[i].distance < 2*min_dist ) {
-            good_matches.push_back(matches[i]);
-        }
-    }
-    
-    // Print stuff.
-//    printf("[OpenCV] Capture Keypoints size: %lu.\n", keypointsCapture.size());
-//    printf("[OpenCV] Trained Keypoints size: %lu.\n", keypointsTrained.size());
-//    printf("[OpenCV] Matches size: %lu.\n", matches.size());
+    [self match:descriptorsCapture];
 
-    printf("[OpenCV] Good matches : %lu. \n", good_matches.size());
-    
-    // Print result (if any).
-    if(good_matches.size() > 30) {
-        printf("[OpenCV] Mona Lisa recognized!\n");
-    }
-    
-    // Print averages.
-//    totalMatches = totalMatches + good_matches.size();
-//    totalCaptures++;
-//    
-//    int average = totalMatches / totalCaptures;
-//    printf("[OpenCV] Average number of matches: %i.\n", average);
-    
-    // Print time.
-//    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-//    printf("[OpenCV] FPS: %f.\n", (1 / timeInterval) * -1);
-    
 	[pool drain];
 }
 
-- (void) generateTestData {
-    printf("[OpenCV] Generating test data.\n");
-    keypointsTrained.clear();
+- (void) match: (Mat) captureInput {
+    // Create matcher.
+    BFMatcher matcher(NORM_HAMMING);
     
-    UIImage* testImageUI = [UIImage imageNamed:@"mona_lisa.png"];
+    // Use the matcher.
+    for(int i=0; i < dataSetDescriptors.size(); i++) {
+        // Clear results & set distances.
+        matches.clear();
+        goodMatches = 0;
+        
+        // Set distances.
+        double min_dist = 25;
+        double max_dist = 0;
+        
+        // Match.
+        matcher.match(captureInput, dataSetDescriptors[i], matches);        
+    
+        // For every keypoint, check its distance.
+    
+        for(int j = 0; j < descriptorsCapture.rows; j++) { 
+            double dist = matches[j].distance;
+            if( dist < min_dist ) min_dist = dist;
+            if( dist > max_dist ) max_dist = dist;
+        }
+    
+        // Save good matches (low distance) in list.
+        for(int k = 0; k < descriptorsCapture.rows; k++ ) {
+            
+            if( matches[k].distance < 2*min_dist ) {
+                goodMatches++;
+                
+                if(goodMatches > 30) {
+                    [self processMatch:i];
+                    break;
+                }                
+            }
+        }
+        printf("[OpenCV] Image #%d - Good matches : %d. \n", i, goodMatches);
+    }
+}
+
+- (void) processMatch: (int) imageId {
+//    printf("[OpenCV] Image %d recognized!\n", imageId);
+    
+    // Temporary hack.
+    if(imageId == 0) {
+        printf("[OpenCV] Mona Lisa found!\n");
+    }
+    if(imageId == 1) {
+        printf("[OpenCV] Nachtwacht found!\n");
+    }
+}
+
+- (void) addImageToDataset: (NSString *) filename {
+    printf("[OpenCV] Adding image to dataset.\n");
+    testKeypoints.clear();
+    
+    UIImage* testImageUI = [UIImage imageNamed:filename];
     IplImage* testImageColored = [self IplImageFromUIImage:testImageUI]; 
     IplImage* testImageResized = cvCreateImage(cvSize(150,150),testImageColored->depth,testImageColored->nChannels);
     cvResize(testImageColored, testImageResized);
     Mat testImage(testImageResized);
     
-    featureDetector.detect(testImage, keypointsTrained);
-    featureExtractor.compute(testImage, keypointsTrained, descriptorsTrained); 
-    printf("[OpenCV] Done generating test data.\n");
+    featureDetector.detect(testImage, testKeypoints);
+    featureExtractor.compute(testImage, testKeypoints, testDescriptors); 
+    
+    dataSetDescriptors.push_back(testDescriptors);
 }
 
 - (Mat)MatFromUIImage:(UIImage *)image

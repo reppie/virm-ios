@@ -7,15 +7,6 @@
 //
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import <CoreGraphics/CoreGraphics.h>
-#import <CoreVideo/CoreVideo.h>
-#import <CoreMedia/CoreMedia.h>
-
-#include <opencv2/core/core.hpp>
-#include <opencv2/features2d/features2d.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
-#include <vector>
 
 using namespace std;
 using namespace cv;
@@ -23,19 +14,19 @@ using namespace cv;
 @interface OpenCVViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate> {
 	AVCaptureSession *_captureSession;
 	AVCaptureVideoPreviewLayer *_prevLayer;
-    int totalCaptures;
-    int totalMatches;
     
     OrbFeatureDetector featureDetector;
     OrbDescriptorExtractor featureExtractor;
     
-    vector<KeyPoint> keypointsTrained;    
+    vector<KeyPoint> testKeypoints;    
     vector<KeyPoint> keypointsCapture;
     vector<DMatch> matches;
-    vector<DMatch> good_matches;
+    int goodMatches;
     
     Mat descriptorsCapture;
-    Mat descriptorsTrained;
+    Mat testDescriptors;
+    
+    vector<Mat> dataSetDescriptors;
 }
 
 @property (nonatomic, retain) AVCaptureSession *captureSession;
