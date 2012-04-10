@@ -29,6 +29,7 @@ using namespace cv;
 
 - (void)viewDidLoad {
     printf("[OpenCV] View loaded.\n");
+    [self generateTestData];
     [self setupCaptureSession];
     totalMatches = 0;
     totalCaptures = 0;
@@ -107,106 +108,93 @@ using namespace cv;
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer 
        fromConnection:(AVCaptureConnection *)connection
 {
-//    NSDate *start = [NSDate date];
-    
-    // Create a UIImage from the sample buffer data
-    //    UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
-    
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];	
+ 
+    // Clear previous results.
+    keypointsCapture.clear();
+    matches.clear();
+    good_matches.clear();
+    
+    // Create matcher.
+    BFMatcher matcher(NORM_HAMMING);
+    
+    // Load capture image.
     IplImage* capture = [self createIplImageFromSampleBuffer:sampleBuffer];
+    
+    // Resizing.
     IplImage* resizedCapture = cvCreateImage(cvSize(150,150),capture->depth,capture->nChannels);
-    
-    UIImage *uiImage = [UIImage imageNamed:@"mona_lisa.png"];
-    IplImage* monaLisaColored = [self IplImageFromUIImage:uiImage];
-    IplImage* resizedIplImageColored = cvCreateImage(cvSize(150,150),monaLisaColored->depth,monaLisaColored->nChannels);
-    
-    // Gray scaling stuff
-    //    IplImage *monaLisaGray = cvCreateImage(cvGetSize(monaLisaColored), 8, 1);
-    //    IplImage *resizedIplImageGray = cvCreateImage(cvGetSize(resizedIplImageColored), 8, 1);    
-    //    cvCvtColor(monaLisaColored,monaLisaGray,CV_BGR2GRAY);
-    //    cvCvtColor(resizedIplImageColored,resizedIplImageGray,CV_BGR2GRAY);    
-    //    
-    cvResize(monaLisaColored, resizedIplImageColored);
     cvResize(capture, resizedCapture);
     
-    Mat target(resizedIplImageColored);
+    // Convert to Mat.
     Mat image(resizedCapture);   
     
-    // Create smart pointer for ORB feature detector.
-    OrbFeatureDetector featureDetector;
-    
-    vector<KeyPoint> keypointsTrained;    
-    vector<KeyPoint> keypointsCapture;
-    
-    // Detect the keypoints
+    // Detect keypoints.
     featureDetector.detect(image, keypointsCapture);
-    featureDetector.detect(target, keypointsTrained);
     
-    //Similarly, we create a smart pointer to the ORB extractor.
-    OrbDescriptorExtractor featureExtractor;
-    
-    // Compute the 128 dimension SIFT descriptor at each keypoint.
-    // Each row in "descriptors" correspond to the ORB descriptor for each keypoint
-    Mat descriptorsCapture;
-    Mat descriptorsTrained;
+    // Extract features.
     featureExtractor.compute(image, keypointsCapture, descriptorsCapture);
-    featureExtractor.compute(target, keypointsTrained, descriptorsTrained); 
     
-    vector<DMatch> matches;
-    BFMatcher matcher(NORM_HAMMING);
+    // Use the matcher.
     matcher.match(descriptorsCapture, descriptorsTrained, matches);
     
+    
+    // For every keypoint, check its distance.
     double max_dist = 0; 
     double min_dist = 25;
     
-    //-- Quick calculation of max and min distances between keypoints
     for( int i = 0; i < descriptorsCapture.rows; i++) { 
         double dist = matches[i].distance;
         if( dist < min_dist ) min_dist = dist;
         if( dist > max_dist ) max_dist = dist;
     }
     
-    //-- Draw only "good" matches (i.e. whose distance is less than 2*min_dist )
-    //-- PS.- radiusMatch can also be used here.
-    std::vector< DMatch > good_matches;
-    
+    // Save good matches (low distance) in list.
     for( int i = 0; i < descriptorsCapture.rows; i++ ) {
         if( matches[i].distance < 2*min_dist ) {
             good_matches.push_back(matches[i]);
         }
     }
     
-    //    printf("[OpenCV] Capture Keypoints size: %lu.\n", keypointsCapture.size());
-    //    printf("[OpenCV] Trained Keypoints size: %lu.\n", keypointsTrained.size());
-    //    printf("[OpenCV] Matches size: %lu.\n", matches.size());
-    //    printf("[OpenCV] Max dist : %f. \n", max_dist);
-    //    printf("[OpenCV] Min dist : %f. \n", min_dist);
+    // Print stuff.
+//    printf("[OpenCV] Capture Keypoints size: %lu.\n", keypointsCapture.size());
+//    printf("[OpenCV] Trained Keypoints size: %lu.\n", keypointsTrained.size());
+//    printf("[OpenCV] Matches size: %lu.\n", matches.size());
+
     printf("[OpenCV] Good matches : %lu. \n", good_matches.size());
     
-    //    for( int i = 0; i < good_matches.size(); i++ ) {
-    //        printf( "[OpenCV] Good Match [%d] Keypoint 1: %d  -- Keypoint 2: %d.  \n", i, good_matches[i].queryIdx, good_matches[i].trainIdx ); 
-    //    }
-    
-    // Check for result
+    // Print result (if any).
     if(good_matches.size() > 30) {
         printf("[OpenCV] Mona Lisa recognized!\n");
     }
     
-    // Calculate averages
-    //    totalMatches = totalMatches + good_matches.size();
-    //    totalCaptures++;
-    //    
-    //    int average = totalMatches / totalCaptures;
-    //    printf("[OpenCV] Average number of matches: %i.\n", average);
+    // Print averages.
+//    totalMatches = totalMatches + good_matches.size();
+//    totalCaptures++;
+//    
+//    int average = totalMatches / totalCaptures;
+//    printf("[OpenCV] Average number of matches: %i.\n", average);
     
-    // Calculate time
+    // Print time.
 //    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-    
-    //    printf("[OpenCV] FPS: %f.\n", (1 / timeInterval) * -1);
+//    printf("[OpenCV] FPS: %f.\n", (1 / timeInterval) * -1);
     
 	[pool drain];
 }
 
+- (void) generateTestData {
+    printf("[OpenCV] Generating test data.\n");
+    keypointsTrained.clear();
+    
+    UIImage* testImageUI = [UIImage imageNamed:@"mona_lisa.png"];
+    IplImage* testImageColored = [self IplImageFromUIImage:testImageUI]; 
+    IplImage* testImageResized = cvCreateImage(cvSize(150,150),testImageColored->depth,testImageColored->nChannels);
+    cvResize(testImageColored, testImageResized);
+    Mat testImage(testImageResized);
+    
+    featureDetector.detect(testImage, keypointsTrained);
+    featureExtractor.compute(testImage, keypointsTrained, descriptorsTrained); 
+    printf("[OpenCV] Done generating test data.\n");
+}
 
 - (Mat)MatFromUIImage:(UIImage *)image
 {
