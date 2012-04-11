@@ -31,7 +31,6 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    printf("[History] CountOList in HistoryViewController: %i\n", [self.dataController countOfList]);
     return [self.dataController countOfList];
 }
 

@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
 
 using namespace std;
 using namespace cv;
