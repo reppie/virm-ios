@@ -29,9 +29,62 @@ using namespace cv;
 
 - (void)viewDidLoad {
     printf("[OpenCV] View loaded.\n");
+    printf("[OpenCV] Adding images to dataset.\n");
+    [self addImageToDataset:@"IMG_20120328_133650.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133717.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133800.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_133813.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_133844.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_133855.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_133903.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134104.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134112.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134125.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134135.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134143.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134152.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134208.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134301.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134320.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134432.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134446.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134503.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134513.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134521.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134529.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134544.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134551.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134601.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134610.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134621.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134629.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134705.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134719.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134727.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134750.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134801.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134811.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134823.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134832.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134840.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134849.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134934.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134948.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_134955.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135004.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135012.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135036.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135059.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135112.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135135.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135226.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135601.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135613.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135628.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135646.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135941.jpg"];
     
-    [self addImageToDataset:@"mona_lisa.png"];
-    [self addImageToDataset:@"nachtwacht.jpg"];
+    printf("[OpenCV] Finished adding images. Dataset: %lu images.\n", dataSetDescriptors.size());
     
     [self setupCaptureSession];
 }
@@ -114,18 +167,13 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     // Clear previous results.
     keypointsCapture.clear();
     
-    // Create matcher.
-    BFMatcher matcher(NORM_HAMMING);
-    
     // Load capture image.
-    IplImage* capture = [self createIplImageFromSampleBuffer:sampleBuffer];
+    UIImage* captureUI = [self imageFromSampleBuffer:sampleBuffer];
+    Mat capture = [self MatFromUIImage:captureUI];
+    Mat image(100,100, CV_8UC1);
     
     // Resizing.
-    IplImage* resizedCapture = cvCreateImage(cvSize(150,150),capture->depth,capture->nChannels);
-    cvResize(capture, resizedCapture);
-    
-    // Convert to Mat.
-    Mat image(resizedCapture);   
+    cv::resize(capture, image, image.size());
     
     // Detect keypoints.
     featureDetector.detect(image, keypointsCapture);
@@ -139,8 +187,11 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 - (void) match: (Mat) captureInput {
+    printf("[OpenCV] Matching image.\n");    
     // Create matcher.
     BFMatcher matcher(NORM_HAMMING);
+    int bestMatch = 0;
+    int imageId = 0;
     
     // Use the matcher.
     for(int i=0; i < dataSetDescriptors.size(); i++) {
@@ -148,56 +199,43 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         matches.clear();
         goodMatches = 0;
         
-        // Set distances.
-        double min_dist = 25;
-        double max_dist = 0;
-        
         // Match.
         matcher.match(captureInput, dataSetDescriptors[i], matches);        
     
-        // For every keypoint, check its distance.
-    
-        for(int j = 0; j < descriptorsCapture.rows; j++) { 
-            double dist = matches[j].distance;
-            if( dist < min_dist ) min_dist = dist;
-            if( dist > max_dist ) max_dist = dist;
-        }
-    
         // Save good matches (low distance) in list.
         for(int k = 0; k < descriptorsCapture.rows; k++ ) {
-            
-            if( matches[k].distance < 2*min_dist ) {
-                goodMatches++;
-                
-                if(goodMatches > 30) {
-                    [self processMatch:i];
-                    break;
-                }                
+            if( matches[k].distance < 50 ) {
+                goodMatches++;   
             }
         }
-        printf("[OpenCV] Image #%d - Good matches : %d. \n", i, goodMatches);
+        
+        if(goodMatches > bestMatch) {
+            bestMatch = goodMatches;
+            imageId = i;
+        }
+//        printf("[OpenCV] Image #%d - Good matches : %d. \n", i, goodMatches);
     }
+        printf("[OpenCV] Image ID : %d (%d matches) \n", imageId, bestMatch);    
 }
 
 - (void) processMatch: (int) imageId {
-//    printf("[OpenCV] Image %d recognized!\n", imageId);
+    printf("[OpenCV] Image %d recognized!\n", imageId);
     
-    // Temporary hack.
-    if(imageId == 0) {
-        printf("[OpenCV] Mona Lisa found!\n");
-    }
-    if(imageId == 1) {
-        printf("[OpenCV] Nachtwacht found!\n");
-    }
+//    // Temporary hack.
+//    if(imageId == 0) {
+//        printf("[OpenCV] Mona Lisa found!\n");
+//    }
+//    if(imageId == 1) {
+//        printf("[OpenCV] Nachtwacht found!\n");
+//    }
 }
 
 - (void) addImageToDataset: (NSString *) filename {
-    printf("[OpenCV] Adding image to dataset.\n");
     testKeypoints.clear();
     
     UIImage* testImageUI = [UIImage imageNamed:filename];
     IplImage* testImageColored = [self IplImageFromUIImage:testImageUI]; 
-    IplImage* testImageResized = cvCreateImage(cvSize(150,150),testImageColored->depth,testImageColored->nChannels);
+    IplImage* testImageResized = cvCreateImage(cvSize(100,100),testImageColored->depth,testImageColored->nChannels);
     cvResize(testImageColored, testImageResized);
     Mat testImage(testImageResized);
     
@@ -305,8 +343,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return (image);
 }
 
-#pragma mark -
-#pragma mark Memory management
+- (void)didReceiveMemoryWarning {
+    printf("[OpenCV] Memory warning!");
+}
 
 - (void)viewDidUnload {
 	self.previewLayer = nil;
