@@ -107,6 +107,10 @@
 		D71E394D153572DE004F69A6 /* IMG_20120328_135628.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71E3917153572DE004F69A6 /* IMG_20120328_135628.jpg */; };
 		D71E394E153572DE004F69A6 /* IMG_20120328_135646.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71E3918153572DE004F69A6 /* IMG_20120328_135646.jpg */; };
 		D71E394F153572DE004F69A6 /* IMG_20120328_135941.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71E3919153572DE004F69A6 /* IMG_20120328_135941.jpg */; };
+		D7C8220D15359C1F0051A4C8 /* HistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8220615359C1F0051A4C8 /* HistoryItem.m */; };
+		D7C8220E15359C1F0051A4C8 /* HistoryItemDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8220815359C1F0051A4C8 /* HistoryItemDataController.m */; };
+		D7C8220F15359C1F0051A4C8 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8220A15359C1F0051A4C8 /* HistoryItemViewController.m */; };
+		D7C8221015359C1F0051A4C8 /* HistoryViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7C8220C15359C1F0051A4C8 /* HistoryViewController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -325,6 +329,14 @@
 		D71E3917153572DE004F69A6 /* IMG_20120328_135628.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_20120328_135628.jpg; sourceTree = "<group>"; };
 		D71E3918153572DE004F69A6 /* IMG_20120328_135646.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_20120328_135646.jpg; sourceTree = "<group>"; };
 		D71E3919153572DE004F69A6 /* IMG_20120328_135941.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_20120328_135941.jpg; sourceTree = "<group>"; };
+		D7C8220515359C1F0051A4C8 /* HistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItem.h; sourceTree = "<group>"; };
+		D7C8220615359C1F0051A4C8 /* HistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItem.m; sourceTree = "<group>"; };
+		D7C8220715359C1F0051A4C8 /* HistoryItemDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemDataController.h; sourceTree = "<group>"; };
+		D7C8220815359C1F0051A4C8 /* HistoryItemDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemDataController.m; sourceTree = "<group>"; };
+		D7C8220915359C1F0051A4C8 /* HistoryItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemViewController.h; sourceTree = "<group>"; };
+		D7C8220A15359C1F0051A4C8 /* HistoryItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItemViewController.m; sourceTree = "<group>"; };
+		D7C8220B15359C1F0051A4C8 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		D7C8220C15359C1F0051A4C8 /* HistoryViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HistoryViewController.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,6 +425,7 @@
 		D717237015341F2B00F1F63E /* VIRM */ = {
 			isa = PBXGroup;
 			children = (
+				D7C8220415359C040051A4C8 /* History */,
 				D717238B15341FE900F1F63E /* OpenCV */,
 				D717237915341F2B00F1F63E /* AppDelegate.h */,
 				D717237A15341F2B00F1F63E /* AppDelegate.m */,
@@ -831,6 +844,21 @@
 			name = "Groninger Museum";
 			sourceTree = "<group>";
 		};
+		D7C8220415359C040051A4C8 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				D7C8220515359C1F0051A4C8 /* HistoryItem.h */,
+				D7C8220615359C1F0051A4C8 /* HistoryItem.m */,
+				D7C8220715359C1F0051A4C8 /* HistoryItemDataController.h */,
+				D7C8220815359C1F0051A4C8 /* HistoryItemDataController.m */,
+				D7C8220915359C1F0051A4C8 /* HistoryItemViewController.h */,
+				D7C8220A15359C1F0051A4C8 /* HistoryItemViewController.m */,
+				D7C8220B15359C1F0051A4C8 /* HistoryViewController.h */,
+				D7C8220C15359C1F0051A4C8 /* HistoryViewController.mm */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -951,6 +979,10 @@
 				D717237B15341F2B00F1F63E /* AppDelegate.m in Sources */,
 				D717238115341F2B00F1F63E /* OpenCVViewController.mm in Sources */,
 				D71724511534202B00F1F63E /* UIImage+OpenCV.mm in Sources */,
+				D7C8220D15359C1F0051A4C8 /* HistoryItem.m in Sources */,
+				D7C8220E15359C1F0051A4C8 /* HistoryItemDataController.m in Sources */,
+				D7C8220F15359C1F0051A4C8 /* HistoryItemViewController.m in Sources */,
+				D7C8221015359C1F0051A4C8 /* HistoryViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

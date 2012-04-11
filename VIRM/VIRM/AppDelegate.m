@@ -11,9 +11,12 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize historyItemDataController = _historyItemDataController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    printf("[Application] Finished launching.\n");
+    _historyItemDataController = [[HistoryItemDataController alloc] init];
     // Override point for customization after application launch.
     return YES;
 }

@@ -1,5 +1,8 @@
 #import "OpenCVViewController.h"
 #import "UIImage+OpenCV.h"
+#import "AppDelegate.h"
+#import "HistoryItemViewController.h"
+#import "HistoryItem.h"
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/features2d/features2d.hpp>
@@ -29,12 +32,15 @@ using namespace cv;
 
 - (void)viewDidLoad {
     printf("[OpenCV] View loaded.\n");
+    
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     printf("[OpenCV] Adding images to dataset.\n");
     [self addImageToDataset:@"IMG_20120328_133650.jpg"];
     [self addImageToDataset:@"IMG_20120328_133717.jpg"];
     [self addImageToDataset:@"IMG_20120328_133800.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_133813.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_133844.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133813.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133844.jpg"];
 //    [self addImageToDataset:@"IMG_20120328_133855.jpg"];
 //    [self addImageToDataset:@"IMG_20120328_133903.jpg"];
 //    [self addImageToDataset:@"IMG_20120328_134104.jpg"];
@@ -85,7 +91,9 @@ using namespace cv;
 //    [self addImageToDataset:@"IMG_20120328_135941.jpg"];
     
     printf("[OpenCV] Finished adding images. Dataset: %lu images.\n", dataSetDescriptors.size());
-    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     [self setupCaptureSession];
 }
 
@@ -186,8 +194,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	[pool drain];
 }
 
-- (void) match: (Mat) captureInput {
-    printf("[OpenCV] Matching image.\n");    
+- (void) match: (Mat) captureInput {    
     // Create matcher.
     BFMatcher matcher(NORM_HAMMING);
     int bestMatch = 0;
@@ -213,7 +220,11 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             bestMatch = goodMatches;
             imageId = i;
         }
-//        printf("[OpenCV] Image #%d - Good matches : %d. \n", i, goodMatches);
+        
+        if(goodMatches > 10) {
+            [self processMatch:imageId];
+        }
+        
     }
         printf("[OpenCV] Image ID : %d (%d matches) \n", imageId, bestMatch);    
 }
@@ -221,16 +232,30 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 - (void) processMatch: (int) imageId {
     printf("[OpenCV] Image %d recognized!\n", imageId);
     
-//    // Temporary hack.
-//    if(imageId == 0) {
-//        printf("[OpenCV] Mona Lisa found!\n");
-//    }
-//    if(imageId == 1) {
-//        printf("[OpenCV] Nachtwacht found!\n");
-//    }
+    [self.captureSession stopRunning];
+    printf("[OpenCV] Capturesession stopped.\n");
+    
+    NSString* fileName = fileNames[imageId];
+    UIImage *img = [UIImage imageNamed:fileName];
+    
+    [appDelegate.historyItemDataController addHistoryItem:fileName painter:fileName image:img];
+    
+    [self performSelectorOnMainThread:@selector(switchToPaintingView) withObject:nil waitUntilDone:NO];
+}
+
+-(void)switchToPaintingView{
+    printf("[OpenCV] Switching to paintingview.\n");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    HistoryItemViewController *paintingViewController =[storyboard instantiateViewControllerWithIdentifier:@"paintingViewController"];
+    
+    paintingViewController.historyItem = [appDelegate.historyItemDataController getLastAddedHistoryItem];
+    
+    [self.navigationController pushViewController:paintingViewController animated:YES];
 }
 
 - (void) addImageToDataset: (NSString *) filename {
+    fileNames.push_back(filename);
+    
     testKeypoints.clear();
     
     UIImage* testImageUI = [UIImage imageNamed:filename];

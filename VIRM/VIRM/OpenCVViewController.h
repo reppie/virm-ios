@@ -7,6 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "AppDelegate.h"
 
 using namespace std;
 using namespace cv;
@@ -27,10 +28,12 @@ using namespace cv;
     Mat testDescriptors;
     
     vector<Mat> dataSetDescriptors;
+    vector<NSString*> fileNames;
+    
+    AppDelegate *appDelegate;
 }
 
 @property (nonatomic, retain) AVCaptureSession *captureSession;
-
 @property (nonatomic, retain) AVCaptureVideoPreviewLayer *previewLayer;
 
 @end
