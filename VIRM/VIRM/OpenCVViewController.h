@@ -24,7 +24,10 @@ using namespace cv;
     vector<KeyPoint> testKeypoints;    
     vector<KeyPoint> keypointsCapture;
     vector<DMatch> matches;
+    
     int goodMatches;
+    int width;
+    int height;
     
     Mat descriptorsCapture;
     Mat testDescriptors;

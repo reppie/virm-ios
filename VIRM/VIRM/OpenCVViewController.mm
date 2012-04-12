@@ -23,8 +23,6 @@ using namespace cv;
 - (id)init {
 	self = [super init];
 	if (self) {
-		/*We initialize some variables (they might be not initialized depending on what is commented or not)*/
-        
 		self.previewLayer = nil;
 	}
 	return self;
@@ -32,6 +30,9 @@ using namespace cv;
 
 - (void)viewDidLoad {
     printf("[OpenCV] View loaded.\n");
+    
+    width = 150;
+    height = 150;
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     finishedLaunching = NO;
@@ -51,7 +52,6 @@ using namespace cv;
         
         HUD.labelText = @"Loading camera";
         [HUD showWhileExecuting:@selector(startCapture) onTarget:self withObject:nil animated:YES];
-
     }
 }
 
@@ -105,52 +105,52 @@ using namespace cv;
     [self addImageToDataset:@"IMG_20120328_133844.jpg"];
     [self addImageToDataset:@"IMG_20120328_133855.jpg"];
     [self addImageToDataset:@"IMG_20120328_133903.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134104.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134112.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134125.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134135.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134143.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134152.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134208.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134301.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134320.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134432.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134446.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134503.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134513.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134521.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134529.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134544.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134551.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134601.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134610.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134621.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134629.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134705.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134719.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134727.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134750.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134801.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134811.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134823.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134832.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134840.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134849.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134934.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134948.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_134955.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135004.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135012.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135036.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135059.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135112.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135135.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135226.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135601.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135613.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135628.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135646.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135941.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134104.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134112.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134125.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134135.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134143.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134152.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134208.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134301.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134320.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134432.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134446.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134503.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134513.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134521.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134529.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134544.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134551.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134601.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134610.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134621.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134629.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134705.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134719.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134727.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134750.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134801.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134811.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134823.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134832.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134840.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134849.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134934.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134948.jpg"];
+    [self addImageToDataset:@"IMG_20120328_134955.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135004.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135012.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135036.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135059.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135112.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135135.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135226.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135601.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135613.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135628.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135646.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135941.jpg"];
     
     printf("[OpenCV] Finished adding images. Dataset: %lu images.\n", dataSetDescriptors.size());
 }
@@ -215,6 +215,8 @@ using namespace cv;
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer 
        fromConnection:(AVCaptureConnection *)connection
 {
+    NSDate *start = [NSDate date];
+    
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];	
  
     // Clear previous results.
@@ -223,7 +225,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     // Load capture image.
     UIImage* captureUI = [self imageFromSampleBuffer:sampleBuffer];
     Mat capture = [self MatFromUIImage:captureUI];
-    Mat image(100,100, CV_8UC1);
+    Mat image(width, height, CV_8UC1);
     
     // Resizing.
     cv::resize(capture, image, image.size());
@@ -237,6 +239,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [self match:descriptorsCapture];
 
 	[pool drain];
+    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
+    printf("[OpenCV] Time elapsed: %f.\n", timeInterval);
 }
 
 - (void) match: (Mat) captureInput {    
@@ -266,12 +270,13 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             imageId = i;
         }
         
-        if(goodMatches > 10) {
+        if(goodMatches > 30) {
             [self processMatch:imageId];
+            break;
         }
         
     }
-        printf("[OpenCV] Image ID : %d (%d matches) \n", imageId, bestMatch);    
+    printf("[OpenCV] Image ID : %d (%d matches) \n", imageId, bestMatch);
 }
 
 - (void) processMatch: (int) imageId {
@@ -306,7 +311,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     UIImage* testImageUI = [UIImage imageNamed:filename];
     IplImage* testImageColored = [self IplImageFromUIImage:testImageUI]; 
-    IplImage* testImageResized = cvCreateImage(cvSize(100,100),testImageColored->depth,testImageColored->nChannels);
+    IplImage* testImageResized = cvCreateImage(cvSize(width,height),testImageColored->depth,testImageColored->nChannels);
     cvResize(testImageColored, testImageResized);
     
     Mat testImage(testImageResized);
@@ -388,14 +393,14 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     // Get the number of bytes per row for the pixel buffer
     size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer); 
     // Get the pixel buffer width and height
-    size_t width = CVPixelBufferGetWidth(imageBuffer); 
-    size_t height = CVPixelBufferGetHeight(imageBuffer); 
+    size_t bWidth = CVPixelBufferGetWidth(imageBuffer); 
+    size_t bHeight = CVPixelBufferGetHeight(imageBuffer); 
     
     // Create a device-dependent RGB color space
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
     
     // Create a bitmap graphics context with the sample buffer data
-    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, 
+    CGContextRef context = CGBitmapContextCreate(baseAddress, bWidth, bHeight, 8, 
                                                  bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst); 
     // Create a Quartz image from the pixel data in the bitmap graphics context
     CGImageRef quartzImage = CGBitmapContextCreateImage(context); 
