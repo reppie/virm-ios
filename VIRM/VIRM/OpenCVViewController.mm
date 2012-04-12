@@ -225,16 +225,20 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     // Load capture image.
     UIImage* captureUI = [self imageFromSampleBuffer:sampleBuffer];
     Mat capture = [self MatFromUIImage:captureUI];
-    Mat image(width, height, CV_8UC1);
+    Mat image(width, height, CV_8UC3);
+    
+    Mat imageGray;
+    
+    cvtColor(image, imageGray, CV_RGB2GRAY);    
     
     // Resizing.
-    cv::resize(capture, image, image.size());
+    cv::resize(capture, imageGray, image.size());
     
     // Detect keypoints.
-    featureDetector.detect(image, keypointsCapture);
+    featureDetector.detect(imageGray, keypointsCapture);
     
     // Extract features.
-    featureExtractor.compute(image, keypointsCapture, descriptorsCapture);
+    featureExtractor.compute(imageGray, keypointsCapture, descriptorsCapture);
     
     [self match:descriptorsCapture];
 
@@ -315,9 +319,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     cvResize(testImageColored, testImageResized);
     
     Mat testImage(testImageResized);
+    Mat testImageGray;
     
-    featureDetector.detect(testImage, testKeypoints);
-    featureExtractor.compute(testImage, testKeypoints, testDescriptors); 
+    cvtColor(testImage, testImageGray, CV_RGB2GRAY);
+    
+    featureDetector.detect(testImageGray, testKeypoints);
+    featureExtractor.compute(testImageGray, testKeypoints, testDescriptors); 
     
     dataSetDescriptors.push_back(testDescriptors);
 }
