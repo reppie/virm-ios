@@ -31,8 +31,8 @@ using namespace cv;
 - (void)viewDidLoad {
     printf("[OpenCV] View loaded.\n");
     
-    width = 150;
-    height = 150;
+    width = 100;
+    height = 100;
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     finishedLaunching = NO;
