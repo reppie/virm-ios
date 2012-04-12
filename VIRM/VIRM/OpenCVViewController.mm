@@ -31,8 +31,8 @@ using namespace cv;
 - (void)viewDidLoad {
     printf("[OpenCV] View loaded.\n");
     
-    width = 100;
-    height = 100;
+    width = 150;
+    height = 150;
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     finishedLaunching = NO;
@@ -141,6 +141,7 @@ using namespace cv;
     [self addImageToDataset:@"IMG_20120328_134955.jpg"];
     [self addImageToDataset:@"IMG_20120328_135004.jpg"];
     [self addImageToDataset:@"IMG_20120328_135012.jpg"];
+    [self addImageToDataset:@"IMG_20120328_135021.jpg"];
     [self addImageToDataset:@"IMG_20120328_135036.jpg"];
     [self addImageToDataset:@"IMG_20120328_135059.jpg"];
     [self addImageToDataset:@"IMG_20120328_135112.jpg"];
@@ -264,7 +265,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
         // Save good matches (low distance) in list.
         for(int k = 0; k < descriptorsCapture.rows; k++ ) {
-            if( matches[k].distance < 50 ) {
+            if( matches[k].distance < 35 ) {
                 goodMatches++;   
             }
         }
@@ -274,7 +275,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             imageId = i;
         }
         
-        if(goodMatches > 30) {
+        if(goodMatches > 12) {
             [self processMatch:imageId];
             break;
         }
