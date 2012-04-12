@@ -34,21 +34,77 @@ using namespace cv;
     printf("[OpenCV] View loaded.\n");
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    finishedLaunching = NO;
     
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	[self.navigationController.view addSubview:HUD];
+
+    HUD.labelText = @"Loading images..";
+    [HUD showWhileExecuting:@selector(setupApplication) onTarget:self withObject:nil animated:YES];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    
+    if (finishedLaunching && self.captureSession.isRunning == FALSE) { 
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.navigationController.view addSubview:HUD];    
+        
+        HUD.labelText = @"Loading camera";
+        [HUD showWhileExecuting:@selector(startCapture) onTarget:self withObject:nil animated:YES];
+
+    }
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    printf("[OpenCV] Capturesession stopped.\n");
+    [self.captureSession stopRunning];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+
+- (void) setupApplication {
+    [self setupCaptureSession];
+    [self loadImages];
+    [self startCamera];
+    finishedLaunching = YES;    
+}
+
+- (void) startCapture {
+    printf("[OpenCV] Capturesession started.\n");        
+    [self.captureSession startRunning];    
+}
+
+- (void) startCamera {
+    [self.view.layer addSublayer: self.previewLayer];
+    
+    // Start the session running to start the flow of data
+    printf("[OpenCV] Initial capturesession started.\n");
+    [self.captureSession startRunning];
+    
+    // Assign session to an ivar.
+    [self setCaptureSession:self.captureSession];    
+}
+
+- (void)loadImages {
     printf("[OpenCV] Adding images to dataset.\n");
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading images..";
-    
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-    
-        [self addImageToDataset:@"IMG_20120328_133650.jpg"];
-        [self addImageToDataset:@"IMG_20120328_133717.jpg"];
-        [self addImageToDataset:@"IMG_20120328_133800.jpg"];
-        [self addImageToDataset:@"IMG_20120328_133813.jpg"];
-        [self addImageToDataset:@"IMG_20120328_133844.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_133855.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_133903.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133650.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133717.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133800.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133813.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133844.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133855.jpg"];
+    [self addImageToDataset:@"IMG_20120328_133903.jpg"];
 //    [self addImageToDataset:@"IMG_20120328_134104.jpg"];
 //    [self addImageToDataset:@"IMG_20120328_134112.jpg"];
 //    [self addImageToDataset:@"IMG_20120328_134125.jpg"];
@@ -96,42 +152,7 @@ using namespace cv;
 //    [self addImageToDataset:@"IMG_20120328_135646.jpg"];
 //    [self addImageToDataset:@"IMG_20120328_135941.jpg"];
     
-        printf("[OpenCV] Finished adding images. Dataset: %lu images.\n", dataSetDescriptors.size());
-       
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
-    });        
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading camera..";
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
-        [self setupCaptureSession];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
-    });    
-}
-
-- (void) viewDidDisappear:(BOOL)animated {
-    printf("[OpenCV] Capturesession stopped.\n");
-    [self.captureSession stopRunning];
-}
-
-- (void) viewWillAppear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-    [super viewWillAppear:animated];
-}
-
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-    [super viewWillDisappear:animated];
+    printf("[OpenCV] Finished adding images. Dataset: %lu images.\n", dataSetDescriptors.size());
 }
 
 - (void)setupCaptureSession 
@@ -187,14 +208,6 @@ using namespace cv;
     CGRect layerRect = [[self view] bounds];
 	[self.previewLayer setBounds:layerRect];
     [self.previewLayer setPosition:CGPointMake(CGRectGetMidX(layerRect), CGRectGetMidY(layerRect))];
-    [self.view.layer addSublayer: self.previewLayer];
-    
-    // Start the session running to start the flow of data
-    printf("[OpenCV] Capturesession started.\n");
-    [self.captureSession startRunning];
-    
-    // Assign session to an ivar.
-    [self setCaptureSession:self.captureSession];
 }
 
 // Delegate routine that is called when a sample buffer was written
@@ -295,6 +308,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     IplImage* testImageColored = [self IplImageFromUIImage:testImageUI]; 
     IplImage* testImageResized = cvCreateImage(cvSize(100,100),testImageColored->depth,testImageColored->nChannels);
     cvResize(testImageColored, testImageResized);
+    
     Mat testImage(testImageResized);
     
     featureDetector.detect(testImage, testKeypoints);

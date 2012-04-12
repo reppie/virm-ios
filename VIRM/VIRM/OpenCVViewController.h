@@ -14,6 +14,7 @@ using namespace std;
 using namespace cv;
 
 @interface OpenCVViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate> {
+    
 	AVCaptureSession *_captureSession;
 	AVCaptureVideoPreviewLayer *_prevLayer;
     
@@ -32,6 +33,8 @@ using namespace cv;
     vector<NSString*> fileNames;
     
     AppDelegate *appDelegate;
+    MBProgressHUD *HUD;   
+    BOOL finishedLaunching;
 }
 
 @property (nonatomic, retain) AVCaptureSession *captureSession;
