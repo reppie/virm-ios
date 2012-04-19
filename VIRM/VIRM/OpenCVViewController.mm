@@ -98,62 +98,74 @@ using namespace cv;
 - (void)loadImages {
     printf("[OpenCV] Adding images to dataset.\n");
     
-    [self addImageToDataset:@"IMG_20120328_133650.jpg"];
-    [self addImageToDataset:@"IMG_20120328_133717.jpg"];
-    [self addImageToDataset:@"IMG_20120328_133800.jpg"];
-    [self addImageToDataset:@"IMG_20120328_133813.jpg"];
-    [self addImageToDataset:@"IMG_20120328_133844.jpg"];
-    [self addImageToDataset:@"IMG_20120328_133855.jpg"];
-    [self addImageToDataset:@"IMG_20120328_133903.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134104.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134112.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134125.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134135.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134143.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134152.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134208.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134301.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134320.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134432.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134446.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134503.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134513.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134521.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134529.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134544.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134551.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134601.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134610.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134621.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134629.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134705.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134719.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134727.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134750.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134801.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134811.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134823.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134832.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134840.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134849.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134934.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134948.jpg"];
-    [self addImageToDataset:@"IMG_20120328_134955.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135004.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135012.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135021.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135036.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135059.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135112.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135135.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135226.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135601.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135613.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135628.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135646.jpg"];
-    [self addImageToDataset:@"IMG_20120328_135941.jpg"];
+    NSDate* start = [NSDate date];
+    
+    NSMutableArray *imageList = [[NSMutableArray alloc] init];
+    [imageList addObject:@"IMG_20120328_133650.jpg"];
+    [imageList addObject:@"IMG_20120328_133717.jpg"];
+    [imageList addObject:@"IMG_20120328_133800.jpg"];
+    [imageList addObject:@"IMG_20120328_133813.jpg"];
+    [imageList addObject:@"IMG_20120328_133844.jpg"];
+    [imageList addObject:@"IMG_20120328_133855.jpg"];
+    [imageList addObject:@"IMG_20120328_133903.jpg"];
+    [imageList addObject:@"IMG_20120328_134104.jpg"];
+    [imageList addObject:@"IMG_20120328_134112.jpg"];
+    [imageList addObject:@"IMG_20120328_134125.jpg"];
+    [imageList addObject:@"IMG_20120328_134135.jpg"];
+    [imageList addObject:@"IMG_20120328_134143.jpg"];
+    [imageList addObject:@"IMG_20120328_134152.jpg"];
+    [imageList addObject:@"IMG_20120328_134208.jpg"];
+    [imageList addObject:@"IMG_20120328_134301.jpg"];
+    [imageList addObject:@"IMG_20120328_134320.jpg"];
+    [imageList addObject:@"IMG_20120328_134432.jpg"];
+    [imageList addObject:@"IMG_20120328_134446.jpg"];
+    [imageList addObject:@"IMG_20120328_134503.jpg"];
+    [imageList addObject:@"IMG_20120328_134513.jpg"];
+    [imageList addObject:@"IMG_20120328_134521.jpg"];
+    [imageList addObject:@"IMG_20120328_134529.jpg"];
+    [imageList addObject:@"IMG_20120328_134544.jpg"];
+    [imageList addObject:@"IMG_20120328_134551.jpg"];
+    [imageList addObject:@"IMG_20120328_134601.jpg"];
+    [imageList addObject:@"IMG_20120328_134610.jpg"];
+    [imageList addObject:@"IMG_20120328_134621.jpg"];
+    [imageList addObject:@"IMG_20120328_134629.jpg"];
+    [imageList addObject:@"IMG_20120328_134705.jpg"];
+    [imageList addObject:@"IMG_20120328_134719.jpg"];
+    [imageList addObject:@"IMG_20120328_134727.jpg"];
+    [imageList addObject:@"IMG_20120328_134750.jpg"];
+    [imageList addObject:@"IMG_20120328_134801.jpg"];
+    [imageList addObject:@"IMG_20120328_134811.jpg"];
+    [imageList addObject:@"IMG_20120328_134823.jpg"];
+    [imageList addObject:@"IMG_20120328_134832.jpg"];
+    [imageList addObject:@"IMG_20120328_134840.jpg"];
+    [imageList addObject:@"IMG_20120328_134849.jpg"];
+    [imageList addObject:@"IMG_20120328_134934.jpg"];
+    [imageList addObject:@"IMG_20120328_134948.jpg"];
+    [imageList addObject:@"IMG_20120328_134955.jpg"];
+    [imageList addObject:@"IMG_20120328_135004.jpg"];
+    
+    // No .mat files for these images yet.
+//    [self addImageToDataset:@"IMG_20120328_135012.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135021.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135036.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135059.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135112.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135135.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135226.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135601.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135613.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135628.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135646.jpg"];
+//    [self addImageToDataset:@"IMG_20120328_135941.jpg"];
+    
+    for(NSString *filename in imageList) {
+        [self createDescriptorsFromFile:filename];
+//        [self addImageToDataset:filename];        
+    }
     
     printf("[OpenCV] Finished adding images. Dataset: %lu images.\n", dataSetDescriptors.size());
+    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
+    printf("[OpenCV] Time to load: %f.\n", timeInterval);
 }
 
 - (void)setupCaptureSession 
@@ -216,8 +228,6 @@ using namespace cv;
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer 
        fromConnection:(AVCaptureConnection *)connection
 {
-    NSDate *start = [NSDate date];
-    
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];	
  
     // Clear previous results.
@@ -244,8 +254,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [self match:descriptorsCapture];
 
 	[pool drain];
-    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-    printf("[OpenCV] Time elapsed: %f.\n", timeInterval);
 }
 
 - (void) match: (Mat) captureInput {    
@@ -291,6 +299,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     printf("[OpenCV] Capturesession stopped.\n");
     
     NSString* fileName = fileNames[imageId];
+    
     UIImage *img = [UIImage imageNamed:fileName];
     
     [appDelegate.historyItemDataController addHistoryItem:fileName painter:fileName image:img];
@@ -327,7 +336,61 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     featureDetector.detect(testImageGray, testKeypoints);
     featureExtractor.compute(testImageGray, testKeypoints, testDescriptors); 
     
+    // Save the image as .mat file
+//    [self saveDescriptorsToFile:testDescriptors fileName:filename];
+
+    printf("[OpenCV] Rows size: %d.\n", testDescriptors.rows);
+    printf("[OpenCV] Column size: %d.\n", testDescriptors.cols);
+    
     dataSetDescriptors.push_back(testDescriptors);
+}
+
+- (void)createDescriptorsFromFile: (NSString *) filename {
+    fileNames.push_back(filename);
+    
+    filename = [filename substringToIndex:[filename length] - 4];
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:filename ofType:@"mat"];
+    NSString *file = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+
+    NSArray *content = [file componentsSeparatedByString: @","];
+    
+    int rows = [[content objectAtIndex:0] intValue];
+    int cols = [[content objectAtIndex:1] intValue];
+    
+    Mat descriptors(rows, cols, CV_8U);
+    
+    for(int i=0; i < rows; i++) {
+        for(int j=0; j < cols; j++) {
+
+            descriptors.row(i).col(j) = [[content objectAtIndex:(i*cols)+j+2] intValue];
+        }
+    }
+    dataSetDescriptors.push_back(descriptors);
+}
+
+- (void)saveDescriptorsToFile: (Mat)descriptors fileName:(NSString *)filename {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:filename];
+    
+    NSString *content = @"";
+    NSString *rows = [NSString stringWithFormat:@"%d,", descriptors.rows];
+    NSString *cols = [NSString stringWithFormat:@"%d,", descriptors.cols];
+    
+    // Save the rows & cols.
+    content = [content stringByAppendingString:rows];
+    content = [content stringByAppendingString:cols];
+    
+    for(int i=0; i < descriptors.rows; i++) {
+        for(int j=0; j < descriptors.cols; j++) {
+            NSString *value = [NSString stringWithFormat: @"%d,", descriptors.at<unsigned char>(i, j)];
+            content = [content stringByAppendingString:value];
+        }
+    }
+    
+    [content writeToFile:filePath atomically:TRUE encoding:NSUTF8StringEncoding error:NULL];
+    printf("[OpenCV] Saved image: %s.\n", [filename UTF8String]);
 }
 
 - (Mat)MatFromUIImage:(UIImage *)image
