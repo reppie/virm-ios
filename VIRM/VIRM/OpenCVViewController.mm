@@ -143,20 +143,18 @@ using namespace cv;
     [imageList addObject:@"IMG_20120328_134948.jpg"];
     [imageList addObject:@"IMG_20120328_134955.jpg"];
     [imageList addObject:@"IMG_20120328_135004.jpg"];
-    
-    // No .mat files for these images yet.
-//    [self addImageToDataset:@"IMG_20120328_135012.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135021.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135036.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135059.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135112.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135135.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135226.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135601.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135613.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135628.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135646.jpg"];
-//    [self addImageToDataset:@"IMG_20120328_135941.jpg"];
+    [imageList addObject:@"IMG_20120328_135012.jpg"];
+    [imageList addObject:@"IMG_20120328_135021.jpg"];
+    [imageList addObject:@"IMG_20120328_135036.jpg"];
+    [imageList addObject:@"IMG_20120328_135059.jpg"];
+    [imageList addObject:@"IMG_20120328_135112.jpg"];
+    [imageList addObject:@"IMG_20120328_135135.jpg"];
+    [imageList addObject:@"IMG_20120328_135226.jpg"];
+    [imageList addObject:@"IMG_20120328_135601.jpg"];
+    [imageList addObject:@"IMG_20120328_135613.jpg"];
+    [imageList addObject:@"IMG_20120328_135628.jpg"];
+    [imageList addObject:@"IMG_20120328_135646.jpg"];
+    [imageList addObject:@"IMG_20120328_135941.jpg"];
     
     for(NSString *filename in imageList) {
         [self createDescriptorsFromFile:filename];
@@ -337,7 +335,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     featureExtractor.compute(testImageGray, testKeypoints, testDescriptors); 
     
     // Save the image as .mat file
-//    [self saveDescriptorsToFile:testDescriptors fileName:filename];
+    [self saveDescriptorsToFile:testDescriptors fileName:filename];
 
     printf("[OpenCV] Rows size: %d.\n", testDescriptors.rows);
     printf("[OpenCV] Column size: %d.\n", testDescriptors.cols);
@@ -351,19 +349,24 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     filename = [filename substringToIndex:[filename length] - 4];
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:filename ofType:@"mat"];
-    NSString *file = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
 
-    NSArray *content = [file componentsSeparatedByString: @","];
+    NSData *content = [NSData dataWithContentsOfFile:filePath];
     
-    int rows = [[content objectAtIndex:0] intValue];
-    int cols = [[content objectAtIndex:1] intValue];
+    uint32_t rows; 
+    [content getBytes:&rows range:NSMakeRange(0, 4)]; 
+    
+    uint32_t cols;    
+    [content getBytes:&cols range:NSMakeRange(4, 4)];         
     
     Mat descriptors(rows, cols, CV_8U);
     
+    int startPos = 8;
     for(int i=0; i < rows; i++) {
         for(int j=0; j < cols; j++) {
-
-            descriptors.row(i).col(j) = [[content objectAtIndex:(i*cols)+j+2] intValue];
+            uint32_t value;
+            [content getBytes:&value range:NSMakeRange(startPos, 4)];                
+            descriptors.row(i).col(j) = value;             
+            startPos +=  4;
         }
     }
     dataSetDescriptors.push_back(descriptors);
@@ -374,22 +377,18 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:filename];
     
-    NSString *content = @"";
-    NSString *rows = [NSString stringWithFormat:@"%d,", descriptors.rows];
-    NSString *cols = [NSString stringWithFormat:@"%d,", descriptors.cols];
-    
-    // Save the rows & cols.
-    content = [content stringByAppendingString:rows];
-    content = [content stringByAppendingString:cols];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    [data appendBytes:&descriptors.rows length:sizeof(descriptors.rows)];
+    [data appendBytes:&descriptors.cols length:sizeof(descriptors.cols)];   
     
     for(int i=0; i < descriptors.rows; i++) {
         for(int j=0; j < descriptors.cols; j++) {
-            NSString *value = [NSString stringWithFormat: @"%d,", descriptors.at<unsigned char>(i, j)];
-            content = [content stringByAppendingString:value];
+            int value =  descriptors.at<unsigned char>(i, j);            
+            [data appendBytes:&value length:sizeof(value)];            
         }
     }
     
-    [content writeToFile:filePath atomically:TRUE encoding:NSUTF8StringEncoding error:NULL];
+    [data writeToFile:filePath atomically:YES];
     printf("[OpenCV] Saved image: %s.\n", [filename UTF8String]);
 }
 
