@@ -38,8 +38,8 @@ using namespace cv;
     finishedLaunching = NO;
     
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
-	[self.navigationController.view addSubview:HUD];
-
+	[self.navigationController.view addSubview:HUD];     
+    
     HUD.labelText = @"Loading images..";
     [HUD showWhileExecuting:@selector(setupApplication) onTarget:self withObject:nil animated:YES];
 }
@@ -50,7 +50,7 @@ using namespace cv;
         HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.navigationController.view addSubview:HUD];    
         
-        HUD.labelText = @"Loading camera";
+        HUD.labelText = @"Loading camera..";
         [HUD showWhileExecuting:@selector(startCapture) onTarget:self withObject:nil animated:YES];
     }
 }
@@ -73,10 +73,12 @@ using namespace cv;
 }
 
 - (void) setupApplication {
+    [self setupNetwork];    
+    
     [self setupCaptureSession];
     [self loadImages];
     [self startCamera];
-    finishedLaunching = YES;    
+    finishedLaunching = YES;   
 }
 
 - (void) startCapture {
@@ -157,13 +159,86 @@ using namespace cv;
     [imageList addObject:@"IMG_20120328_135941.jpg"];
     
     for(NSString *filename in imageList) {
-        [self createDescriptorsFromFile:filename];
+        [self createDescriptorsFromFile:filename];        
 //        [self addImageToDataset:filename];        
     }
     
     printf("[OpenCV] Finished adding images. Dataset: %lu images.\n", dataSetDescriptors.size());
     NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-    printf("[OpenCV] Time to load: %f.\n", timeInterval);
+    printf("[OpenCV] Time to load: %f.\n", timeInterval*-1);
+}
+
+- (void)setupNetwork {
+    printf("[Network] Setting up connection.\n");
+    
+    CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
+                                       (CFStringRef) @"172.20.76.247",
+                                       1337,
+                                       &readStream,
+                                       &writeStream);
+    if (readStream && writeStream) {
+        CFReadStreamSetProperty(readStream,
+                                kCFStreamPropertyShouldCloseNativeSocket,
+                                kCFBooleanTrue);
+        CFWriteStreamSetProperty(writeStream,
+                                 kCFStreamPropertyShouldCloseNativeSocket,
+                                 kCFBooleanTrue);
+        iStream = (NSInputStream *)readStream;
+        [iStream retain];
+        [iStream setDelegate:self];
+        [iStream scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                           forMode:NSDefaultRunLoopMode];
+        [iStream open];
+        oStream = (NSOutputStream *)writeStream;
+        [oStream retain];
+        [oStream setDelegate:self];
+        [oStream scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                           forMode:NSDefaultRunLoopMode];
+        [oStream open];
+    }
+}
+
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode {
+    switch(eventCode) {
+        case NSStreamEventHasBytesAvailable: {
+            printf("[Network] Bytes available.\n");
+            break;
+        }
+        case NSStreamEventNone: {
+            printf("[Network] No event occured.\n");
+            break;
+        }
+        case NSStreamEventOpenCompleted: {
+            printf("[Network] Open completed.\n");
+            break;
+        }
+        case NSStreamEventHasSpaceAvailable: {
+            printf("[Network] Space available.\n");
+            if(stream == oStream) {
+                
+                Byte buffer[1];
+                buffer[0] = 0x00;
+                NSMutableData *data = [NSMutableData dataWithCapacity:1];
+                [data appendBytes:buffer length:1];
+                
+                int err = [oStream write:(const uint8_t *)[data bytes] maxLength:[data length]];
+                
+                if(err >= 0) {
+                    printf("[Network] Package sent.\n");                
+                }
+            }
+            break;
+        }
+        case NSStreamEventErrorOccurred: {
+            NSError *error = [stream streamError]; 
+            printf("[Network] Error: %s.\n", [[error localizedDescription] UTF8String]);
+            break;
+        }
+        case NSStreamEventEndEncountered: {
+            printf("[Network] End of stream encountered.\n");
+            break;            
+        }
+    }
 }
 
 - (void)setupCaptureSession 
@@ -260,6 +335,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     int bestMatch = 0;
     int imageId = 0;
     
+    NSDate *start = [NSDate date];
+    
     // Use the matcher.
     for(int i=0; i < dataSetDescriptors.size(); i++) {
         // Clear results & set distances.
@@ -282,7 +359,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         }
         
         if(goodMatches > 12) {
-            [self processMatch:imageId];
+            NSTimeInterval timeInterval = [start timeIntervalSinceNow];             
+            printf("[OpenCV] Time to recognize: %f seconds.\n", timeInterval*-1);
+            [self processMatch:imageId];           
             break;
         }
         
@@ -491,7 +570,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 - (void)didReceiveMemoryWarning {
-    printf("[OpenCV] Memory warning!");
+    printf("[OpenCV] Memory warning!\n");
 }
 
 - (void)viewDidUnload {

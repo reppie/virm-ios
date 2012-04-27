@@ -13,7 +13,12 @@
 using namespace std;
 using namespace cv;
 
-@interface OpenCVViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate> {
+@interface OpenCVViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, NSStreamDelegate> {
+
+    NSInputStream *iStream;
+    NSOutputStream *oStream;
+    CFReadStreamRef readStream;
+    CFWriteStreamRef writeStream;
     
 	AVCaptureSession *_captureSession;
 	AVCaptureVideoPreviewLayer *_prevLayer;
