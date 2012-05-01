@@ -67,12 +67,12 @@
 }
 - (IBAction)applyChanges:(id)sender {
     appDelegate.maxDistance = (int) setMaxDistance.value;
-    maxDistanceLabel.text = [NSString stringWithFormat:@"Max distance: %i", (int) setMaxDistance.value];
+    maxDistanceLabel.text = [NSString stringWithFormat:@"%i", (int) setMaxDistance.value];
     
     appDelegate.matchesNeeded = (int) setMatchesNeeded.value;
-    matchesNeededLabel.text = [NSString stringWithFormat:@"Matches needed: %i", (int) setMatchesNeeded.value];
+    matchesNeededLabel.text = [NSString stringWithFormat:@"%i", (int) setMatchesNeeded.value];
 
-    imageDimensionsLabel.text = [NSString stringWithFormat:@"Image dimensions: %i * %i", (int) setImageDimensions.value, (int) setImageDimensions.value];    
+    imageDimensionsLabel.text = [NSString stringWithFormat:@"%i * %i", (int) setImageDimensions.value, (int) setImageDimensions.value];    
     appDelegate.imageDimensions = (int) setImageDimensions.value;     
 }
 
@@ -86,8 +86,8 @@
     setMatchesNeeded.value = (float) appDelegate.matchesNeeded;
     setImageDimensions.value = (float) appDelegate.imageDimensions;
     
-    maxDistanceLabel.text = [NSString stringWithFormat:@"Max distance: %i", appDelegate.maxDistance];
-    matchesNeededLabel.text = [NSString stringWithFormat:@"Matches needed: %i", appDelegate.matchesNeeded];
-    imageDimensionsLabel.text = [NSString stringWithFormat:@"Image dimensions: %i * %i", appDelegate.imageDimensions, appDelegate.imageDimensions];    
+    maxDistanceLabel.text = [NSString stringWithFormat:@"%i", appDelegate.maxDistance];
+    matchesNeededLabel.text = [NSString stringWithFormat:@"%i", appDelegate.matchesNeeded];
+    imageDimensionsLabel.text = [NSString stringWithFormat:@"%i * %i", appDelegate.imageDimensions, appDelegate.imageDimensions];    
 }
 @end
