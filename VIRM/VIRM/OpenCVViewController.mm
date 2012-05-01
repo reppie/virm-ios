@@ -31,9 +31,6 @@ using namespace cv;
 - (void)viewDidLoad {
     printf("[OpenCV] View loaded.\n");
     
-    width = 150;
-    height = 150;
-    
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     finishedLaunching = NO;
     
@@ -73,7 +70,7 @@ using namespace cv;
 }
 
 - (void) setupApplication {
-    [self setupNetwork];    
+//    [self setupNetwork];    
     
     [self setupCaptureSession];
     [self loadImages];
@@ -309,7 +306,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     // Load capture image.
     UIImage* captureUI = [self imageFromSampleBuffer:sampleBuffer];
     Mat capture = [self MatFromUIImage:captureUI];
-    Mat image(width, height, CV_8UC3);
+    Mat image(appDelegate.imageDimensions, appDelegate.imageDimensions, CV_8UC3);
     
     Mat imageGray;
     
@@ -348,7 +345,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
         // Save good matches (low distance) in list.
         for(int k = 0; k < descriptorsCapture.rows; k++ ) {
-            if( matches[k].distance < 35 ) {
+            if( matches[k].distance < appDelegate.maxDistance ) {
                 goodMatches++;   
             }
         }
@@ -358,7 +355,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             imageId = i;
         }
         
-        if(goodMatches > 12) {
+        if(goodMatches > appDelegate.matchesNeeded) {
             NSTimeInterval timeInterval = [start timeIntervalSinceNow];             
             printf("[OpenCV] Time to recognize: %f seconds.\n", timeInterval*-1);
             [self processMatch:imageId];           
@@ -402,7 +399,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     UIImage* testImageUI = [UIImage imageNamed:filename];
     IplImage* testImageColored = [self IplImageFromUIImage:testImageUI]; 
-    IplImage* testImageResized = cvCreateImage(cvSize(width,height),testImageColored->depth,testImageColored->nChannels);
+    IplImage* testImageResized = cvCreateImage(cvSize(appDelegate.imageDimensions,appDelegate.imageDimensions),testImageColored->depth,testImageColored->nChannels);
     cvResize(testImageColored, testImageResized);
     
     Mat testImage(testImageResized);

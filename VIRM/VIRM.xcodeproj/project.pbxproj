@@ -166,6 +166,7 @@
 		D7DB74491545546A002539EC /* IMG_20120328_135628.mat in Resources */ = {isa = PBXBuildFile; fileRef = D7DB74131545546A002539EC /* IMG_20120328_135628.mat */; };
 		D7DB744A1545546A002539EC /* IMG_20120328_135646.mat in Resources */ = {isa = PBXBuildFile; fileRef = D7DB74141545546A002539EC /* IMG_20120328_135646.mat */; };
 		D7DB744B1545546A002539EC /* IMG_20120328_135941.mat in Resources */ = {isa = PBXBuildFile; fileRef = D7DB74151545546A002539EC /* IMG_20120328_135941.mat */; };
+		D7E82A63154FE3370080CE78 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E82A62154FE3370080CE78 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -448,6 +449,8 @@
 		D7DB74131545546A002539EC /* IMG_20120328_135628.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_20120328_135628.mat; sourceTree = "<group>"; };
 		D7DB74141545546A002539EC /* IMG_20120328_135646.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_20120328_135646.mat; sourceTree = "<group>"; };
 		D7DB74151545546A002539EC /* IMG_20120328_135941.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_20120328_135941.mat; sourceTree = "<group>"; };
+		D7E82A61154FE3370080CE78 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		D7E82A62154FE3370080CE78 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -536,6 +539,7 @@
 		D717237015341F2B00F1F63E /* VIRM */ = {
 			isa = PBXGroup;
 			children = (
+				D7E82A5F154FE3150080CE78 /* Settings */,
 				D71D80F21535C69100DB9EDE /* ProgressHUD */,
 				D7C8220415359C040051A4C8 /* History */,
 				D717238B15341FE900F1F63E /* OpenCV */,
@@ -1042,6 +1046,15 @@
 			name = History;
 			sourceTree = "<group>";
 		};
+		D7E82A5F154FE3150080CE78 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D7E82A61154FE3370080CE78 /* SettingsViewController.h */,
+				D7E82A62154FE3370080CE78 /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1221,6 +1234,7 @@
 				D7C8220F15359C1F0051A4C8 /* HistoryItemViewController.m in Sources */,
 				D7C8221015359C1F0051A4C8 /* HistoryViewController.mm in Sources */,
 				D71D80F91535C95B00DB9EDE /* MBProgressHUD.m in Sources */,
+				D7E82A63154FE3370080CE78 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

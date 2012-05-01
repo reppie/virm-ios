@@ -11,7 +11,13 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (nonatomic, assign) int maxDistance;
+@property (nonatomic, assign) int matchesNeeded;
+@property (nonatomic, assign) int imageDimensions;
+
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) HistoryItemDataController *historyItemDataController;
+
+- (void) setDefaultValues;
 
 @end

@@ -13,14 +13,28 @@
 @synthesize window = _window;
 @synthesize historyItemDataController = _historyItemDataController;
 
+@synthesize matchesNeeded = _matchesNeeded;
+@synthesize maxDistance = _maxDistance;
+@synthesize imageDimensions = _imageDimensions;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     printf("[Application] Finished launching.\n");
+    
     _historyItemDataController = [[HistoryItemDataController alloc] init];
+    
+    [self setDefaultValues];
+    
     // Override point for customization after application launch.
     return YES;
 }
-							
+
+- (void) setDefaultValues {
+    self.maxDistance = 35;
+    self.matchesNeeded = 12;
+    self.imageDimensions = 150;
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
