@@ -100,64 +100,116 @@ using namespace cv;
     NSDate* start = [NSDate date];
     
     NSMutableArray *imageList = [[NSMutableArray alloc] init];
-    [imageList addObject:@"IMG_20120328_133650.jpg"];
-    [imageList addObject:@"IMG_20120328_133717.jpg"];
-    [imageList addObject:@"IMG_20120328_133800.jpg"];
-    [imageList addObject:@"IMG_20120328_133813.jpg"];
-    [imageList addObject:@"IMG_20120328_133844.jpg"];
-    [imageList addObject:@"IMG_20120328_133855.jpg"];
-    [imageList addObject:@"IMG_20120328_133903.jpg"];
-    [imageList addObject:@"IMG_20120328_134104.jpg"];
-    [imageList addObject:@"IMG_20120328_134112.jpg"];
-    [imageList addObject:@"IMG_20120328_134125.jpg"];
-    [imageList addObject:@"IMG_20120328_134135.jpg"];
-    [imageList addObject:@"IMG_20120328_134143.jpg"];
-    [imageList addObject:@"IMG_20120328_134152.jpg"];
-    [imageList addObject:@"IMG_20120328_134208.jpg"];
-    [imageList addObject:@"IMG_20120328_134301.jpg"];
-    [imageList addObject:@"IMG_20120328_134320.jpg"];
-    [imageList addObject:@"IMG_20120328_134432.jpg"];
-    [imageList addObject:@"IMG_20120328_134446.jpg"];
-    [imageList addObject:@"IMG_20120328_134503.jpg"];
-    [imageList addObject:@"IMG_20120328_134513.jpg"];
-    [imageList addObject:@"IMG_20120328_134521.jpg"];
-    [imageList addObject:@"IMG_20120328_134529.jpg"];
-    [imageList addObject:@"IMG_20120328_134544.jpg"];
-    [imageList addObject:@"IMG_20120328_134551.jpg"];
-    [imageList addObject:@"IMG_20120328_134601.jpg"];
-    [imageList addObject:@"IMG_20120328_134610.jpg"];
-    [imageList addObject:@"IMG_20120328_134621.jpg"];
-    [imageList addObject:@"IMG_20120328_134629.jpg"];
-    [imageList addObject:@"IMG_20120328_134705.jpg"];
-    [imageList addObject:@"IMG_20120328_134719.jpg"];
-    [imageList addObject:@"IMG_20120328_134727.jpg"];
-    [imageList addObject:@"IMG_20120328_134750.jpg"];
-    [imageList addObject:@"IMG_20120328_134801.jpg"];
-    [imageList addObject:@"IMG_20120328_134811.jpg"];
-    [imageList addObject:@"IMG_20120328_134823.jpg"];
-    [imageList addObject:@"IMG_20120328_134832.jpg"];
-    [imageList addObject:@"IMG_20120328_134840.jpg"];
-    [imageList addObject:@"IMG_20120328_134849.jpg"];
-    [imageList addObject:@"IMG_20120328_134934.jpg"];
-    [imageList addObject:@"IMG_20120328_134948.jpg"];
-    [imageList addObject:@"IMG_20120328_134955.jpg"];
-    [imageList addObject:@"IMG_20120328_135004.jpg"];
-    [imageList addObject:@"IMG_20120328_135012.jpg"];
-    [imageList addObject:@"IMG_20120328_135021.jpg"];
-    [imageList addObject:@"IMG_20120328_135036.jpg"];
-    [imageList addObject:@"IMG_20120328_135059.jpg"];
-    [imageList addObject:@"IMG_20120328_135112.jpg"];
-    [imageList addObject:@"IMG_20120328_135135.jpg"];
-    [imageList addObject:@"IMG_20120328_135226.jpg"];
-    [imageList addObject:@"IMG_20120328_135601.jpg"];
-    [imageList addObject:@"IMG_20120328_135613.jpg"];
-    [imageList addObject:@"IMG_20120328_135628.jpg"];
-    [imageList addObject:@"IMG_20120328_135646.jpg"];
-    [imageList addObject:@"IMG_20120328_135941.jpg"];
+//    [imageList addObject:@"IMG_20120328_133650.jpg"];
+//    [imageList addObject:@"IMG_20120328_133717.jpg"];
+//    [imageList addObject:@"IMG_20120328_133800.jpg"];
+//    [imageList addObject:@"IMG_20120328_133813.jpg"];
+//    [imageList addObject:@"IMG_20120328_133844.jpg"];
+//    [imageList addObject:@"IMG_20120328_133855.jpg"];
+//    [imageList addObject:@"IMG_20120328_133903.jpg"];
+//    [imageList addObject:@"IMG_20120328_134104.jpg"];
+//    [imageList addObject:@"IMG_20120328_134112.jpg"];
+//    [imageList addObject:@"IMG_20120328_134125.jpg"];
+//    [imageList addObject:@"IMG_20120328_134135.jpg"];
+//    [imageList addObject:@"IMG_20120328_134143.jpg"];
+//    [imageList addObject:@"IMG_20120328_134152.jpg"];
+//    [imageList addObject:@"IMG_20120328_134208.jpg"];
+//    [imageList addObject:@"IMG_20120328_134301.jpg"];
+//    [imageList addObject:@"IMG_20120328_134320.jpg"];
+//    [imageList addObject:@"IMG_20120328_134432.jpg"];
+//    [imageList addObject:@"IMG_20120328_134446.jpg"];
+//    [imageList addObject:@"IMG_20120328_134503.jpg"];
+//    [imageList addObject:@"IMG_20120328_134513.jpg"];
+//    [imageList addObject:@"IMG_20120328_134521.jpg"];
+//    [imageList addObject:@"IMG_20120328_134529.jpg"];
+//    [imageList addObject:@"IMG_20120328_134544.jpg"];
+//    [imageList addObject:@"IMG_20120328_134551.jpg"];
+//    [imageList addObject:@"IMG_20120328_134601.jpg"];
+//    [imageList addObject:@"IMG_20120328_134610.jpg"];
+//    [imageList addObject:@"IMG_20120328_134621.jpg"];
+//    [imageList addObject:@"IMG_20120328_134629.jpg"];
+//    [imageList addObject:@"IMG_20120328_134705.jpg"];
+//    [imageList addObject:@"IMG_20120328_134719.jpg"];
+//    [imageList addObject:@"IMG_20120328_134727.jpg"];
+//    [imageList addObject:@"IMG_20120328_134750.jpg"];
+//    [imageList addObject:@"IMG_20120328_134801.jpg"];
+//    [imageList addObject:@"IMG_20120328_134811.jpg"];
+//    [imageList addObject:@"IMG_20120328_134823.jpg"];
+//    [imageList addObject:@"IMG_20120328_134832.jpg"];
+//    [imageList addObject:@"IMG_20120328_134840.jpg"];
+//    [imageList addObject:@"IMG_20120328_134849.jpg"];
+//    [imageList addObject:@"IMG_20120328_134934.jpg"];
+//    [imageList addObject:@"IMG_20120328_134948.jpg"];
+//    [imageList addObject:@"IMG_20120328_134955.jpg"];
+//    [imageList addObject:@"IMG_20120328_135004.jpg"];
+//    [imageList addObject:@"IMG_20120328_135012.jpg"];
+//    [imageList addObject:@"IMG_20120328_135021.jpg"];
+//    [imageList addObject:@"IMG_20120328_135036.jpg"];
+//    [imageList addObject:@"IMG_20120328_135059.jpg"];
+//    [imageList addObject:@"IMG_20120328_135112.jpg"];
+//    [imageList addObject:@"IMG_20120328_135135.jpg"];
+//    [imageList addObject:@"IMG_20120328_135226.jpg"];
+//    [imageList addObject:@"IMG_20120328_135601.jpg"];
+//    [imageList addObject:@"IMG_20120328_135613.jpg"];
+//    [imageList addObject:@"IMG_20120328_135628.jpg"];
+//    [imageList addObject:@"IMG_20120328_135646.jpg"];
+//    [imageList addObject:@"IMG_20120328_135941.jpg"];
+    
+    // Museum #2
+    [imageList addObject:@"IMG_20120502_134328.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134336.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134349.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134358.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134407.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134418.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134433.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134440.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134447.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134455.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134526.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134534.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134541.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134547.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134557.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134605.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134612.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134619.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134626.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134647.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134653.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134700.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134707.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134713.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134720.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134755.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134803.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134812.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134822.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134834.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134842.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134850.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134859.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134907.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134914.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134939.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134948.jpg"]; 
+    [imageList addObject:@"IMG_20120502_134957.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135009.jpg"];
+    [imageList addObject:@"IMG_20120502_135018.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135027.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135050.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135057.jpg"];    
+    [imageList addObject:@"IMG_20120502_135126.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135140.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135152.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135200.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135207.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135215.jpg"]; 
+    [imageList addObject:@"IMG_20120502_135224.jpg"]; 
     
     for(NSString *filename in imageList) {
-        [self createDescriptorsFromFile:filename];        
-//        [self addImageToDataset:filename];        
+//        [self createDescriptorsFromFile:filename];        
+        [self addImageToDataset:filename];        
     }
     
     printf("[OpenCV] Finished adding images. Dataset: %lu images.\n", dataSetDescriptors.size());
@@ -169,7 +221,7 @@ using namespace cv;
     printf("[Network] Setting up connection.\n");
     
     CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
-                                       (CFStringRef) @"172.20.76.247",
+                                       (CFStringRef) @"192.168.0.144",
                                        1337,
                                        &readStream,
                                        &writeStream);
@@ -199,6 +251,29 @@ using namespace cv;
     switch(eventCode) {
         case NSStreamEventHasBytesAvailable: {
             printf("[Network] Bytes available.\n");
+
+            int len = 0;
+            NSMutableData *data = [[NSMutableData alloc] init];
+            
+            uint8_t buffer[1024];
+            
+            if(stream == iStream)
+            {       
+                printf("[Network] Receiving...\n");                       
+                
+                len = [iStream read:buffer maxLength:1024];                
+                
+                [data appendBytes:buffer length:len];                   
+                
+            } 
+            
+            uint8_t received[1];
+            [data getBytes:received length:1];
+            
+            if(received[0] == 0x05) {
+                printf("[Network] Success!\n");
+            }
+ 
             break;
         }
         case NSStreamEventNone: {
@@ -221,7 +296,7 @@ using namespace cv;
                 int err = [oStream write:(const uint8_t *)[data bytes] maxLength:[data length]];
                 
                 if(err >= 0) {
-                    printf("[Network] Package sent.\n");                
+                    printf("[Network] Package sent.\n");   
                 }
             }
             break;
@@ -411,10 +486,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     featureExtractor.compute(testImageGray, testKeypoints, testDescriptors); 
     
     // Save the image as .mat file
-    [self saveDescriptorsToFile:testDescriptors fileName:filename];
-
-    printf("[OpenCV] Rows size: %d.\n", testDescriptors.rows);
-    printf("[OpenCV] Column size: %d.\n", testDescriptors.cols);
+//    [self saveDescriptorsToFile:testDescriptors fileName:filename];
     
     dataSetDescriptors.push_back(testDescriptors);
 }
