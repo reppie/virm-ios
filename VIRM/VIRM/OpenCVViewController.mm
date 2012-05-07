@@ -34,6 +34,8 @@ using namespace cv;
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     finishedLaunching = NO;
     
+    eventQueue = [[NSMutableData alloc] init];
+    
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	[self.navigationController.view addSubview:HUD];     
     
@@ -70,10 +72,16 @@ using namespace cv;
 }
 
 - (void) setupApplication {
+    [self loadImages];    
+
 //    [self setupNetwork];    
+    // Temporary - testing.
+//    event[0] = 0x10;
+//    [eventQueue appendBytes:event length:1];
+    
+    printf("[OpenCV] Adding capture to queue.\n");     
     
     [self setupCaptureSession];
-    [self loadImages];
     [self startCamera];
     finishedLaunching = YES;   
 }
@@ -100,60 +108,60 @@ using namespace cv;
     NSDate* start = [NSDate date];
     
     NSMutableArray *imageList = [[NSMutableArray alloc] init];
-//    [imageList addObject:@"IMG_20120328_133650.jpg"];
-//    [imageList addObject:@"IMG_20120328_133717.jpg"];
-//    [imageList addObject:@"IMG_20120328_133800.jpg"];
-//    [imageList addObject:@"IMG_20120328_133813.jpg"];
-//    [imageList addObject:@"IMG_20120328_133844.jpg"];
-//    [imageList addObject:@"IMG_20120328_133855.jpg"];
-//    [imageList addObject:@"IMG_20120328_133903.jpg"];
-//    [imageList addObject:@"IMG_20120328_134104.jpg"];
-//    [imageList addObject:@"IMG_20120328_134112.jpg"];
-//    [imageList addObject:@"IMG_20120328_134125.jpg"];
-//    [imageList addObject:@"IMG_20120328_134135.jpg"];
-//    [imageList addObject:@"IMG_20120328_134143.jpg"];
-//    [imageList addObject:@"IMG_20120328_134152.jpg"];
-//    [imageList addObject:@"IMG_20120328_134208.jpg"];
-//    [imageList addObject:@"IMG_20120328_134301.jpg"];
-//    [imageList addObject:@"IMG_20120328_134320.jpg"];
-//    [imageList addObject:@"IMG_20120328_134432.jpg"];
-//    [imageList addObject:@"IMG_20120328_134446.jpg"];
-//    [imageList addObject:@"IMG_20120328_134503.jpg"];
-//    [imageList addObject:@"IMG_20120328_134513.jpg"];
-//    [imageList addObject:@"IMG_20120328_134521.jpg"];
-//    [imageList addObject:@"IMG_20120328_134529.jpg"];
-//    [imageList addObject:@"IMG_20120328_134544.jpg"];
-//    [imageList addObject:@"IMG_20120328_134551.jpg"];
-//    [imageList addObject:@"IMG_20120328_134601.jpg"];
-//    [imageList addObject:@"IMG_20120328_134610.jpg"];
-//    [imageList addObject:@"IMG_20120328_134621.jpg"];
-//    [imageList addObject:@"IMG_20120328_134629.jpg"];
-//    [imageList addObject:@"IMG_20120328_134705.jpg"];
-//    [imageList addObject:@"IMG_20120328_134719.jpg"];
-//    [imageList addObject:@"IMG_20120328_134727.jpg"];
-//    [imageList addObject:@"IMG_20120328_134750.jpg"];
-//    [imageList addObject:@"IMG_20120328_134801.jpg"];
-//    [imageList addObject:@"IMG_20120328_134811.jpg"];
-//    [imageList addObject:@"IMG_20120328_134823.jpg"];
-//    [imageList addObject:@"IMG_20120328_134832.jpg"];
-//    [imageList addObject:@"IMG_20120328_134840.jpg"];
-//    [imageList addObject:@"IMG_20120328_134849.jpg"];
-//    [imageList addObject:@"IMG_20120328_134934.jpg"];
-//    [imageList addObject:@"IMG_20120328_134948.jpg"];
-//    [imageList addObject:@"IMG_20120328_134955.jpg"];
-//    [imageList addObject:@"IMG_20120328_135004.jpg"];
-//    [imageList addObject:@"IMG_20120328_135012.jpg"];
-//    [imageList addObject:@"IMG_20120328_135021.jpg"];
-//    [imageList addObject:@"IMG_20120328_135036.jpg"];
-//    [imageList addObject:@"IMG_20120328_135059.jpg"];
-//    [imageList addObject:@"IMG_20120328_135112.jpg"];
-//    [imageList addObject:@"IMG_20120328_135135.jpg"];
-//    [imageList addObject:@"IMG_20120328_135226.jpg"];
-//    [imageList addObject:@"IMG_20120328_135601.jpg"];
-//    [imageList addObject:@"IMG_20120328_135613.jpg"];
-//    [imageList addObject:@"IMG_20120328_135628.jpg"];
-//    [imageList addObject:@"IMG_20120328_135646.jpg"];
-//    [imageList addObject:@"IMG_20120328_135941.jpg"];
+    [imageList addObject:@"IMG_20120328_133650.jpg"];
+    [imageList addObject:@"IMG_20120328_133717.jpg"];
+    [imageList addObject:@"IMG_20120328_133800.jpg"];
+    [imageList addObject:@"IMG_20120328_133813.jpg"];
+    [imageList addObject:@"IMG_20120328_133844.jpg"];
+    [imageList addObject:@"IMG_20120328_133855.jpg"];
+    [imageList addObject:@"IMG_20120328_133903.jpg"];
+    [imageList addObject:@"IMG_20120328_134104.jpg"];
+    [imageList addObject:@"IMG_20120328_134112.jpg"];
+    [imageList addObject:@"IMG_20120328_134125.jpg"];
+    [imageList addObject:@"IMG_20120328_134135.jpg"];
+    [imageList addObject:@"IMG_20120328_134143.jpg"];
+    [imageList addObject:@"IMG_20120328_134152.jpg"];
+    [imageList addObject:@"IMG_20120328_134208.jpg"];
+    [imageList addObject:@"IMG_20120328_134301.jpg"];
+    [imageList addObject:@"IMG_20120328_134320.jpg"];
+    [imageList addObject:@"IMG_20120328_134432.jpg"];
+    [imageList addObject:@"IMG_20120328_134446.jpg"];
+    [imageList addObject:@"IMG_20120328_134503.jpg"];
+    [imageList addObject:@"IMG_20120328_134513.jpg"];
+    [imageList addObject:@"IMG_20120328_134521.jpg"];
+    [imageList addObject:@"IMG_20120328_134529.jpg"];
+    [imageList addObject:@"IMG_20120328_134544.jpg"];
+    [imageList addObject:@"IMG_20120328_134551.jpg"];
+    [imageList addObject:@"IMG_20120328_134601.jpg"];
+    [imageList addObject:@"IMG_20120328_134610.jpg"];
+    [imageList addObject:@"IMG_20120328_134621.jpg"];
+    [imageList addObject:@"IMG_20120328_134629.jpg"];
+    [imageList addObject:@"IMG_20120328_134705.jpg"];
+    [imageList addObject:@"IMG_20120328_134719.jpg"];
+    [imageList addObject:@"IMG_20120328_134727.jpg"];
+    [imageList addObject:@"IMG_20120328_134750.jpg"];
+    [imageList addObject:@"IMG_20120328_134801.jpg"];
+    [imageList addObject:@"IMG_20120328_134811.jpg"];
+    [imageList addObject:@"IMG_20120328_134823.jpg"];
+    [imageList addObject:@"IMG_20120328_134832.jpg"];
+    [imageList addObject:@"IMG_20120328_134840.jpg"];
+    [imageList addObject:@"IMG_20120328_134849.jpg"];
+    [imageList addObject:@"IMG_20120328_134934.jpg"];
+    [imageList addObject:@"IMG_20120328_134948.jpg"];
+    [imageList addObject:@"IMG_20120328_134955.jpg"];
+    [imageList addObject:@"IMG_20120328_135004.jpg"];
+    [imageList addObject:@"IMG_20120328_135012.jpg"];
+    [imageList addObject:@"IMG_20120328_135021.jpg"];
+    [imageList addObject:@"IMG_20120328_135036.jpg"];
+    [imageList addObject:@"IMG_20120328_135059.jpg"];
+    [imageList addObject:@"IMG_20120328_135112.jpg"];
+    [imageList addObject:@"IMG_20120328_135135.jpg"];
+    [imageList addObject:@"IMG_20120328_135226.jpg"];
+    [imageList addObject:@"IMG_20120328_135601.jpg"];
+    [imageList addObject:@"IMG_20120328_135613.jpg"];
+    [imageList addObject:@"IMG_20120328_135628.jpg"];
+    [imageList addObject:@"IMG_20120328_135646.jpg"];
+    [imageList addObject:@"IMG_20120328_135941.jpg"];
     
     // Museum #2
     [imageList addObject:@"IMG_20120502_134328.jpg"]; 
@@ -208,8 +216,8 @@ using namespace cv;
     [imageList addObject:@"IMG_20120502_135224.jpg"]; 
     
     for(NSString *filename in imageList) {
-//        [self createDescriptorsFromFile:filename];        
-        [self addImageToDataset:filename];        
+        [self createDescriptorsFromFile:filename];        
+//        [self addImageToDataset:filename];        
     }
     
     printf("[OpenCV] Finished adding images. Dataset: %lu images.\n", dataSetDescriptors.size());
@@ -221,7 +229,7 @@ using namespace cv;
     printf("[Network] Setting up connection.\n");
     
     CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
-                                       (CFStringRef) @"192.168.0.144",
+                                       (CFStringRef) @"172.19.2.62",
                                        1337,
                                        &readStream,
                                        &writeStream);
@@ -252,28 +260,16 @@ using namespace cv;
         case NSStreamEventHasBytesAvailable: {
             printf("[Network] Bytes available.\n");
 
-            int len = 0;
-            NSMutableData *data = [[NSMutableData alloc] init];
-            
-            uint8_t buffer[1024];
-            
-            if(stream == iStream)
-            {       
-                printf("[Network] Receiving...\n");                       
+            if(stream == iStream) {            
+                NSMutableData *data = [[NSMutableData alloc] init];                
+                uint8_t buffer[1];                
                 
-                len = [iStream read:buffer maxLength:1024];                
+                int len = [iStream read:buffer maxLength:1];
+                printf("[Network] Receiving, length: %d.\n", len);                
+                [data appendBytes:buffer length:len];                
                 
-                [data appendBytes:buffer length:len];                   
-                
+                [self handlePacket: data];
             } 
-            
-            uint8_t received[1];
-            [data getBytes:received length:1];
-            
-            if(received[0] == 0x05) {
-                printf("[Network] Success!\n");
-            }
- 
             break;
         }
         case NSStreamEventNone: {
@@ -288,15 +284,35 @@ using namespace cv;
             printf("[Network] Space available.\n");
             if(stream == oStream) {
                 
-                Byte buffer[1];
-                buffer[0] = 0x00;
-                NSMutableData *data = [NSMutableData dataWithCapacity:1];
-                [data appendBytes:buffer length:1];
+                uint8_t currentEvent[1];
+                [eventQueue getBytes:currentEvent length: 1];
                 
-                int err = [oStream write:(const uint8_t *)[data bytes] maxLength:[data length]];
-                
-                if(err >= 0) {
-                    printf("[Network] Package sent.\n");   
+                if(currentEvent[0] == 0x10) {
+                    
+                    printf("[Network] Size of dataSetDescriptors: %lu.\n", dataSetDescriptors.size());
+                    
+                    Byte buffer[1];
+                    buffer[0] = 0x04;                    
+                    NSMutableData *data = [NSMutableData dataWithCapacity:0];
+                    [data appendBytes:buffer length:1];
+                    
+                    [data appendBytes:&dataSetDescriptors[0].rows length:sizeof(dataSetDescriptors[0].rows)];
+                    [data appendBytes:&dataSetDescriptors[0].cols length:sizeof(dataSetDescriptors[0].cols)];
+                    
+                    for(int i=0; i < dataSetDescriptors[0].rows; i++) {
+                        for(int j=0; j < dataSetDescriptors[0].cols; j++) {
+                            int value =  dataSetDescriptors[0].at<unsigned char>(i, j);            
+                            [data appendBytes:&value length:sizeof(value)]; 
+                        }
+                    }
+                    
+                    int err = [oStream write:(const uint8_t *)[data bytes] maxLength:[data length]];
+                    
+                    if(err >= 0) {
+                        printf("[Network] MAT sent.\n");   
+                    }
+                    
+                    [eventQueue replaceBytesInRange:NSMakeRange(0, 1) withBytes:NULL length:0];
                 }
             }
             break;
@@ -311,6 +327,54 @@ using namespace cv;
             break;            
         }
     }
+}
+
+- (void)handlePacket: (NSMutableData *) data {
+    uint8_t received[1];
+    [data getBytes:received length:1];
+    
+    switch(received[0]) {
+        case 0x00 : {
+            printf("[Network] PING received.\n");
+            break;
+        }
+        case 0x01 : {
+            printf("[Network] OK received.\n");
+            break;
+        }
+        case 0x02 : {
+            printf("[Network] FAIL received.\n");            
+            break;
+        }
+        case 0x03 : {
+            printf("[Network] CLOSE received.\n");            
+            break;
+        }
+        case 0x05 : {
+            printf("[Network] MATCH received.\n");
+            [self handleMatch];
+            break;
+        }
+        case 0x06 : {
+            printf("[Network] NO_MATCH received.\n");            
+            break;
+        }            
+    }
+}
+
+- (void)handleMatch {
+    printf("[Network] Handling match.\n");
+                   
+    uint8_t buffer[4];                
+    
+    [iStream read:buffer maxLength:4];
+                 
+    int integer = 0;
+    for (int i = 0; i < 4; i++) {
+        integer |= (buffer[i] & 0xFF) << (i << 3);
+    }
+    
+    printf("[Network] ID Received: %d.\n", integer);
 }
 
 - (void)setupCaptureSession 

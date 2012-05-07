@@ -20,6 +20,9 @@ using namespace cv;
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
     
+    NSMutableData *eventQueue;
+    Byte event[1];
+    
 	AVCaptureSession *_captureSession;
 	AVCaptureVideoPreviewLayer *_prevLayer;
     
