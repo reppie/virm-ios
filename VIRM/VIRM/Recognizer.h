@@ -29,6 +29,7 @@ using namespace cv;
 }
 
 - (id) initWithDataSet: (vector<Mat>) dataset;
+- (Mat) getTestMat;
 - (int) recognize: (UIImage *) image;
 - (Mat) getDescriptors: (UIImage *) image;
 - (int) match: (Mat) capturedMat;

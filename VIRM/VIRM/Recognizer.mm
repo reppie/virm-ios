@@ -29,6 +29,9 @@ using namespace cv;
     return self;
 }
 
+- (Mat) getTestMat {
+    return dataSetDescriptors[0];
+}
 
 - (int) recognize:(UIImage *)image {
 

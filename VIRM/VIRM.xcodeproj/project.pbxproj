@@ -108,6 +108,8 @@
 		D71E394D153572DE004F69A6 /* IMG_20120328_135628.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71E3917153572DE004F69A6 /* IMG_20120328_135628.jpg */; };
 		D71E394E153572DE004F69A6 /* IMG_20120328_135646.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71E3918153572DE004F69A6 /* IMG_20120328_135646.jpg */; };
 		D71E394F153572DE004F69A6 /* IMG_20120328_135941.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D71E3919153572DE004F69A6 /* IMG_20120328_135941.jpg */; };
+		D7B12F54155BCB3300A4397C /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B12F53155BCB3300A4397C /* Camera.m */; };
+		D7B12F58155BDF6D00A4397C /* NetworkHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7B12F57155BDF6D00A4397C /* NetworkHandler.mm */; };
 		D7C8220D15359C1F0051A4C8 /* HistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8220615359C1F0051A4C8 /* HistoryItem.m */; };
 		D7C8220E15359C1F0051A4C8 /* HistoryItemDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8220815359C1F0051A4C8 /* HistoryItemDataController.m */; };
 		D7C8220F15359C1F0051A4C8 /* HistoryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C8220A15359C1F0051A4C8 /* HistoryItemViewController.m */; };
@@ -490,6 +492,10 @@
 		D71E3917153572DE004F69A6 /* IMG_20120328_135628.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_20120328_135628.jpg; sourceTree = "<group>"; };
 		D71E3918153572DE004F69A6 /* IMG_20120328_135646.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_20120328_135646.jpg; sourceTree = "<group>"; };
 		D71E3919153572DE004F69A6 /* IMG_20120328_135941.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_20120328_135941.jpg; sourceTree = "<group>"; };
+		D7B12F52155BCB3300A4397C /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		D7B12F53155BCB3300A4397C /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
+		D7B12F56155BDF6D00A4397C /* NetworkHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NetworkHandler.h; sourceTree = "<group>"; };
+		D7B12F57155BDF6D00A4397C /* NetworkHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NetworkHandler.mm; sourceTree = "<group>"; };
 		D7C8220515359C1F0051A4C8 /* HistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItem.h; sourceTree = "<group>"; };
 		D7C8220615359C1F0051A4C8 /* HistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryItem.m; sourceTree = "<group>"; };
 		D7C8220715359C1F0051A4C8 /* HistoryItemDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryItemDataController.h; sourceTree = "<group>"; };
@@ -654,7 +660,7 @@
 		D7DB74151545546A002539EC /* IMG_20120328_135941.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_20120328_135941.mat; sourceTree = "<group>"; };
 		D7DE28D4155BA0A600712709 /* Recognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recognizer.h; sourceTree = "<group>"; };
 		D7DE28D5155BA0A600712709 /* Recognizer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Recognizer.mm; sourceTree = "<group>"; };
-		D7DE28DC155BB7A600712709 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Utils.h; sourceTree = "<group>"; };
+		D7DE28DC155BB7A600712709 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		D7DE28DD155BB7A600712709 /* Utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Utils.mm; sourceTree = "<group>"; };
 		D7E82A61154FE3370080CE78 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		D7E82A62154FE3370080CE78 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -747,6 +753,8 @@
 		D717237015341F2B00F1F63E /* VIRM */ = {
 			isa = PBXGroup;
 			children = (
+				D7B12F55155BDF5500A4397C /* Network */,
+				D7B12F50155BCB2000A4397C /* Camera */,
 				D7DE28DB155BB77600712709 /* Utils */,
 				D7DE28D2155BA00F00712709 /* Recognizer */,
 				D7E82A5F154FE3150080CE78 /* Settings */,
@@ -1342,6 +1350,24 @@
 			name = "Mat Files";
 			sourceTree = "<group>";
 		};
+		D7B12F50155BCB2000A4397C /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				D7B12F52155BCB3300A4397C /* Camera.h */,
+				D7B12F53155BCB3300A4397C /* Camera.m */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
+		D7B12F55155BDF5500A4397C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D7B12F56155BDF6D00A4397C /* NetworkHandler.h */,
+				D7B12F57155BDF6D00A4397C /* NetworkHandler.mm */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		D7C8220415359C040051A4C8 /* History */ = {
 			isa = PBXGroup;
 			children = (
@@ -1667,6 +1693,8 @@
 				D7E82A63154FE3370080CE78 /* SettingsViewController.m in Sources */,
 				D7DE28D6155BA0A600712709 /* Recognizer.mm in Sources */,
 				D7DE28DE155BB7A600712709 /* Utils.mm in Sources */,
+				D7B12F54155BCB3300A4397C /* Camera.m in Sources */,
+				D7B12F58155BDF6D00A4397C /* NetworkHandler.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

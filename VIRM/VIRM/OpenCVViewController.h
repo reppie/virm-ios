@@ -11,23 +11,13 @@
 #import "MBProgressHUD.h"
 #import "Recognizer.h"
 #import "Utils.h"
+#import "Camera.h"
+#import "NetworkHandler.h"
 
 using namespace std;
 using namespace cv;
 
-@interface OpenCVViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, NSStreamDelegate> {
-
-    NSInputStream *iStream;
-    NSOutputStream *oStream;
-    CFReadStreamRef readStream;
-    CFWriteStreamRef writeStream;
-    
-    NSMutableData *eventQueue;
-    Byte event[1];
-    int counter;    
-    
-	AVCaptureSession *_captureSession;
-	AVCaptureVideoPreviewLayer *_prevLayer;
+@interface OpenCVViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate> {    
     
     AppDelegate *appDelegate;
     MBProgressHUD *HUD;   
@@ -35,12 +25,13 @@ using namespace cv;
     
     Recognizer *recognizer;
     Utils *utils;
+    Camera *camera;    
+    NetworkHandler *networkHandler;
     
     vector<NSString*> fileNames;
     vector<Mat> dataSetDescriptors;    
 }
 
-@property (nonatomic, retain) AVCaptureSession *captureSession;
 @property (nonatomic, retain) AVCaptureVideoPreviewLayer *previewLayer;
 
 @end
