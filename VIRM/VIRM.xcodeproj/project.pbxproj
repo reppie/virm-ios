@@ -266,6 +266,8 @@
 		D7DB74491545546A002539EC /* IMG_20120328_135628.mat in Resources */ = {isa = PBXBuildFile; fileRef = D7DB74131545546A002539EC /* IMG_20120328_135628.mat */; };
 		D7DB744A1545546A002539EC /* IMG_20120328_135646.mat in Resources */ = {isa = PBXBuildFile; fileRef = D7DB74141545546A002539EC /* IMG_20120328_135646.mat */; };
 		D7DB744B1545546A002539EC /* IMG_20120328_135941.mat in Resources */ = {isa = PBXBuildFile; fileRef = D7DB74151545546A002539EC /* IMG_20120328_135941.mat */; };
+		D7DE28D6155BA0A600712709 /* Recognizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7DE28D5155BA0A600712709 /* Recognizer.mm */; };
+		D7DE28DE155BB7A600712709 /* Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7DE28DD155BB7A600712709 /* Utils.mm */; };
 		D7E82A63154FE3370080CE78 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E82A62154FE3370080CE78 /* SettingsViewController.m */; };
 		D7EBD50415513C5900006DC7 /* virm_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EBD50315513C5900006DC7 /* virm_icon.png */; };
 /* End PBXBuildFile section */
@@ -650,6 +652,10 @@
 		D7DB74131545546A002539EC /* IMG_20120328_135628.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_20120328_135628.mat; sourceTree = "<group>"; };
 		D7DB74141545546A002539EC /* IMG_20120328_135646.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_20120328_135646.mat; sourceTree = "<group>"; };
 		D7DB74151545546A002539EC /* IMG_20120328_135941.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_20120328_135941.mat; sourceTree = "<group>"; };
+		D7DE28D4155BA0A600712709 /* Recognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recognizer.h; sourceTree = "<group>"; };
+		D7DE28D5155BA0A600712709 /* Recognizer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Recognizer.mm; sourceTree = "<group>"; };
+		D7DE28DC155BB7A600712709 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Utils.h; sourceTree = "<group>"; };
+		D7DE28DD155BB7A600712709 /* Utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Utils.mm; sourceTree = "<group>"; };
 		D7E82A61154FE3370080CE78 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		D7E82A62154FE3370080CE78 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D7EBD50315513C5900006DC7 /* virm_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virm_icon.png; sourceTree = "<group>"; };
@@ -741,6 +747,8 @@
 		D717237015341F2B00F1F63E /* VIRM */ = {
 			isa = PBXGroup;
 			children = (
+				D7DE28DB155BB77600712709 /* Utils */,
+				D7DE28D2155BA00F00712709 /* Recognizer */,
 				D7E82A5F154FE3150080CE78 /* Settings */,
 				D71D80F21535C69100DB9EDE /* ProgressHUD */,
 				D7C8220415359C040051A4C8 /* History */,
@@ -1349,6 +1357,24 @@
 			name = History;
 			sourceTree = "<group>";
 		};
+		D7DE28D2155BA00F00712709 /* Recognizer */ = {
+			isa = PBXGroup;
+			children = (
+				D7DE28D4155BA0A600712709 /* Recognizer.h */,
+				D7DE28D5155BA0A600712709 /* Recognizer.mm */,
+			);
+			name = Recognizer;
+			sourceTree = "<group>";
+		};
+		D7DE28DB155BB77600712709 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D7DE28DC155BB7A600712709 /* Utils.h */,
+				D7DE28DD155BB7A600712709 /* Utils.mm */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		D7E82A5F154FE3150080CE78 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1639,6 +1665,8 @@
 				D7C8221015359C1F0051A4C8 /* HistoryViewController.mm in Sources */,
 				D71D80F91535C95B00DB9EDE /* MBProgressHUD.m in Sources */,
 				D7E82A63154FE3370080CE78 /* SettingsViewController.m in Sources */,
+				D7DE28D6155BA0A600712709 /* Recognizer.mm in Sources */,
+				D7DE28DE155BB7A600712709 /* Utils.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
