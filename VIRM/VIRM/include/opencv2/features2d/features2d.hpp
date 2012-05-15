@@ -51,6 +51,8 @@
 
 namespace cv
 {
+    
+CV_EXPORTS bool initModule_features2d();
 
 /*!
  The Keypoint Class
@@ -723,6 +725,8 @@ public:
     virtual int descriptorType() const;
 
     /// @todo read and write for brief
+
+    AlgorithmInfo* info() const;
 
 protected:
     virtual void computeImpl(const Mat& image, vector<KeyPoint>& keypoints, Mat& descriptors) const;

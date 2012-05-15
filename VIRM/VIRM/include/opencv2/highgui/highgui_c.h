@@ -73,8 +73,8 @@ CVAPI(CvFont) cvFontQt(const char* nameFont, int pointSize CV_DEFAULT(-1), CvSca
 
 CVAPI(void) cvAddText(const CvArr* img, const char* text, CvPoint org, CvFont *arg2);
 
-CVAPI(void) cvDisplayOverlay(const char* name, const char* text, int delayms);
-CVAPI(void) cvDisplayStatusBar(const char* name, const char* text, int delayms);
+CVAPI(void) cvDisplayOverlay(const char* name, const char* text, int delayms CV_DEFAULT(0));
+CVAPI(void) cvDisplayStatusBar(const char* name, const char* text, int delayms CV_DEFAULT(0));
 
 CVAPI(void) cvSaveWindowParameters(const char* name);
 CVAPI(void) cvLoadWindowParameters(const char* name);
@@ -370,6 +370,13 @@ enum
     CV_CAP_PROP_GUID          =29,	
     CV_CAP_PROP_ISO_SPEED     =30,	
     CV_CAP_PROP_MAX_DC1394    =31,
+	CV_CAP_PROP_BACKLIGHT     =32,
+	CV_CAP_PROP_PAN           =33,
+	CV_CAP_PROP_TILT          =34,
+	CV_CAP_PROP_ROLL          =35,
+	CV_CAP_PROP_IRIS          =36,
+    CV_CAP_PROP_SETTINGS      =37,
+
     CV_CAP_PROP_AUTOGRAB      =1024, // property for highgui class CvCapture_Android only
     CV_CAP_PROP_SUPPORTED_PREVIEW_SIZES_STRING=1025, // readonly, tricky property, returns cpnst char* indeed
     CV_CAP_PROP_PREVIEW_FORMAT=1026, // readonly, tricky property, returns cpnst char* indeed
@@ -429,6 +436,16 @@ enum
     CV_CAP_PROP_XI_AEAG_LEVEL    = 419,       // Average intensity of output signal AEAG should achieve(in %)
     CV_CAP_PROP_XI_TIMEOUT       = 420,       // Image capture timeout in milliseconds
     
+    // Properties for Android cameras
+    CV_CAP_PROP_ANDROID_FLASH_MODE = 8001,
+    CV_CAP_PROP_ANDROID_FOCUS_MODE = 8002,
+    CV_CAP_PROP_ANDROID_WHITE_BALANCE = 8003,
+    CV_CAP_PROP_ANDROID_ANTIBANDING = 8004,
+    CV_CAP_PROP_ANDROID_FOCAL_LENGTH = 8005,
+    CV_CAP_PROP_ANDROID_FOCUS_DISTANCE_NEAR = 8006,
+    CV_CAP_PROP_ANDROID_FOCUS_DISTANCE_OPTIMAL = 8007,
+    CV_CAP_PROP_ANDROID_FOCUS_DISTANCE_FAR = 8008,
+
     // Properties of cameras available through AVFOUNDATION interface
     CV_CAP_PROP_IOS_DEVICE_FOCUS = 9001,
     CV_CAP_PROP_IOS_DEVICE_EXPOSURE = 9002,
@@ -468,6 +485,45 @@ enum
   CV_CAP_ANDROID_COLOR_FRAME_RGB = 2,
   CV_CAP_ANDROID_COLOR_FRAME_BGRA = 3,
   CV_CAP_ANDROID_COLOR_FRAME_RGBA = 4
+};
+
+// supported Android camera flash modes
+enum {
+    CV_CAP_ANDROID_FLASH_MODE_AUTO = 0,
+    CV_CAP_ANDROID_FLASH_MODE_OFF,
+    CV_CAP_ANDROID_FLASH_MODE_ON,
+    CV_CAP_ANDROID_FLASH_MODE_RED_EYE,
+    CV_CAP_ANDROID_FLASH_MODE_TORCH
+};
+
+// supported Android camera focus modes
+enum {
+    CV_CAP_ANDROID_FOCUS_MODE_AUTO = 0,
+    CV_CAP_ANDROID_FOCUS_MODE_CONTINUOUS_VIDEO,
+    CV_CAP_ANDROID_FOCUS_MODE_EDOF,
+    CV_CAP_ANDROID_FOCUS_MODE_FIXED,
+    CV_CAP_ANDROID_FOCUS_MODE_INFINITY,
+    CV_CAP_ANDROID_FOCUS_MODE_MACRO
+};
+
+// supported Android camera white balance modes
+enum {
+    CV_CAP_ANDROID_WHITE_BALANCE_AUTO = 0,
+    CV_CAP_ANDROID_WHITE_BALANCE_CLOUDY_DAYLIGHT,
+    CV_CAP_ANDROID_WHITE_BALANCE_DAYLIGHT,
+    CV_CAP_ANDROID_WHITE_BALANCE_FLUORESCENT,
+    CV_CAP_ANDROID_WHITE_BALANCE_INCANDESCENT,
+    CV_CAP_ANDROID_WHITE_BALANCE_SHADE,
+    CV_CAP_ANDROID_WHITE_BALANCE_TWILIGHT,
+    CV_CAP_ANDROID_WHITE_BALANCE_WARM_FLUORESCENT
+};
+
+// supported Android camera antibanding modes
+enum {
+    CV_CAP_ANDROID_ANTIBANDING_50HZ = 0,
+    CV_CAP_ANDROID_ANTIBANDING_60HZ,
+    CV_CAP_ANDROID_ANTIBANDING_AUTO,
+    CV_CAP_ANDROID_ANTIBANDING_OFF
 };
 
 /* retrieve or set capture properties */

@@ -142,8 +142,8 @@ CV_EXPORTS CvFont fontQt(const string& nameFont, int pointSize=-1,
                          int style=CV_STYLE_NORMAL, int spacing=0);
 CV_EXPORTS void addText( const Mat& img, const string& text, Point org, CvFont font);
 
-CV_EXPORTS void displayOverlay(const string& winname, const string& text, int delayms);
-CV_EXPORTS void displayStatusBar(const string& winname, const string& text, int delayms);
+CV_EXPORTS void displayOverlay(const string& winname, const string& text, int delayms CV_DEFAULT(0));
+CV_EXPORTS void displayStatusBar(const string& winname, const string& text, int delayms CV_DEFAULT(0));
 
 CV_EXPORTS void saveWindowParameters(const string& windowName);
 CV_EXPORTS void loadWindowParameters(const string& windowName);
@@ -232,8 +232,9 @@ public:
     
     virtual ~VideoWriter();
     CV_WRAP virtual bool open(const string& filename, int fourcc, double fps,
-                      Size frameSize, bool isColor=true);
+                      Size frameSize, bool isColor=true);    
     CV_WRAP virtual bool isOpened() const;
+    CV_WRAP virtual void release();
     virtual VideoWriter& operator << (const Mat& image);
     CV_WRAP virtual void write(const Mat& image);
     
